@@ -1,0 +1,5 @@
+hff_blog_homepage:
+    pattern:  /
+    defaults: { _controller: HffBlogBundle:Paginas:index }
+    requirements:
+        _method:  GET

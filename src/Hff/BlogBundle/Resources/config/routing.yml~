@@ -1,0 +1,3 @@
+hff_blog_homepage:
+    pattern:  /articulo/{name}
+    defaults: { _controller: HffBlogBundle:Default:index }

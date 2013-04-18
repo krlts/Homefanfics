@@ -1,0 +1,4 @@
+hff_blog:
+    resource: "@HffBlogBundle/Resources/config/routing.yml"
+    prefix:   /
+

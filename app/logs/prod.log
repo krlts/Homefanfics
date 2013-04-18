@@ -1,0 +1,2 @@
+[2013-04-14 19:23:33] request.ERROR: Uncaught PHP Exception Symfony\Component\HttpKernel\Exception\NotFoundHttpException: "No route found for "GET /phpmyadmin/index.php"" at /var/www/symfony/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php line 94 [] []
+[2013-04-15 21:34:09] request.ERROR: Uncaught PHP Exception Symfony\Component\HttpKernel\Exception\NotFoundHttpException: "No route found for "GET /"" at /var/www/symfony/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php line 94 [] []
