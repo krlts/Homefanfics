@@ -29,11 +29,9 @@ class Citas
     private $texto;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idAutor", type="integer")
+     * @ORM\ManyToOne(targetEntity="\Hff\BlogBundle\Entity\Autores")
      */
-    private $idAutor;
+    private $autor;
 
 
     /**
@@ -69,34 +67,10 @@ class Citas
         return $this->texto;
     }
 
-    /**
-     * Set idAutor
-     *
-     * @param integer $idAutor
-     * @return Citas
-     */
-    public function setIdAutor($idAutor)
-    {
-        $this->idAutor = $idAutor;
-    
-        return $this;
-    }
-
-    /**
-     * Get idAutor
-     *
-     * @return integer 
-     */
-    public function getIdAutor()
-    {
-        return $this->idAutor;
-    }
+  
     /**
      * @ORM\ManyToOne(targetEntity="Autores", inversedBy="citas")
-     * @ORM\JoinColumn(name="idAutor", referencedColumnName="id")
      */
-    //* @return integer
-    private $autor;
     public function setAutor(\Hff\BlogBundle\Entity\Autores $autor)
     {
         $this->autor = $autor;

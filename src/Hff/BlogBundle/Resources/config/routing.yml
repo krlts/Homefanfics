@@ -3,3 +3,12 @@ hff_blog_homepage:
     defaults: { _controller: HffBlogBundle:Paginas:index }
     requirements:
         _method:  GET
+        
+autor_crear:
+    pattern:  /autor/crear
+    defaults: { _controller: HffBlogBundle:Autores:crear }
+    
+autor_listar:
+    pattern:  /autor/listar
+    defaults: { _controller: HffBlogBundle:Autores:listar }
+    

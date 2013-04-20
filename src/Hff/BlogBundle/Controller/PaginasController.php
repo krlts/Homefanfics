@@ -12,6 +12,7 @@ class PaginasController extends Controller
        return $this->render('HffBlogBundle:Paginas:index.html.twig');
         
     }
+    
 }
 
 

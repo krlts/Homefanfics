@@ -79,4 +79,10 @@ class Autores
     {
         return $this->citas;
     }
+    
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
+
 }

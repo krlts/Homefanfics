@@ -212,6 +212,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
         not_hff_blog_homepage:
 
+        if (0 === strpos($pathinfo, '/autor')) {
+            // autor_crear
+            if ($pathinfo === '/autor/crear') {
+                return array (  '_controller' => 'Hff\\BlogBundle\\Controller\\AutoresController::crearAction',  '_route' => 'autor_crear',);
+            }
+
+            // autor_listar
+            if ($pathinfo === '/autor/listar') {
+                return array (  '_controller' => 'Hff\\BlogBundle\\Controller\\AutoresController::listarAction',  '_route' => 'autor_listar',);
+            }
+
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }
