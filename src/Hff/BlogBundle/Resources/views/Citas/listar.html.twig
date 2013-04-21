@@ -1,0 +1,15 @@
+<h1>Listado de Citas</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Cita</th>
+        <th>Autor</th>
+    </tr>
+    {% for cita in citas %}
+    <tr>
+        <td>{{ cita.id }}</td>
+        <td>{{ cita.texto }}</td>
+        <td>{{ cita.autor }}</td>
+    </tr>
+    {% endfor %}
+</table>

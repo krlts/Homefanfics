@@ -83,7 +83,7 @@ class Citas
     
     public function __toString()
     {
-        return $this->getNombre();
+        return $this->getTexto();
     }
 }
     

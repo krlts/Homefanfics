@@ -12,3 +12,6 @@ autor_listar:
     pattern:  /autor/listar
     defaults: { _controller: HffBlogBundle:Autores:listar }
     
+citas_listar:
+    pattern:  /citas/listar
+    defaults: { _controller: HffBlogBundle:Citas:listar }

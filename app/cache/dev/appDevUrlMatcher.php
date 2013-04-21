@@ -225,6 +225,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // citas_listar
+        if ($pathinfo === '/citas/listar') {
+            return array (  '_controller' => 'Hff\\BlogBundle\\Controller\\CitasController::listarAction',  '_route' => 'citas_listar',);
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

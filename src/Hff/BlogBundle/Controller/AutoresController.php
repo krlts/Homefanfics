@@ -12,7 +12,7 @@ class AutoresController extends Controller
     {
         $autor = new Autores();
         $autor->setNombre('Charles Chaplin');
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $em->persist($autor);
         $em->flush();
         return new Response('Id de Autor '.$autor->getId().' de '.$autor->getNombre().' creado.');
@@ -28,7 +28,7 @@ class AutoresController extends Controller
     }
     public function listarAction() 
     {
-         $em = $this->getDoctrine()->getEntityManager();
+         $em = $this->getDoctrine()->getManager();
          $autores = $em->getRepository('HffBlogBundle:Autores')->findAll();
          return $this->render('HffBlogBundle:Autores:listar.html.twig', array('autores' => $autores));
          

@@ -42,6 +42,7 @@ class appDevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         'hff_blog_homepage' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Hff\\BlogBundle\\Controller\\PaginasController::indexAction',  ),  2 =>   array (    '_method' => 'GET',  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/',    ),  ),  4 =>   array (  ),),
         'autor_crear' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Hff\\BlogBundle\\Controller\\AutoresController::crearAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/autor/crear',    ),  ),  4 =>   array (  ),),
         'autor_listar' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Hff\\BlogBundle\\Controller\\AutoresController::listarAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/autor/listar',    ),  ),  4 =>   array (  ),),
+        'citas_listar' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Hff\\BlogBundle\\Controller\\CitasController::listarAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/citas/listar',    ),  ),  4 =>   array (  ),),
     );
 
     /**
