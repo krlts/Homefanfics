@@ -1,0 +1,6 @@
+<h2>Crear cuenta de Usuario</h2>
+<form action="{{ path('usuario_crear') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+        
+    <input type="submit" />
+</form>

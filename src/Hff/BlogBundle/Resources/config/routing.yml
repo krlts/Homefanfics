@@ -15,3 +15,7 @@ autor_listar:
 citas_listar:
     pattern:  /citas/listar
     defaults: { _controller: HffBlogBundle:Citas:listar }
+    
+usuario_crear:
+    pattern:  /usuario/crear
+    defaults: { _controller: HffBlogBundle:Usuarios:crear }   
