@@ -4,13 +4,29 @@ hff_blog_homepage:
     requirements:
         _method:  GET
         
-autor_crear:
-    pattern:  /autor/crear
-    defaults: { _controller: HffBlogBundle:Autores:crear }
+autores_new:
+    pattern:  /autores/new
+    defaults: { _controller: HffBlogBundle:Autores:new }
     
-autor_listar:
-    pattern:  /autor/listar
-    defaults: { _controller: HffBlogBundle:Autores:listar }
+autores:
+    pattern:  /autores
+    defaults: { _controller: HffBlogBundle:Autores:index }
+    
+autores_show:
+    pattern:  /autores/show/{id}
+    defaults: { _controller: HffBlogBundle:Autores:show }
+    
+autores_edit:
+    pattern:  /autores/edit/{id}
+    defaults: { _controller: HffBlogBundle:Autores:edit }  
+    
+autores_delete:
+    pattern:  /autores/delete/{id}
+    defaults: { _controller: HffBlogBundle:Autores:delete } 
+    
+autores_update:
+    pattern:  /autores/update/{id}
+    defaults: { _controller: HffBlogBundle:Autores:update } 
     
 citas_listar:
     pattern:  /citas/listar
