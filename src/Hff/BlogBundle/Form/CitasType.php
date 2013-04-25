@@ -6,30 +6,25 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class AutoresType extends AbstractType
+class CitasType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
+            ->add('texto')
+            ->add('autor')
         ;
-       
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Hff\BlogBundle\Entity\Autores'
+            'data_class' => 'Hff\BlogBundle\Entity\Citas'
         ));
     }
 
     public function getName()
     {
-        return 'hff_blogbundle_autorestype';
+        return 'hff_blogbundle_citastype';
     }
-/*public function getName()
-    {
-        return 'hff_blogbundle_autorestype';
-    }*/
-
 }

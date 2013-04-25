@@ -69,7 +69,7 @@ class Citas
 
   
     /**
-     * @ORM\ManyToOne(targetEntity="Autores", inversedBy="citas")
+     * ORM\ManyToOne(targetEntity="Autores", inversedBy="citas")
      */
     public function setAutor(\Hff\BlogBundle\Entity\Autores $autor)
     {

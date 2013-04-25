@@ -4,13 +4,18 @@ hff_blog_homepage:
     requirements:
         _method:  GET
         
+autores_create:
+    pattern:  /autores/create
+    defaults: { _controller: HffBlogBundle:Autores:create } 
+    
 autores_new:
     pattern:  /autores/new
     defaults: { _controller: HffBlogBundle:Autores:new }
-    
+
 autores:
     pattern:  /autores
     defaults: { _controller: HffBlogBundle:Autores:index }
+    
     
 autores_show:
     pattern:  /autores/show/{id}
@@ -27,6 +32,35 @@ autores_delete:
 autores_update:
     pattern:  /autores/update/{id}
     defaults: { _controller: HffBlogBundle:Autores:update } 
+    
+citas_create:
+    pattern:  /citas/create
+    defaults: { _controller: HffBlogBundle:Citas:create } 
+    
+citas_new:
+    pattern:  /citas/new
+    defaults: { _controller: HffBlogBundle:Citas:new }
+
+citas:
+    pattern:  /citas
+    defaults: { _controller: HffBlogBundle:Citas:index }
+    
+    
+citas_show:
+    pattern:  /citas/show/{id}
+    defaults: { _controller: HffBlogBundle:Citas:show }
+    
+citas_edit:
+    pattern:  /citas/edit/{id}
+    defaults: { _controller: HffBlogBundle:Citas:edit }  
+    
+citas_delete:
+    pattern:  /citas/delete/{id}
+    defaults: { _controller: HffBlogBundle:Citas:delete } 
+    
+citas_update:
+    pattern:  /citas/update/{id}
+    defaults: { _controller: HffBlogBundle:Citas:update } 
     
 citas_listar:
     pattern:  /citas/listar
