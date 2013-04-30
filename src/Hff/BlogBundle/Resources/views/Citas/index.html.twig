@@ -1,15 +1,16 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Citas list</h1>
+    <h1>Lista de Citas</h1>
 
-    <table class="records_list" border="1">
+
+    <table class="records_list">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Texto</th>
+                <th>Cita</th>
                 <th>Autor</th>
-                <th>Actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -18,13 +19,14 @@
                 <td><a href="{{ path('citas_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.texto }}</td>
                 <td>{{ entity.autor }}</td>
+                {#<td>{{ entity.autor.id }}</td>#}
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('citas_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('citas_show', { 'id': entity.id }) }}">Mostrar</a>
                     </li>
                     <li>
-                        <a href="{{ path('citas_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('citas_edit', { 'id': entity.id }) }}">Editar</a>
                     </li>
                 </ul>
                 </td>
@@ -36,7 +38,7 @@
         <ul>
         <li>
             <a href="{{ path('citas_new') }}">
-                Create a new entry
+                Ingresar una nueva cita
             </a>
         </li>
     </ul>

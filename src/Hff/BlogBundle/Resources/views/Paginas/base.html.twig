@@ -1,5 +1,11 @@
 {% extends '::base.html.twig' %}
-
+<select>
+        <option value="0">Selecciona la Categoría</option>
+    {% for categoria in categorias %}
+            <option value="{{categorias.id}}">{{categorias.nombre}}</option>
+    {% endfor %}
+    </select>
+<p>Probando select<p>
 {% block sidebar %}
-    Sidebar content
+    
 {% endblock %}

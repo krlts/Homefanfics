@@ -14,8 +14,7 @@ autores_new:
 
 autores:
     pattern:  /autores
-    defaults: { _controller: HffBlogBundle:Autores:index }
-    
+    defaults: { _controller: HffBlogBundle:Autores:index }    
     
 autores_show:
     pattern:  /autores/show/{id}
@@ -43,8 +42,7 @@ citas_new:
 
 citas:
     pattern:  /citas
-    defaults: { _controller: HffBlogBundle:Citas:index }
-    
+    defaults: { _controller: HffBlogBundle:Citas:index }    
     
 citas_show:
     pattern:  /citas/show/{id}
@@ -65,6 +63,34 @@ citas_update:
 citas_listar:
     pattern:  /citas/listar
     defaults: { _controller: HffBlogBundle:Citas:listar }
+    
+categorias_create:
+    pattern:  /categorias/create
+    defaults: { _controller: HffBlogBundle:Categorias:create } 
+    
+categorias_new:
+    pattern:  /categorias/new
+    defaults: { _controller: HffBlogBundle:Categorias:new }
+
+categorias:
+    pattern:  /categorias
+    defaults: { _controller: HffBlogBundle:Categorias:index }
+    
+categorias_show:
+    pattern:  /categorias/show/{id}
+    defaults: { _controller: HffBlogBundle:Categorias:show }
+    
+categorias_edit:
+    pattern:  /categorias/edit/{id}
+    defaults: { _controller: HffBlogBundle:Categorias:edit }  
+    
+categorias_delete:
+    pattern:  /categorias/delete/{id}
+    defaults: { _controller: HffBlogBundle:Categorias:delete } 
+    
+categorias_update:
+    pattern:  /categorias/update/{id}
+    defaults: { _controller: HffBlogBundle:Categorias:update }     
     
 usuario_crear:
     pattern:  /usuario/crear

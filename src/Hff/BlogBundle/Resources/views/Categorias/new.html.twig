@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Ingresar nueva Categoria</h1>
+
+    <form action="{{ path('categorias_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Ingresar Categoría</button>
+        </p>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('categorias') }}">
+            Volver a la lista de categorías
+        </a>
+    </li>
+</ul>
+{% endblock %}

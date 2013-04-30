@@ -1,27 +1,27 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Actualizar nombre de Autor</h1>
+    <h1>Editar nombre de Autor</h1>
 
     <form action="{{ path('autores_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
         <input type="hidden" name="_method" value="PUT" />
         {{ form_widget(edit_form) }}
         <p>
-            <button type="submit">Editar</button>
+            <button type="submit">Editar nombre</button>
         </p>
     </form>
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('autores') }}">
-            Volver a la lista
+            Volver a la lista de autores
         </a>
     </li>
     <li>
         <form action="{{ path('autores_delete', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button type="submit">Borrar Autor</button>
         </form>
     </li>
 </ul>

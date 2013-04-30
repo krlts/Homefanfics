@@ -1,0 +1,19 @@
+/* 
+    Document   : estilo
+    Created on : 26-04-2013, 07:58:38 PM
+    Author     : krlts
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+table{border: 2px double black; border-collapse: collapse;}
+table td, table th{border: 1px solid black; border-collapse: collapse;}
+#header ul.navigation { list-style: none; text-align: right; }
+#header .navigation li { display: inline }
+#header .navigation li a { display: inline-block;padding: 5px 5px; border-left: 1px solid #ccc; }
+#footer { border-top: 1px solid #ccc; clear: both; text-align: center; padding: 8px; color: #aaa; font-size: small;
+}
+

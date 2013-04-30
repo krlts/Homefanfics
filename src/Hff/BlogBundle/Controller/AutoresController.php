@@ -34,16 +34,6 @@ class AutoresController extends Controller
             'entities' => $entities,
         );
     }
-    public function registroAction()
-{
-$autor = new Autores();
-$formulario = $this->createFormBuilder($autor)
-->add('nombre')
-->getForm();
-return $this->render('HffBlogBundle:Autores:new.html.twig',
-array('formulario' => $formulario->createView())
-);
-}
 
     /**
      * Creates a new Autores entity.
@@ -88,7 +78,6 @@ array('formulario' => $formulario->createView())
             'entity' => $entity,
             'form'   => $form->createView(),
         );
-
     }
 
     /**
@@ -217,8 +206,5 @@ array('formulario' => $formulario->createView())
             ->add('id', 'hidden')
             ->getForm()
         ;
-    }
-    public function __toString() {  
-     return $this->nombre; 
     }
 }

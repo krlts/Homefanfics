@@ -1,0 +1,50 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Lista de Categorías</h1>
+    <select>
+        <option value="0">Selecciona la Categoría</option>
+    {% for entity in entities %}
+            <option value="{{entity.nombre}}">{{entity.nombre}}</option>
+    {% endfor %}
+    </select>
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Imagen</th>
+                <th>Acciones/th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('categorias_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.descripcion }}</td>
+                <td>{{ entity.imagen }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('categorias_show', { 'id': entity.id }) }}">Mostrar</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('categorias_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('categorias_new') }}">
+                Ingresar una nueva categoría
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

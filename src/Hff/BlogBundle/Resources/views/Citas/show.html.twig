@@ -10,7 +10,7 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Texto</th>
+                <th>Cita</th>
                 <td>{{ entity.texto }}</td>
             </tr>
             <tr>
@@ -23,19 +23,25 @@
         <ul class="record_actions">
     <li>
         <a href="{{ path('citas') }}">
-            Back to the list
+            Volver a la lista de citas
         </a>
     </li>
     <li>
+        <a href="{{ path('citas_new') }}">
+                Ingresar una nueva cita
+            </a>
+    </li>
+    <li>
         <a href="{{ path('citas_edit', { 'id': entity.id }) }}">
-            Edit
+            Editar Cita
         </a>
+            
     </li>
     <li>
         <form action="{{ path('citas_delete', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button type="submit">Borrar Cita</button>
         </form>
     </li>
 </ul>

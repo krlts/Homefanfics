@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoriasRepository extends EntityRepository
 {
+    public function findAllOrderedByName()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT c FROM HffBlogBundle:Categorias c ORDER BY c.nombre ASC')
+            ->getResult();
+    }
 }
+

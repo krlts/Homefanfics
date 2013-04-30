@@ -25,6 +25,6 @@ class CitasType extends AbstractType
 
     public function getName()
     {
-        return 'hff_blogbundle_citastype';
+        return 'citas';
     }
 }

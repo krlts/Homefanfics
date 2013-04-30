@@ -25,7 +25,7 @@ class AutoresType extends AbstractType
 
     public function getName()
     {
-        return 'hff_blogbundle_autorestype';
+        return 'autores';
     }
 /*public function getName()
     {

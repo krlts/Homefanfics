@@ -1,20 +1,19 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Ingresar un Autor</h1>
+    <h1>Ingresar Autor</h1>
 
-    <form action="{{ path('autores_new') }}" method="post" {{ form_enctype(form) }}>
-        <input type="hidden" name="_method" value="PUT" />
+    <form action="{{ path('autores_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <p>
-            <button type="submit">Crear</button>
+            <button type="submit">Ingresar nombre</button>
         </p>
     </form>
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('autores') }}">
-            Volver a la Lista
+            Volver a la lista de autores
         </a>
     </li>
 </ul>
