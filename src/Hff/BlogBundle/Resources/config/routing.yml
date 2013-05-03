@@ -92,6 +92,34 @@ categorias_update:
     pattern:  /categorias/update/{id}
     defaults: { _controller: HffBlogBundle:Categorias:update }     
     
-usuario_crear:
-    pattern:  /usuario/crear
-    defaults: { _controller: HffBlogBundle:Usuarios:crear }   
+usuario_registrar:
+    pattern:  /usuario/registrar
+    defaults: { _controller: HffBlogBundle:Usuarios:registrar } 
+
+usuarios_create:
+    pattern:  /usuarios/create
+    defaults: { _controller: HffBlogBundle:Usuarios:create } 
+    
+usuarios_new:
+    pattern:  /usuarios/new
+    defaults: { _controller: HffBlogBundle:Usuarios:new }
+
+usuarios:
+    pattern:  /usuarios
+    defaults: { _controller: HffBlogBundle:Usuarios:index }
+    
+usuarios_show:
+    pattern:  /usuarios/show/{id}
+    defaults: { _controller: HffBlogBundle:Usuarios:show }
+    
+usuarios_edit:
+    pattern:  /usuarios/edit/{id}
+    defaults: { _controller: HffBlogBundle:Usuarios:edit }  
+    
+usuarios_delete:
+    pattern:  /usuarios/delete/{id}
+    defaults: { _controller: HffBlogBundle:Usuarios:delete } 
+    
+usuarios_update:
+    pattern:  /usuarios/update/{id}
+    defaults: { _controller: HffBlogBundle:Usuarios:update }

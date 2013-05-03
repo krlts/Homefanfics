@@ -8,10 +8,11 @@ class UsuariosType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('usuario')
-                ->add('password', 'password')
-                ->add('nombreReal')
+                ->add('password', 'repeated', 
+                array('type' => 'password'))
                 ->add('email', 'email')
-                ->add("acepto_los_terminos_y_condiciones",
+                ->add('nombreReal')
+                ->add("acepto",
                 "checkbox", array(
                     "property_path" => false,
                 ));

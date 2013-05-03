@@ -9,8 +9,10 @@
 root { 
     display: block;
 }
-table{border: 2px double black; border-collapse: collapse;}
+
+table {border: 2px double black; border-collapse: collapse;}
 table td, table th{border: 1px solid black; border-collapse: collapse;}
+#sinlineas table{border: 0px double black; border-collapse: collapse;}
 #header ul.navigation { list-style: none; text-align: right; }
 #header .navigation li { display: inline }
 #header .navigation li a { display: inline-block;padding: 5px 5px; border-left: 1px solid #ccc; }
