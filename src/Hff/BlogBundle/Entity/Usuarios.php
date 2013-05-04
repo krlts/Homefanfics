@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Hff\BlogBundle\Entity\UsuariosRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Usuarios
 {
@@ -278,12 +279,23 @@ class Usuarios
      * @param \DateTime $ultimaVisita
      * @return Usuarios
      */
-    public function setUltimaVisita($ultimaVisita)
+    public function setUltimaVisita()
     {
-        $this->ultimaVisita = $ultimaVisita;
+        $this->ultimaVisita = new \DateTime();
     
         return $this;
     }
+    /**
+     * @ORM\preUpdate
+     
+     public function setUltimaVisita()
+    {
+        $this->ultimaVisita = new \DateTime();
+    
+        return $this;
+    }
+     * 
+     */
 
     /**
      * Get ultimaVisita
@@ -319,16 +331,11 @@ class Usuarios
     }
 
     /**
-     * Set rol
-     *
-     * @param integer $rol
-     * @return Usuarios
+     * ORM\ManyToOne(targetEntity="Roles", inversedBy="usuarios")
      */
-    public function setRol($rol)
+    public function setRol(\Hff\BlogBundle\Entity\Roles $rol)
     {
         $this->rol = $rol;
-    
-        return $this;
     }
 
     /**
@@ -339,5 +346,19 @@ class Usuarios
     public function getRol()
     {
         return $this->rol;
+    }
+    
+    public function __construct()
+    {
+        $this->setBloqueado(false);
+        $this->setEnviarMail(true);
+        $this->setFechaRegistro(new \DateTime());
+        $this->setUltimaVisita();
+        $this->setUltimaIp(0);
+        $this->setRol(0);
+    }
+     public function __toString()
+    {
+        return $this->getUsuario();
     }
 }
