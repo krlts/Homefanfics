@@ -28,24 +28,7 @@ class Roles
      */
     private $nombre;
     
-    /**
-     * @ORM\OneToMany(targetEntity="Usuarios", mappedBy="rol")
-     */
-    private $usuarios;
-     public function __construct()
-    {
-        $this->usuarios = new ArrayCollection();
-    }
-    public function setUsuarios(\Hff\BlogBundle\Entity\Usuarios $usuarios)
-    {
-        $this->usuarios[] = $usuarios;
-    }
-
-    public function getUsuarios()
-    {
-        return $this->usuarios;
-    }
-
+    
 
     /**
      * Get id
@@ -61,7 +44,6 @@ class Roles
      * Set nombre
      *
      * @param string $nombre
-     * @ORM\OneToMany(targetEntity="Usuarios", mappedBy="rol")
      * @return Roles
      */
     public function setNombre($nombre)
@@ -82,6 +64,9 @@ class Roles
     }
      public function __toString()
     {
-        return $this->getNombre();
+        return $this->nombre;
     }
+   
 }
+
+

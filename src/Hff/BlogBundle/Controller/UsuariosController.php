@@ -50,6 +50,22 @@ class UsuariosController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+              // Completar las propiedades que el usuario no rellena en el formulario
+                $entity->setSalt(md5(time()));
+
+                $encoder = $this->get('security.encoder_factory')->getEncoder($entity);
+                $passwordCodificado = $encoder->encodePassword(
+                    $entity->getPassword(),
+                    $entity->getSalt()
+                );
+                $entity->setPassword($passwordCodificado);
+
+                // Guardar el nuevo usuario en la base de datos
+
+                // Crear un mensaje flash para notificar al usuario que se ha registrado correctamente
+                $this->get('session')->setFlash('info',
+                    '¡Enhorabuena! Te has registrado correctamente en Cupon'
+                );
             $em->persist($entity);
             $em->flush();
 

@@ -16,7 +16,6 @@
                 <th>Fecharegistro</th>
                 <th>Ultimavisita</th>
                 <th>Ultimaip</th>
-                <th>Rol</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -33,7 +32,6 @@
                 <td>{% if entity.fechaRegistro %}{{ entity.fechaRegistro|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if entity.ultimaVisita %}{{ entity.ultimaVisita|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.ultimaIp }}</td>
-                <td>{{ entity.rol }}</td>
                 <td>
                 <ul>
                     <li>

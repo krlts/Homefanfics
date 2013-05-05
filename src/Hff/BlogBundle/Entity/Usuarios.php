@@ -4,15 +4,19 @@ namespace Hff\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 /**
  * Usuarios
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Hff\BlogBundle\Entity\UsuariosRepository")
- * @ORM\HasLifecycleCallbacks()
+ * @DoctrineAssert\UniqueEntity("usuario")
+ *  @ORM\HasLifecycleCallbacks()
  */
-class Usuarios
-{
+class Usuarios implements UserInterface {
+
     /**
      * @var integer
      *
@@ -93,22 +97,30 @@ class Usuarios
      * @ORM\Column(name="ultima_ip", type="string", length=50)
      */
     private $ultimaIp;
-
-    /**
-     * @var integer
+  
+        /**
+     * var integer $rol
      *
-     * @ORM\Column(name="rol", type="integer")
-     */
-    private $rol;
+     * ORM\ManyToOne(targetEntity="\Hff\BlogBundle\Entity\Roles", inversedBy="usuarios")
+     * Assert\Type("Hff\BlogBundle\Entity\Roles")
+     
 
+    private $rol;
+    */
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255)
+     */
+    private $salt;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -118,10 +130,9 @@ class Usuarios
      * @param string $usuario
      * @return Usuarios
      */
-    public function setUsuario($usuario)
-    {
+    public function setUsuario($usuario) {
         $this->usuario = $usuario;
-    
+
         return $this;
     }
 
@@ -130,8 +141,7 @@ class Usuarios
      *
      * @return string 
      */
-    public function getUsuario()
-    {
+    public function getUsuario() {
         return $this->usuario;
     }
 
@@ -141,10 +151,9 @@ class Usuarios
      * @param string $password
      * @return Usuarios
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
-    
+
         return $this;
     }
 
@@ -153,8 +162,7 @@ class Usuarios
      *
      * @return string 
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
@@ -164,10 +172,9 @@ class Usuarios
      * @param string $nombreReal
      * @return Usuarios
      */
-    public function setNombreReal($nombreReal)
-    {
+    public function setNombreReal($nombreReal) {
         $this->nombreReal = $nombreReal;
-    
+
         return $this;
     }
 
@@ -176,8 +183,7 @@ class Usuarios
      *
      * @return string 
      */
-    public function getNombreReal()
-    {
+    public function getNombreReal() {
         return $this->nombreReal;
     }
 
@@ -187,10 +193,9 @@ class Usuarios
      * @param boolean $bloqueado
      * @return Usuarios
      */
-    public function setBloqueado($bloqueado)
-    {
+    public function setBloqueado($bloqueado) {
         $this->bloqueado = $bloqueado;
-    
+
         return $this;
     }
 
@@ -199,8 +204,7 @@ class Usuarios
      *
      * @return boolean 
      */
-    public function getBloqueado()
-    {
+    public function getBloqueado() {
         return $this->bloqueado;
     }
 
@@ -210,10 +214,9 @@ class Usuarios
      * @param string $email
      * @return Usuarios
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
-    
+
         return $this;
     }
 
@@ -222,8 +225,7 @@ class Usuarios
      *
      * @return string 
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -233,10 +235,9 @@ class Usuarios
      * @param boolean $enviarMail
      * @return Usuarios
      */
-    public function setEnviarMail($enviarMail)
-    {
+    public function setEnviarMail($enviarMail) {
         $this->enviarMail = $enviarMail;
-    
+
         return $this;
     }
 
@@ -245,8 +246,7 @@ class Usuarios
      *
      * @return boolean 
      */
-    public function getEnviarMail()
-    {
+    public function getEnviarMail() {
         return $this->enviarMail;
     }
 
@@ -256,10 +256,9 @@ class Usuarios
      * @param \DateTime $fechaRegistro
      * @return Usuarios
      */
-    public function setFechaRegistro($fechaRegistro)
-    {
+    public function setFechaRegistro($fechaRegistro) {
         $this->fechaRegistro = $fechaRegistro;
-    
+
         return $this;
     }
 
@@ -268,8 +267,7 @@ class Usuarios
      *
      * @return \DateTime 
      */
-    public function getFechaRegistro()
-    {
+    public function getFechaRegistro() {
         return $this->fechaRegistro;
     }
 
@@ -279,21 +277,21 @@ class Usuarios
      * @param \DateTime $ultimaVisita
      * @return Usuarios
      */
-    public function setUltimaVisita()
-    {
+    public function setUltimaVisita() {
         $this->ultimaVisita = new \DateTime();
-    
+
         return $this;
     }
+
     /**
      * @ORM\preUpdate
-     
-     public function setUltimaVisita()
-    {
-        $this->ultimaVisita = new \DateTime();
-    
-        return $this;
-    }
+
+      public function setUltimaVisita()
+      {
+      $this->ultimaVisita = new \DateTime();
+
+      return $this;
+      }
      * 
      */
 
@@ -302,8 +300,7 @@ class Usuarios
      *
      * @return \DateTime 
      */
-    public function getUltimaVisita()
-    {
+    public function getUltimaVisita() {
         return $this->ultimaVisita;
     }
 
@@ -313,10 +310,9 @@ class Usuarios
      * @param string $ultimaIp
      * @return Usuarios
      */
-    public function setUltimaIp($ultimaIp)
-    {
+    public function setUltimaIp($ultimaIp) {
         $this->ultimaIp = $ultimaIp;
-    
+
         return $this;
     }
 
@@ -325,40 +321,70 @@ class Usuarios
      *
      * @return string 
      */
-    public function getUltimaIp()
-    {
+    public function getUltimaIp() {
         return $this->ultimaIp;
     }
-
+   
     /**
-     * ORM\ManyToOne(targetEntity="Roles", inversedBy="usuarios")
-     */
-    public function setRol(\Hff\BlogBundle\Entity\Roles $rol)
-    {
+     * param \Hff\BlogBundle\Entity\Roles $rol
+     *
+    public function setRol(\Hff\BlogBundle\Entity\Roles $rol) {
         $this->rol = $rol;
     }
 
     /**
      * Get rol
      *
-     * @return integer 
-     */
-    public function getRol()
-    {
+     * return \Hff\BlogBundle\Entity\Roles
+     *
+    public function getRol() {
         return $this->rol;
-    }
+    }*/
     
-    public function __construct()
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     */
+    public function setSalt($salt)
     {
+        $this->salt = $salt;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    public function __construct() {
         $this->setBloqueado(false);
         $this->setEnviarMail(true);
         $this->setFechaRegistro(new \DateTime());
         $this->setUltimaVisita();
         $this->setUltimaIp(0);
-        $this->setRol(0);
+        $this->setSalt('saltfdsfsdf');
     }
-     public function __toString()
-    {
+
+    public function __toString() {
         return $this->getUsuario();
     }
+
+    public function getUsername() {
+        return $this->getUsuario();
+    }
+
+    public function eraseCredentials() {
+        
+    }
+
+    public function getRoles() {
+        return array('ROLE_ESCRITOR');
+    }
+
 }
