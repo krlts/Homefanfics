@@ -124,13 +124,13 @@ usuarios_update:
     pattern:  /usuarios/update/{id}
     defaults: { _controller: HffBlogBundle:Usuarios:update }
     
-usuario_login:
+usuarios_login:
     pattern:   /login
     defaults:  { _controller: HffBlogBundle:Usuarios:login }
 
 
-usuario_login_check:
-    pattern:   /login_check
+usuarios_login_check:
+    pattern:   /usuarios/login_check
 
-usuario_logout:
+usuarios_logout:
     pattern:   /logout
