@@ -123,3 +123,14 @@ usuarios_delete:
 usuarios_update:
     pattern:  /usuarios/update/{id}
     defaults: { _controller: HffBlogBundle:Usuarios:update }
+    
+usuario_login:
+    pattern:   /login
+    defaults:  { _controller: HffBlogBundle:Usuarios:login }
+
+
+usuario_login_check:
+    pattern:   /login_check
+
+usuario_logout:
+    pattern:   /logout

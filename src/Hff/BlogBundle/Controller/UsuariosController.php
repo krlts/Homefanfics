@@ -3,6 +3,7 @@
 namespace Hff\BlogBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -223,4 +224,21 @@ class UsuariosController extends Controller
             ->getForm()
         ;
     }
+    
+     public function loginAction()
+    {
+        $peticion = $this->getRequest();
+        $sesion = $peticion->getSession();
+
+        $error = $peticion->attributes->get(
+            SecurityContext::AUTHENTICATION_ERROR,
+            $sesion->get(SecurityContext::AUTHENTICATION_ERROR)
+        );
+
+        return $this->render('HffBlogBundle:Usuarios:login.html.twig', array(
+            'last_username' => $sesion->get(SecurityContext::LAST_USERNAME),
+            'error'         => $error
+        ));
+    }
+    
 }
