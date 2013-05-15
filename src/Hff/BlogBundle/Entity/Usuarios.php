@@ -367,7 +367,8 @@ class Usuarios implements UserInterface {
         $this->setEnviarMail(true);
         $this->setFechaRegistro(new \DateTime());
         $this->setUltimaVisita();
-        $this->setUltimaIp(0);
+        //$direccionIp = $this->get('request')->getClientIp();
+        //$this->setUltimaIp($direccionIp);
         $this->setSalt('saltfdsfsdf');
     }
 

@@ -60,6 +60,9 @@ class UsuariosController extends Controller
                     $entity->getSalt()
                 );
                 $entity->setPassword($passwordCodificado);
+                $direccionIp = $this->get('request')->getClientIp();
+                $entity->setUltimaIp($direccionIp);
+                
 
                 // Guardar el nuevo usuario en la base de datos
 
