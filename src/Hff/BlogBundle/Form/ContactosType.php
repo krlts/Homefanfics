@@ -12,7 +12,7 @@ class ContactosType extends AbstractType
         $builder->add('nombre');
         $builder->add('email', 'email');
         $builder->add('asunto');
-        $builder->add('mensaje', 'textarea');
+        $builder->add('mensaje', 'textarea', array('attr' => array('rows' => '5')));
     }
 
     public function getName()
