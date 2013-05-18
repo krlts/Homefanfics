@@ -134,3 +134,9 @@ usuarios_login_check:
 
 usuarios_logout:
     pattern:   /logout
+    
+HffBlogBundle_contacto:
+    pattern:  /contacto
+    defaults: { _controller: HffBlogBundle:Paginas:contacto }
+    requirements:
+        _method:  GET|POST

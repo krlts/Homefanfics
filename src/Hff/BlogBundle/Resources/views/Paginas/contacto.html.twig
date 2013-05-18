@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Contacto {% endblock%}
+
+{% block body %}
+    <header>
+        <h1>Contacto Homefanfics</h1>
+    </header>
+
+    <p>¿Quiere contactárnos?</p>
+    
+    {% if app.session.FlashBag ('blogger-notice') %}
+    <div class="blogger-notice">
+        {{ app.session.flash('blogger-notice') }}
+    </div>
+    {% endif %}
+    
+    <form action="{{ path('HffBlogBundle_contacto') }}" method="post" {{ form_enctype(form) }} class="blogger">
+        {{ form_errors(form) }}
+
+        {{ form_row(form.nombre) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.asunto) }}
+        {{ form_row(form.mensaje) }}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" value="Enviar" />
+    </form>
+{% endblock %}

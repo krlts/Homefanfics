@@ -1,0 +1,6 @@
+Una solicitud de contacto fue hecha por {{ contacto.nombre | upper }} a las {{ "now" | date("H:i d-m-Y") }}.
+
+Reply-To: {{ contacto.email }}
+Subject: {{ contacto.asunto }}
+Body:
+{{ contacto.mensaje }}
