@@ -92,9 +92,9 @@ categorias_update:
     pattern:  /categorias/update/{id}
     defaults: { _controller: HffBlogBundle:Categorias:update }     
     
-usuario_registrar:
-    pattern:  /usuario/registrar
-    defaults: { _controller: HffBlogBundle:Usuarios:registrar } 
+usuarios_registrar:
+    pattern:  /usuarios/registrar
+    defaults: { _controller: HffBlogBundle:Usuarios:registrar }
 
 usuarios_create:
     pattern:  /usuarios/create

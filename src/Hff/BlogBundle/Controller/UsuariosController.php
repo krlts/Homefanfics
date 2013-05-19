@@ -41,7 +41,7 @@ class UsuariosController extends Controller
      *
      * @Route("/", name="usuarios_create")
      * @Method("POST")
-     * @Template("HffBlogBundle:Usuarios:new.html.twig")
+     * @Template("HffBlogBundle:Usuarios:registrar.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -68,7 +68,7 @@ class UsuariosController extends Controller
 
                 // Crear un mensaje flash para notificar al usuario que se ha registrado correctamente
                 $this->get('session')->setFlash('info',
-                    '¡Enhorabuena! Te has registrado correctamente en Cupon'
+                    '¡Enhorabuena! Te has registrado correctamente en Homefanfics'
                 );
             $em->persist($entity);
             $em->flush();
@@ -82,6 +82,22 @@ class UsuariosController extends Controller
         );
     }
 
+    /**
+     * Displays a form to create a new Usuarios entity.
+     *
+     * @Route("/registrar", name="usuarios_registrar")
+     * @Method("GET")
+     * @Template()
+     */
+    public function registrarAction()
+    {
+        $entity = new Usuarios();
+        $form   = $this->createForm(new UsuariosType(), $entity);
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        );
+    }
     /**
      * Displays a form to create a new Usuarios entity.
      *

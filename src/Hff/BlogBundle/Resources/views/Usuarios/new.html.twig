@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Usuarios creation</h1>
+   {# <h1>Usuarios creation</h1>
 
     <form action="{{ path('usuarios_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
@@ -16,5 +16,44 @@
             Back to the list
         </a>
     </li>
-</ul>
+</ul>#}
+<h2>Registrar nueva cuenta de Usuario</h2>
+<form action="{{ path('usuarios_create') }}" method="post" {{ form_enctype(form) }}>
+
+    <center>
+    <table>
+        <tr>
+            <td>{{ form_label(form.usuario)}}</td>
+            <td>{{ form_widget(form.usuario)}} {{ form_errors(form.usuario) }}</td>
+            
+        </tr>
+        <tr>
+            <td>{{ form_label(form.password.first, 'Contraseña') }}</td>
+            <td>{{ form_widget(form.password.first) }}{{ form_errors(form.password.first) }}</td>
+            
+        </tr>
+        <tr>
+           <td>{{ form_label(form.password.second, 'Repetir contraseña') }}</td>
+           <td>{{ form_widget(form.password.second) }}{{ form_errors(form.password.second) }}</td> 
+        </tr>
+        <tr>
+            <td>{{ form_label(form.nombreReal, 'Nombres y Apellidos')}}</td>
+            <td>{{ form_widget(form.nombreReal)}} {{ form_errors(form.nombreReal) }}</td>
+            
+        </tr>
+        <tr>
+            <td>{{ form_label(form.email)}}</td>
+            <td>{{ form_widget(form.email)}} {{ form_errors(form.email) }}</td>
+            
+        </tr>
+        <tr>
+            <td style="text-align: right">{{ form_widget(form.acepto)}}{{ form_errors(form.acepto) }}</td>
+            <td>{{ form_label(form.acepto, 'Acepto los términos y Condiciones de uso')}} </td>
+            
+        </tr>
+        {{ form_rest(form) }}
+    </table>
+            </center>  
+    <button type="submit">Regístrate</button>
+</form>
 {% endblock %}

@@ -30,6 +30,10 @@ security:
             #security: false
 
         permitir_usuario_nuevo:
+            pattern:  ^/usuarios/registrar
+            anonymous:  ~
+        
+        usuario_nuevo:
             pattern:  ^/usuarios/new
             anonymous:  ~
 
@@ -47,6 +51,7 @@ security:
 
     access_control:
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/usuarios/registrar, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/usuarios/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/usuarios/(edit|delete), roles: ROLE_ADMIN }
     - { path: ^/usuarios/show, roles: ROLE_ESCRITOR }
