@@ -9,7 +9,9 @@ class UsuariosType extends AbstractType{
     {
         $builder->add('usuario','text',array('attr'=>array('size' => '60', 'placeholder' => 'Usuario o Alias', 'title' => 'Usuario o Alias')))
                 ->add('password', 'repeated', 
-                array('type' => 'password'))
+                array('type' => 'password', 
+                    'first_options'=> array('attr'=> array('size' => '60', 'placeholder' => 'Ingresa una Contraseña', 'title' => 'Ingresa una Contraseña')),
+                    'second_options'=> array('attr'=> array('size' => '60', 'placeholder' => 'Repita la Contraseña', 'title' => 'Repita la Contraseña'))))
                 ->add('email', 'email',array('attr'=>array('size' => '60', 'placeholder' => 'Tu correo electrónico', 'title' => 'Tu correo electrónico')))
                 ->add('nombreReal','text', array('attr'=>array('size' => '60', 'placeholder' => 'Nombres y Apellidos', 'title' => 'Nombres y Apellidos')))
                 ->add("acepto",
