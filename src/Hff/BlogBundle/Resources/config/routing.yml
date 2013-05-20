@@ -140,3 +140,4 @@ HffBlogBundle_contacto:
     defaults: { _controller: HffBlogBundle:Paginas:contacto }
     requirements:
         _method:  GET|POST
+        

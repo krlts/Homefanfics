@@ -4,6 +4,7 @@ namespace Hff\BlogBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -63,15 +64,19 @@ class UsuariosController extends Controller
                 $direccionIp = $this->get('request')->getClientIp();
                 $entity->setUltimaIp($direccionIp);
                 
-
-                // Guardar el nuevo usuario en la base de datos
+                $this->enviarEmailBienvenida($entity);
 
                 // Crear un mensaje flash para notificar al usuario que se ha registrado correctamente
                 $this->get('session')->setFlash('info',
                     '¡Enhorabuena! Te has registrado correctamente en Homefanfics'
                 );
+            // Guardar el nuevo usuario en la base de datos
             $em->persist($entity);
             $em->flush();
+            
+            // Loguear al usuario automáticamente
+                $token = new UsernamePasswordToken($entity, $entity->getPassword(), 'usuarios', $entity->getRoles());
+                $this->container->get('security.context')->setToken($token);
 
             return $this->redirect($this->generateUrl('usuarios_show', array('id' => $entity->getId())));
         }
@@ -97,6 +102,16 @@ class UsuariosController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
         );
+    }
+    public function enviarEmailBienvenida(Usuarios $usuario)
+    { 
+        $mensaje = \Swift_Message::newInstance()
+            ->setSubject('Nuestra más cordial Bienvenida a Homefanfics, '. $usuario->getUsuario())
+            ->setFrom($this->container->getParameter('hff_blog.emails.no_reply'))
+            ->setTo($usuario->getEmail())
+            ->setBody($this->renderView('HffBlogBundle:Usuarios:bienvenidaEmail.html.twig',array('usuario' => $usuario)));
+        $this->get('mailer')->send($mensaje);
+
     }
     /**
      * Displays a form to create a new Usuarios entity.

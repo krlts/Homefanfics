@@ -1,3 +1,5 @@
 parameters:
     # dirección de correo electrónico para contacto del Homefanfics
     hff_blog.emails.contacto: carlosmatamala@gmail.com
+    # dirección de correo electrónico no-reply
+    hff_blog.emails.no_reply: no-reply@homefanfics.com

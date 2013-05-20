@@ -26,12 +26,13 @@ security:
 
         permitir_login:
             pattern:  ^/login$
-            anonymous:  ~
-            #security: false
+            #anonymous:  ~
+            security: false
 
         permitir_usuario_nuevo:
             pattern:  ^/usuarios/registrar
-            anonymous:  ~
+            security: false
+            #anonymous:  ~
         
         usuario_nuevo:
             pattern:  ^/usuarios/new
@@ -49,11 +50,8 @@ security:
                 lifetime:   604800  #Recordar durante una semana
 
 
-    access_control:
-    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/usuarios/registrar, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/usuarios/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/usuarios/(edit|delete), roles: ROLE_ADMIN }
-    - { path: ^/usuarios/show, roles: ROLE_ESCRITOR }
+   # access_control:
+   # - { path: ^/usuarios/(edit|delete), roles: ROLE_ADMIN }
+   # - { path: ^/usuarios/show, roles: ROLE_ESCRITOR }
       
         # { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

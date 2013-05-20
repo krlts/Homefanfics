@@ -34,12 +34,13 @@
             </tr>
             <tr>
                 <td style="text-align: right">{{ form_widget(form.acepto)}}{{ form_errors(form.acepto) }}</td>
-                <td>{{ form_label(form.acepto, 'Acepto los términos y Condiciones de uso')}} </td>
+                <td>{{ form_label(form.acepto, 'Acepto los ')}} 
+                    <a href="{{path('usuarios')}}">términos y Condiciones de uso </a> </td>
 
-            </tr>
-        </table>
+                    </tr>
+                </table>
             {{ form_rest(form) }}
-    </center>  
-    <button type="submit">Regístrate</button>
-</form>
+            </center>  
+            <button type="submit">Regístrate</button>
+        </form>
 {% endblock %}
