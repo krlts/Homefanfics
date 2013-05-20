@@ -25,6 +25,6 @@ monolog:
 assetic:
     use_controller: true
 
-swiftmailer:
-    delivery_address: development@hff.dev
-    disable_delivery: true
+#swiftmailer:
+#    delivery_address: development@hff.dev
+#    disable_delivery: true

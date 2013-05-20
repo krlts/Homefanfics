@@ -107,8 +107,9 @@ class UsuariosController extends Controller
     { 
         $mensaje = \Swift_Message::newInstance()
             ->setSubject('Nuestra más cordial Bienvenida a Homefanfics, '. $usuario->getUsuario())
-            ->setFrom($this->container->getParameter('hff_blog.emails.no_reply'))
+            ->setFrom(array($this->container->getParameter('hff_blog.emails.no_reply') => 'Homefanfics'))
             ->setTo($usuario->getEmail())
+                ->setContentType('text/html')
             ->setBody($this->renderView('HffBlogBundle:Usuarios:bienvenidaEmail.html.twig',array('usuario' => $usuario)));
         $this->get('mailer')->send($mensaje);
 
