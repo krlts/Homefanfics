@@ -6,7 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
-//use Sonata\AdminBundle\Datagrid\ShowMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class UsuariosAdmin extends Admin {
 
@@ -15,7 +15,7 @@ class UsuariosAdmin extends Admin {
                 ->addIdentifier('usuario', null, array('label' => 'Usuario'))
                 ->add('nombreReal', null, array('label' => 'Nombre'))
                 ->add('email')
-                ->add('bloqueado')
+                ->add('bloqueado', null, )
                 ->add('enviarMail')
                 ->add('fechaRegistro')
                 ->add('ultimaVisita', null, array('label' => 'Última Visita'))
@@ -47,6 +47,19 @@ class UsuariosAdmin extends Admin {
                 ->add('ultimaVisita')
 
         ;
+    }
+    
+     protected function configureShowField(ShowMapper $showMapper)
+    {
+        $showMapper
+                ->add('usuario')
+                ->add('nombreReal')
+                ->add('email')
+                ->add('bloqueado')
+                ->add('enviarMail')
+                ->add('fechaRegistro')
+                ->add('ultimaVisita')
+            ;
     }
 
 }

@@ -363,6 +363,7 @@ class Usuarios implements UserInterface {
     }
 
     public function __construct() {
+        $this->setUsuario('');
         $this->setBloqueado(false);
         $this->setEnviarMail(true);
         $this->setFechaRegistro(new \DateTime());

@@ -74,8 +74,8 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts:   [admin]
 
-        #sonata.admin_doctrine_orm.block.audit:
-        #    contexts:   [admin]
+        sonata.admin_doctrine_orm.block.audit:
+            contexts:   [admin]
 
         sonata.block.service.text:
         sonata.block.service.rss:
@@ -112,6 +112,7 @@ sonata_admin:
 
         # default values of block templates, they should extend the base_block template
         list_block: SonataAdminBundle:Block:block_admin_list.html.twig
+
 
 
 #Sonata Cache Configuration
