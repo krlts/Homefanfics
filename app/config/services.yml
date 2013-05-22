@@ -1,0 +1,12 @@
+services:
+# ...
+  admin.usuarios:
+    class: Hff\BlogBundle\Admin\UsuariosAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Usuarios y Perfiles", label: "Usuarios", label_translator_strategy: "sonata.admin.label.strategy.native" }
+    arguments:
+      - null
+      - Hff\BlogBundle\Entity\Usuarios
+      - HffBlogBundle:Admin
+
+

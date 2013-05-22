@@ -2,10 +2,12 @@ imports:
     - { resource: @HffBlogBundle/Resources/config/config.yml }
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: services.yml }
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    #Escoger el idioma dado en parameters.yml (es: Español)
+    translator:      { fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -63,7 +65,7 @@ swiftmailer:
     host:      %mailer_host%
     username:  %mailer_user%
     password:  %mailer_password%
-    spool:     { type: memory }
+   # spool:     { type: memory }
 
 #Sonata Block Bundle
 sonata_block:
@@ -82,6 +84,35 @@ sonata_block:
         #sonata.media.block.media:
         #sonata.media.block.gallery:
         #sonata.media.block.feature_media:
+
+#Sonata Admin Configuration
+sonata_admin:
+    title:        'Homefanfics - Administración'
+    title_logo:     /img/logo.png
+    templates:
+        layout: SonataAdminBundle::standard_layout.html.twig
+        ajax:   SonataAdminBundle::ajax_layout.html.twig
+      
+      # default values of actions templates, they should extend global templates
+        list:    SonataAdminBundle:CRUD:list.html.twig
+        show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+        history: SonataAdminBundle:CRUD:history.html.twig
+        preview: SonataAdminBundle:CRUD:preview.html.twig
+        delete:  SonataAdminBundle:CRUD:delete.html.twig
+        batch:   SonataAdminBundle:CRUD:list__batch.html.twig
+        batch_confirmation: SonataAdminBundle:CRUD:batch_confirmation.html.twig
+
+        # list related templates
+        inner_list_row: SonataAdminBundle:CRUD:list_inner_row.html.twig
+        base_list_field: SonataAdminBundle:CRUD:base_list_field.html.twig
+
+        # default values of helper templates
+        short_object_description: SonataAdminBundle:Helper:short-object-description.html.twig
+
+        # default values of block templates, they should extend the base_block template
+        list_block: SonataAdminBundle:Block:block_admin_list.html.twig
+
 
 #Sonata Cache Configuration
 sonata_cache:
@@ -110,7 +141,7 @@ sonata_cache:
             token:  s3cur3   # token used to clear the related cache
             prefix: test     # prefix to ensure there is no clash between instances
             servers:
-                - { domain: kooqit.local, ip: 127.0.0.1, port: 80}
+                - { domain: hff.dev, ip: 127.0.0.1, port: 80}
 
 knp_menu:
     twig:  # use "twig: false" to disable the Twig extension and the TwigRenderer
