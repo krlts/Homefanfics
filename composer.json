@@ -23,6 +23,8 @@
         "sonata-project/admin-bundle": "dev-master",
         "sonata-project/intl-bundle": "dev-master",
         "sonata-project/doctrine-orm-admin-bundle": "dev-master",
+        "sonata-project/notification-bundle": "dev-master",
+        "sonata-project/media-bundle": "dev-master",
         "knplabs/knp-menu-bundle": "1.1.*"
     },
     "scripts": {

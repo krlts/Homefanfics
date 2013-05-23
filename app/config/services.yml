@@ -8,5 +8,33 @@ services:
       - null
       - Hff\BlogBundle\Entity\Usuarios
       - HffBlogBundle:Admin
+  
+  admin.categorias:
+    class: Hff\BlogBundle\Admin\CategoriasAdmin 
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Escritos", label: "Categorias", label_translator_strategy: "sonata.admin.label.strategy.native" }
+    arguments:
+      - null
+      - Hff\BlogBundle\Entity\Categorias
+      - HffBlogBundle:Admin
+
+      
+  admin.citas:
+    class: Hff\BlogBundle\Admin\CitasAdmin 
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Citas y Autores", label: "Citas", label_translator_strategy: "sonata.admin.label.strategy.native" }
+    arguments:
+      - null
+      - Hff\BlogBundle\Entity\Citas
+      - HffBlogBundle:Admin
+      
+  admin.autores:
+    class: Hff\BlogBundle\Admin\AutoresAdmin 
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Citas y Autores", label: "Autores", label_translator_strategy: "sonata.admin.label.strategy.native" }
+    arguments:
+      - null
+      - Hff\BlogBundle\Entity\Autores
+      - HffBlogBundle:Admin
 
 

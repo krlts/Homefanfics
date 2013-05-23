@@ -69,6 +69,7 @@ class Autores
     public function __construct()
     {
         $this->citas = new ArrayCollection();
+        $this->setNombre('');
     }
     public function agregarCitas(\Hff\BlogBundle\Entity\Citas $citas)
     {

@@ -85,5 +85,10 @@ class Citas
     {
         return $this->getTexto();
     }
+    
+    public function __construct()
+    {
+        $this->setTexto('');
+    }
 }
     
