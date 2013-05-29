@@ -27,7 +27,7 @@ class AutoresAdmin extends Admin{
     protected function configureFormFields(FormMapper $mapper) {
         $mapper
                ->add('nombre', null, array('label' => 'Autor','attr' => array('placeholder' =>'Ingresa el nombre del autor')))
-               ->add('citas') 
+               //->add('citas') 
             ;
     }
 
