@@ -3,6 +3,9 @@
 namespace Hff\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+
 
 /**
  * Comentarios
@@ -180,5 +183,16 @@ class Comentarios
     public function getEscrito()
     {
         return $this->escrito;
+    }
+    
+    public function __toString() {
+        if($this->getMensaje()==NULL)
+            return '';
+        return $this->getMensaje();
+    }
+    public function __construct() {
+        $this->setFechaCreacion(new \DateTime());
+        $this->setFechaModificacion(new \DateTime());
+        $this->setEstado(1);
     }
 }

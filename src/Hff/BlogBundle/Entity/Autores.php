@@ -28,6 +28,11 @@ class Autores
      * @ORM\Column(name="nombre", type="string", length=100)
      */
     private $nombre;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Citas", mappedBy="autor")
+     */
+    private $citas;
 
 
     /**
@@ -62,16 +67,13 @@ class Autores
     {
         return $this->nombre;
     }
-    /**
-     * @ORM\OneToMany(targetEntity="Citas", mappedBy="autor")
-     */
-    private $citas;
+    
     public function __construct()
     {
         $this->citas = new ArrayCollection();
         $this->setNombre('');
     }
-    public function agregarCitas(\Hff\BlogBundle\Entity\Citas $citas)
+    public function setCitas(\Hff\BlogBundle\Entity\Citas $citas)
     {
         $this->citas[] = $citas;
     }

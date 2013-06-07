@@ -3,7 +3,6 @@
 namespace Hff\BlogBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -36,7 +35,7 @@ class UsuariosAdmin extends Admin {
         ;
     }
 
-    protected function configureFormFields(FormMapper $mapper) {
+    /*protected function configureFormFields(FormMapper $mapper) {
         $mapper
                 ->add('usuario')
                 ->add('nombreReal')
@@ -47,7 +46,7 @@ class UsuariosAdmin extends Admin {
                 ->add('ultimaVisita')
 
         ;
-    }
+    }*/
     
      protected function configureShowField(ShowMapper $showMapper)
     {

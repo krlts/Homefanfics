@@ -30,6 +30,8 @@ class AppKernel extends Kernel
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
            
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+        
+            new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
 
         );
 

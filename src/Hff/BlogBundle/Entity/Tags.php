@@ -3,6 +3,8 @@
 namespace Hff\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Tags
@@ -25,6 +27,11 @@ class Tags
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=30)
+     * @Assert\NotNull(message="Debes escribir un nombre de usuario")
+     * @Assert\Range(
+     *      min = "1",
+     *      max = "30",
+     *      maxMessage = "El Tag puede tener un largo máximo de 30 carácteres")
      */
     private $nombre;
 
@@ -210,5 +217,17 @@ class Tags
     public function getEscritos()
     {
         return $this->escritos;
+    }
+    
+    public function __toString() {
+        if($this->getNombre()==NULL)
+            return '';
+        return $this->getNombre();
+    }
+    public function __construct() {
+        $this->setSlug('');
+        $this->setFechaCreacion(new \DateTime());
+        $this->setFechaModificacion(new \DateTime());
+        $this->setHabilitado(true);
     }
 }

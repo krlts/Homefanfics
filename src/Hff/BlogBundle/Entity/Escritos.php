@@ -29,7 +29,8 @@ class Escritos
      *
      * @ORM\Column(name="titulo", type="string", length=255)
      * @Assert\NotNull(message="Debes escribir un título a tu escrito")
-     * @Assert\MaxLength(255)
+     * @Assert\Range(
+     *      max = "255")
      */
     private $titulo;
 
@@ -37,7 +38,7 @@ class Escritos
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255)
-     * @Assert\MaxLength(255)
+     * @Assert\Range(max = "255")
      */
     private $slug;
 
@@ -60,8 +61,10 @@ class Escritos
      * @var string
      *
      * @ORM\OneToMany(targetEntity="Tags", mappedBy="escrito")
-     * @Assert\MaxLength(40)
-     * 
+     * @Assert\Range(
+     *      min = "1",
+     *      max = "30",
+     *      maxMessage = "El Tag puede tener un largo máximo de 30 carácteres")
      */
     private $tags;
 
@@ -73,10 +76,7 @@ class Escritos
     private $comentarios;
 
     /**
-     * @var integer
-     *
      * @ORM\ManyToOne(targetEntity="\Hff\BlogBundle\Entity\Categorias")
-     * @Assert\NotNull(message="Selecciona la Categoría de tu escrito")
      */
     private $categoria;
 
@@ -118,9 +118,9 @@ class Escritos
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="\Hff\BlogBundle\Entity\Escritores")
+     * @ORM\ManyToOne(targetEntity="\Hff\BlogBundle\Entity\Usuarios")
      */
-    private $escritor;
+    private $usuario;
 
     /**
      * @var integer
@@ -136,12 +136,6 @@ class Escritos
      */
     private $inicioPublicacion;
 
-
-    public function __construct()
-    {
-        $this->comentarios = new ArrayCollection();
-        $this->tags = new ArrayCollection();
-    }
     /**
      * Get id
      *
@@ -291,17 +285,12 @@ class Escritos
     }
 
     /**
-     * Set categoria
      *
-     * @ORM\ManyToOne(targetEntity="Categorias", inversedBy="escritos")
-     * @param integer $categoria
-     * @return Escritos
+     * 
      */
-    public function setCategoria($categoria)
+    public function setCategoria(\Hff\BlogBundle\Entity\Categorias $categoria)
     {
         $this->categoria = $categoria;
-
-        return $this;
     }
 
     /**
@@ -430,27 +419,26 @@ class Escritos
     }
 
     /**
-     * Set escritor
+     * Set usuario
      *
-     * @ORM\ManyToOne(targetEntity="Escritores", inversedBy="escritos")
-     * @param integer $escritor
+     * @param integer $usuario
      * @return Escritos
      */
-    public function setEscritor(\Hff\BlogBundle\Entity\Escritores $escritor)
+    public function setUsuario(\Hff\BlogBundle\Entity\Escritores $escritor)
     {
-        $this->escritor = $escritor;
+        $this->usuario = $usuario;
 
         return $this;
     }
 
     /**
-     * Get escritor
+     * Get usuario
      *
      * @return integer 
      */
-    public function getEscritor()
+    public function getUsuario()
     {
-        return $this->escritor;
+        return $this->usuario;
     }
 
     /**
@@ -497,5 +485,20 @@ class Escritos
     public function getInicioPublicacion()
     {
         return $this->inicioPublicacion;
+    }
+     public function __toString() {
+        if($this->getTitulo()==NULL)
+            return '';
+        return $this->getTitulo();
+    }
+    public function __construct() {
+        $this->comentarios = new ArrayCollection();
+        $this->tags = new ArrayCollection();
+        $this->setComentariosHabilitados(true);
+        $this->setFechaCreacion(new \DateTime());
+        $this->setFechaModificacion(new \DateTime());
+        $this->setTotalComentarios(0);
+        $this->setTotalVisitas(0);
+        $this->setIntro('');
     }
 }

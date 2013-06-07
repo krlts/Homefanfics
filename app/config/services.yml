@@ -9,6 +9,15 @@ services:
       - Hff\BlogBundle\Entity\Usuarios
       - HffBlogBundle:Admin
   
+  admin.grupos:
+    class: Hff\BlogBundle\Admin\GruposAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Usuarios y Perfiles", label: "Grupos", label_translator_strategy: "sonata.admin.label.strategy.native" }
+    arguments:
+      - null
+      - Hff\BlogBundle\Entity\Grupos
+      - HffBlogBundle:Admin
+  
   admin.categorias:
     class: Hff\BlogBundle\Admin\CategoriasAdmin 
     tags:
@@ -17,7 +26,42 @@ services:
       - null
       - Hff\BlogBundle\Entity\Categorias
       - HffBlogBundle:Admin
+      
+  admin.comentarios:
+    class: Hff\BlogBundle\Admin\ComentariosAdmin 
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Escritos", label: "Comentarios", label_translator_strategy: "sonata.admin.label.strategy.native" }
+    arguments:
+      - null
+      - Hff\BlogBundle\Entity\Comentarios
+      - HffBlogBundle:Admin
+  
+  admin.escritos:
+    class: Hff\BlogBundle\Admin\EscritosAdmin 
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Escritos", label: "Escritos", label_translator_strategy: "sonata.admin.label.strategy.native" }
+    arguments:
+      - null
+      - Hff\BlogBundle\Entity\Escritos
+      - HffBlogBundle:Admin  
+      
+  admin.tags:
+    class: Hff\BlogBundle\Admin\TagsAdmin 
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Escritos", label: "Tags", label_translator_strategy: "sonata.admin.label.strategy.native" }
+    arguments:
+      - null
+      - Hff\BlogBundle\Entity\Tags
+      - HffBlogBundle:Admin    
 
+  admin.autores:
+    class: Hff\BlogBundle\Admin\AutoresAdmin 
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Citas y Autores", label: "Autores", label_translator_strategy: "sonata.admin.label.strategy.native" }
+    arguments:
+      - null
+      - Hff\BlogBundle\Entity\Autores
+      - HffBlogBundle:Admin
       
   admin.citas:
     class: Hff\BlogBundle\Admin\CitasAdmin 
@@ -28,13 +72,5 @@ services:
       - Hff\BlogBundle\Entity\Citas
       - HffBlogBundle:Admin
       
-  admin.autores:
-    class: Hff\BlogBundle\Admin\AutoresAdmin 
-    tags:
-      - { name: sonata.admin, manager_type: orm, group: "Citas y Autores", label: "Autores", label_translator_strategy: "sonata.admin.label.strategy.native" }
-    arguments:
-      - null
-      - Hff\BlogBundle\Entity\Autores
-      - HffBlogBundle:Admin
-
+  
 

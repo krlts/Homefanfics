@@ -13,7 +13,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Hff\BlogBundle\Entity\UsuariosRepository")
  * @DoctrineAssert\UniqueEntity("usuario")
- *  @ORM\HasLifecycleCallbacks()
+ * @DoctrineAssert\UniqueEntity("email")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Usuarios implements UserInterface {
 
@@ -31,7 +32,11 @@ class Usuarios implements UserInterface {
      *
      * @ORM\Column(name="usuario", type="string", length=40)
      * @Assert\NotNull(message="Debes escribir un nombre de usuario")
-     * @Assert\MaxLength(40)
+     * @Assert\Range(
+     *      min = "3",
+     *      max = "40",
+     *      minMessage = "El nombre de usuario debe tener un largo mínimo de 3 carácteres",
+     *      maxMessage = "El nombre de usuario tiene un largo máximo de 40 carácteres")
      */
     private $usuario;
 
@@ -40,7 +45,6 @@ class Usuarios implements UserInterface {
      *
      * @ORM\Column(name="password", type="string", length=255)
      * @Assert\NotNull(message="Debes escribir una contraseña")
-     * @Assert\MaxLength(255)
      */
     private $password;
 
@@ -49,7 +53,11 @@ class Usuarios implements UserInterface {
      *
      * @ORM\Column(name="nombre_real", type="string", length=100)
      * @Assert\NotNull(message="Ingresa tus nombres y apellidos")
-     * @Assert\MaxLength(100)
+     * @Assert\Range(
+     *      min = "3",
+     *      max = "100",
+     *      minMessage = "Su nombre debe tener un largo mínimo de 3 carácteres",
+     *      maxMessage = "El nombre puede tener un largo máximo de 100 carácteres")
      */
     private $nombreReal;
 
@@ -66,7 +74,9 @@ class Usuarios implements UserInterface {
      * @ORM\Column(name="email", type="string", length=100)
      * @Assert\NotNull(message="Debes ingresar tu correo electrónico")
      * @Assert\Email(message = "El email '{{ value }}' no es válido.")
-     * @Assert\MaxLength(100)
+     * @Assert\Range(
+     *      max = "100",
+     *      maxMessage = "El nombre puede tener un largo máximo de 100 carácteres")
      */
     private $email;
 
@@ -94,7 +104,7 @@ class Usuarios implements UserInterface {
     /**
      * @var string
      *
-     * @ORM\Column(name="ultima_ip", type="string", length=50)
+     * @ORM\Column(name="ultima_ip", type="string", length=20)
      */
     private $ultimaIp;
   
@@ -115,6 +125,13 @@ class Usuarios implements UserInterface {
      */
     private $salt;
 
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Grupos", inversedBy="usuarios")
+     *
+     */
+    private $grupos;
+    
     /**
      * Get id
      *
@@ -363,7 +380,6 @@ class Usuarios implements UserInterface {
     }
 
     public function __construct() {
-        $this->setUsuario('');
         $this->setBloqueado(false);
         $this->setEnviarMail(true);
         $this->setFechaRegistro(new \DateTime());
@@ -374,6 +390,8 @@ class Usuarios implements UserInterface {
     }
 
     public function __toString() {
+        if($this->getUsuario()==NULL)
+            return '';
         return $this->getUsuario();
     }
 
