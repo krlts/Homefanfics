@@ -28,7 +28,7 @@ class Tags
      *
      * @ORM\Column(name="nombre", type="string", length=30)
      * @Assert\NotNull(message="Debes escribir un nombre de usuario")
-     * @Assert\Range(
+     * @Assert\Length(
      *      min = "1",
      *      max = "30",
      *      maxMessage = "El Tag puede tener un largo máximo de 30 carácteres")

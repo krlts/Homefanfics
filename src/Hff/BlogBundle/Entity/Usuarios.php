@@ -32,7 +32,7 @@ class Usuarios implements UserInterface {
      *
      * @ORM\Column(name="usuario", type="string", length=40)
      * @Assert\NotNull(message="Debes escribir un nombre de usuario")
-     * @Assert\Range(
+     * @Assert\Length(
      *      min = "3",
      *      max = "40",
      *      minMessage = "El nombre de usuario debe tener un largo mínimo de 3 carácteres",
@@ -53,7 +53,7 @@ class Usuarios implements UserInterface {
      *
      * @ORM\Column(name="nombre_real", type="string", length=100)
      * @Assert\NotNull(message="Ingresa tus nombres y apellidos")
-     * @Assert\Range(
+     * @Assert\Length(
      *      min = "3",
      *      max = "100",
      *      minMessage = "Su nombre debe tener un largo mínimo de 3 carácteres",
@@ -74,7 +74,7 @@ class Usuarios implements UserInterface {
      * @ORM\Column(name="email", type="string", length=100)
      * @Assert\NotNull(message="Debes ingresar tu correo electrónico")
      * @Assert\Email(message = "El email '{{ value }}' no es válido.")
-     * @Assert\Range(
+     * @Assert\Length(
      *      max = "100",
      *      maxMessage = "El nombre puede tener un largo máximo de 100 carácteres")
      */

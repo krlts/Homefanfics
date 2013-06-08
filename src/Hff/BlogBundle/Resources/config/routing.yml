@@ -63,6 +63,12 @@ citas_update:
 citas_listar:
     pattern:  /citas/listar
     defaults: { _controller: HffBlogBundle:Citas:listar }
+
+# CATEGORIA ***************************************************
+
+categoria:
+    pattern:  /categoria
+    defaults: { _controller: HffBlogBundle:Categorias:index }
     
 categoria_crear:
     pattern:  /categoria/crear
@@ -71,10 +77,6 @@ categoria_crear:
 categoria_nueva:
     pattern:  /categoria/nueva
     defaults: { _controller: HffBlogBundle:Categorias:nueva }
-
-categoria:
-    pattern:  /categoria
-    defaults: { _controller: HffBlogBundle:Categorias:index }
     
 categoria_ver:
     pattern:  /categoria/ver/{id}
@@ -92,43 +94,48 @@ categoria_actualizar:
     pattern:  /categoria/actualizar/{id}
     defaults: { _controller: HffBlogBundle:Categorias:actualizar }  
     
+    
+    
 escritos:
     pattern:  /escritos
     defaults: { _controller: HffBlogBundle:Escritos:index }  
     
-usuarios_registrar:
-    pattern:  /usuarios/registrar
-    defaults: { _controller: HffBlogBundle:Usuarios:registrar }
-
-usuarios_create:
-    pattern:  /usuarios/create
-    defaults: { _controller: HffBlogBundle:Usuarios:create } 
+# USUARIOS ***************************************************   
     
-usuarios_new:
-    pattern:  /usuarios/new
-    defaults: { _controller: HffBlogBundle:Usuarios:new }
-
-usuarios:
-    pattern:  /usuarios
+usuario:
+    pattern:  /usuario
     defaults: { _controller: HffBlogBundle:Usuarios:index }
     
-usuarios_show:
-    pattern:  /usuarios/show/{id}
-    defaults: { _controller: HffBlogBundle:Usuarios:show }
+usuario_registrar:
+    pattern:  /registrar
+    defaults: { _controller: HffBlogBundle:Usuarios:registrar }
+
+usuario_crear:
+    pattern:  /usuario/crear
+    defaults: { _controller: HffBlogBundle:Usuarios:crear } 
     
-usuarios_edit:
-    pattern:  /usuarios/edit/{id}
-    defaults: { _controller: HffBlogBundle:Usuarios:edit }  
+usuario_nuevo:
+    pattern:  /usuario/nuevo
+    defaults: { _controller: HffBlogBundle:Usuarios:nuevo }
+
+   
+usuario_ver:
+    pattern:  /usuario/ver/{id}
+    defaults: { _controller: HffBlogBundle:Usuarios:ver }
     
-usuarios_delete:
-    pattern:  /usuarios/delete/{id}
-    defaults: { _controller: HffBlogBundle:Usuarios:delete } 
+usuario_editar:
+    pattern:  /usuario/editar/{id}
+    defaults: { _controller: HffBlogBundle:Usuarios:editar }  
     
-usuarios_update:
-    pattern:  /usuarios/update/{id}
-    defaults: { _controller: HffBlogBundle:Usuarios:update }
+usuario_borrar:
+    pattern:  /usuario/borrar/{id}
+    defaults: { _controller: HffBlogBundle:Usuarios:borrar } 
     
-usuarios_login:
+usuario_actualizar:
+    pattern:  /usuario/actualizar/{id}
+    defaults: { _controller: HffBlogBundle:Usuarios:actualizar }
+    
+usuario_login:
     pattern:   /login
     defaults:  { _controller: HffBlogBundle:Usuarios:login }
 

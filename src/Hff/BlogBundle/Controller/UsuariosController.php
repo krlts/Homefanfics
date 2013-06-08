@@ -15,14 +15,14 @@ use Hff\BlogBundle\Form\UsuariosType;
 /**
  * Usuarios controller.
  *
- * @Route("/usuarios")
+ * @Route("/usuario")
  */
 class UsuariosController extends Controller
 {
     /**
      * Lists all Usuarios entities.
      *
-     * @Route("/", name="usuarios")
+     * @Route("/", name="usuario")
      * @Method("GET")
      * @Template()
      */
@@ -40,11 +40,11 @@ class UsuariosController extends Controller
     /**
      * Creates a new Usuarios entity.
      *
-     * @Route("/", name="usuarios_create")
+     * @Route("/", name="usuario_crear")
      * @Method("POST")
      * @Template("HffBlogBundle:Usuarios:registrar.html.twig")
      */
-    public function createAction(Request $request)
+    public function crearAction(Request $request)
     {
         $entity  = new Usuarios();
         $form = $this->createForm(new UsuariosType(), $entity);
@@ -90,7 +90,7 @@ class UsuariosController extends Controller
     /**
      * Displays a form to create a new Usuarios entity.
      *
-     * @Route("/registrar", name="usuarios_registrar")
+     * @Route("/registrar", name="usuario_registrar")
      * @Method("GET")
      * @Template()
      */
@@ -117,11 +117,11 @@ class UsuariosController extends Controller
     /**
      * Displays a form to create a new Usuarios entity.
      *
-     * @Route("/new", name="usuarios_new")
+     * @Route("/nuevo", name="usuario_nuevo")
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+    public function nuevoAction()
     {
         $entity = new Usuarios();
         $form   = $this->createForm(new UsuariosType(), $entity);
@@ -135,18 +135,18 @@ class UsuariosController extends Controller
     /**
      * Finds and displays a Usuarios entity.
      *
-     * @Route("/{id}", name="usuarios_show")
+     * @Route("/{id}", name="usuario_ver")
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
+    public function verAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('HffBlogBundle:Usuarios')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Usuarios entity.');
+            throw $this->createNotFoundException('No se pudo encontrar el Usuario.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -160,18 +160,18 @@ class UsuariosController extends Controller
     /**
      * Displays a form to edit an existing Usuarios entity.
      *
-     * @Route("/{id}/edit", name="usuarios_edit")
+     * @Route("/{id}/editar", name="usuario_editar")
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id)
+    public function editarAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('HffBlogBundle:Usuarios')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Usuarios entity.');
+            throw $this->createNotFoundException('No se pudo encontrar el Usuario.');
         }
 
         $editForm = $this->createForm(new UsuariosType(), $entity);
@@ -187,18 +187,18 @@ class UsuariosController extends Controller
     /**
      * Edits an existing Usuarios entity.
      *
-     * @Route("/{id}", name="usuarios_update")
+     * @Route("/{id}", name="usuario_actualizar")
      * @Method("PUT")
-     * @Template("HffBlogBundle:Usuarios:edit.html.twig")
+     * @Template("HffBlogBundle:Usuarios:editar.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function actualizarAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('HffBlogBundle:Usuarios')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Usuarios entity.');
+            throw $this->createNotFoundException('No se pudo encontrar el Usuario.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -209,7 +209,7 @@ class UsuariosController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('usuarios_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('usuario_ver', array('id' => $id)));
         }
 
         return array(
@@ -222,10 +222,10 @@ class UsuariosController extends Controller
     /**
      * Deletes a Usuarios entity.
      *
-     * @Route("/{id}", name="usuarios_delete")
+     * @Route("/{id}", name="usuario_borrar")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
+    public function borrarAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
         $form->bind($request);
@@ -235,14 +235,14 @@ class UsuariosController extends Controller
             $entity = $em->getRepository('HffBlogBundle:Usuarios')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Usuarios entity.');
+                throw $this->createNotFoundException('No se pudo encontrar el Usuario.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('usuarios'));
+        return $this->redirect($this->generateUrl('usuario'));
     }
 
     /**

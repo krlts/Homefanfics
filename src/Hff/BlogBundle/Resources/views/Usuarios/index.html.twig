@@ -8,7 +8,6 @@
             <tr>
                 <th>Id</th>
                 <th>Usuario</th>
-                <th>Password</th>
                 <th>Nombrereal</th>
                 <th>Bloqueado</th>
                 <th>Email</th>
@@ -22,9 +21,8 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('usuarios_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('usuario_ver', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.usuario }}</td>
-                <td>{{ entity.password }}</td>
                 <td>{{ entity.nombreReal }}</td>
                 <td>{{ entity.bloqueado }}</td>
                 <td>{{ entity.email }}</td>
@@ -35,10 +33,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('usuarios_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('usuario_ver', { 'id': entity.id }) }}">Ver</a>
                     </li>
                     <li>
-                        <a href="{{ path('usuarios_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('usuario_editar', { 'id': entity.id }) }}">Editar</a>
                     </li>
                 </ul>
                 </td>
@@ -49,8 +47,8 @@
 
         <ul>
         <li>
-            <a href="{{ path('usuarios_new') }}">
-                Create a new entry
+            <a href="{{ path('usuario_nuevo') }}">
+                Crear un nuevo usuario
             </a>
         </li>
     </ul>

@@ -29,8 +29,7 @@ class Escritos
      *
      * @ORM\Column(name="titulo", type="string", length=255)
      * @Assert\NotNull(message="Debes escribir un título a tu escrito")
-     * @Assert\Range(
-     *      max = "255")
+     * @Assert\Length(max = "255")
      */
     private $titulo;
 
@@ -38,7 +37,7 @@ class Escritos
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255)
-     * @Assert\Range(max = "255")
+     * @Assert\Length(max = "255")
      */
     private $slug;
 
@@ -61,7 +60,7 @@ class Escritos
      * @var string
      *
      * @ORM\OneToMany(targetEntity="Tags", mappedBy="escrito")
-     * @Assert\Range(
+     * @Assert\Length(
      *      min = "1",
      *      max = "30",
      *      maxMessage = "El Tag puede tener un largo máximo de 30 carácteres")

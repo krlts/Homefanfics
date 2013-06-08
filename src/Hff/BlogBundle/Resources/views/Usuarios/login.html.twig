@@ -21,12 +21,11 @@
         <label for="remember_me">{{ "No cerrar sesión" | trans }}</label>
 
         <input class="boton" type="submit" name="login" value="{{ "Entrar" | trans }}" />
-		<textarea></textarea>
     </form>
 </section>
 
 <section id="registrar">
-    <a class="boton" href="{{ path('usuarios_registrar') }}">{{ "Regístrate gratis como usuario" | trans }}</a>
+    <a class="boton" href="{{ path('usuario_registrar') }}">{{ "Regístrate gratis como usuario" | trans }}</a>
 </section>
 {% endblock %}
 

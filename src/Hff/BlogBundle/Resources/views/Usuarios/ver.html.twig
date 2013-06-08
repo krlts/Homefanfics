@@ -14,10 +14,6 @@
                 <td>{{ entity.usuario }}</td>
             </tr>
             <tr>
-                <th>Password</th>
-                <td>{{ entity.password }}</td>
-            </tr>
-            <tr>
                 <th>Nombrereal</th>
                 <td>{{ entity.nombreReal }}</td>
             </tr>
@@ -50,20 +46,20 @@
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('usuarios') }}">
+        <a href="{{ path('usuario') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('usuarios_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('usuario_editar', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>
     <li>
-        <form action="{{ path('usuarios_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('usuario_borrar', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button type="submit">Borrar</button>
         </form>
     </li>
 </ul>
