@@ -64,33 +64,37 @@ citas_listar:
     pattern:  /citas/listar
     defaults: { _controller: HffBlogBundle:Citas:listar }
     
-categorias_create:
-    pattern:  /categorias/create
-    defaults: { _controller: HffBlogBundle:Categorias:create } 
+categoria_crear:
+    pattern:  /categoria/crear
+    defaults: { _controller: HffBlogBundle:Categorias:crear } 
     
-categorias_new:
-    pattern:  /categorias/new
-    defaults: { _controller: HffBlogBundle:Categorias:new }
+categoria_nueva:
+    pattern:  /categoria/nueva
+    defaults: { _controller: HffBlogBundle:Categorias:nueva }
 
-categorias:
-    pattern:  /categorias
+categoria:
+    pattern:  /categoria
     defaults: { _controller: HffBlogBundle:Categorias:index }
     
-categorias_show:
-    pattern:  /categorias/show/{id}
-    defaults: { _controller: HffBlogBundle:Categorias:show }
+categoria_ver:
+    pattern:  /categoria/ver/{id}
+    defaults: { _controller: HffBlogBundle:Categorias:ver }
     
-categorias_edit:
-    pattern:  /categorias/edit/{id}
-    defaults: { _controller: HffBlogBundle:Categorias:edit }  
+categoria_editar:
+    pattern:  /categoria/editar/{id}
+    defaults: { _controller: HffBlogBundle:Categorias:editar }  
     
-categorias_delete:
-    pattern:  /categorias/delete/{id}
-    defaults: { _controller: HffBlogBundle:Categorias:delete } 
+categoria_borrar:
+    pattern:  /categoria/borrar/{id}
+    defaults: { _controller: HffBlogBundle:Categorias:borrar } 
     
-categorias_update:
-    pattern:  /categorias/update/{id}
-    defaults: { _controller: HffBlogBundle:Categorias:update }     
+categoria_actualizar:
+    pattern:  /categoria/actualizar/{id}
+    defaults: { _controller: HffBlogBundle:Categorias:actualizar }  
+    
+escritos:
+    pattern:  /escritos
+    defaults: { _controller: HffBlogBundle:Escritos:index }  
     
 usuarios_registrar:
     pattern:  /usuarios/registrar

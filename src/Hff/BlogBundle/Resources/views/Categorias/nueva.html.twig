@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+<h1>Ingresar nueva Categoria</h1>
+
+<form action="{{ path('categoria_crear') }}" method="post" {{ form_enctype(form) }}>
+        {{ tinymce_init() }}
+        <center>
+            <table>
+                <tr>
+                    <td>{{ form_label(form.nombre, 'Nombre de la Categoría')}}</td>
+                    <td>{{ form_widget(form.nombre)}} {{ form_errors(form.nombre) }}</td>          
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.descripcion, 'Descripción')}}</td>
+                    <td>{{ form_widget(form.descripcion)}} {{ form_errors(form.descripcion) }}</td>          
+                </tr>
+                 <tr>
+                    <td>{{ form_label(form.imagen, 'Imagen')}}</td>
+                    <td>{{ form_widget(form.imagen)}} {{ form_errors(form.imagen) }}</td>          
+                </tr>
+                {{ form_rest(form) }}
+            </table>
+        </center>  
+        <p>
+            <button type="submit">Ingresar Categoría</button>
+        </p>
+    </form>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('categoria') }}">
+                Volver a la lista de categorías
+            </a>
+        </li>
+    </ul>
+{% endblock %}

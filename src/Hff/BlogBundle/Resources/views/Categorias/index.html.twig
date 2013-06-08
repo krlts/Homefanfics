@@ -15,23 +15,23 @@
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Imagen</th>
-                <th>Acciones/th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('categorias_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('categoria_ver', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.nombre }}</td>
                 <td>{{ entity.descripcion }}</td>
                 <td>{{ entity.imagen }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('categorias_show', { 'id': entity.id }) }}">Mostrar</a>
+                        <a href="{{ path('categoria_ver', { 'id': entity.id }) }}">Mostrar</a>
                     </li>
                     <li>
-                        <a href="{{ path('categorias_edit', { 'id': entity.id }) }}">Editar</a>
+                        <a href="{{ path('categoria_editar', { 'id': entity.id }) }}">Editar</a>
                     </li>
                 </ul>
                 </td>
@@ -42,7 +42,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('categorias_new') }}">
+            <a href="{{ path('categoria_nueva') }}">
                 Ingresar una nueva categoría
             </a>
         </li>

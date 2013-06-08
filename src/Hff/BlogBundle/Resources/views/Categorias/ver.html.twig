@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+<center>
 <h1>Categorias</h1>
 
 <table class="record_properties">
@@ -26,26 +27,27 @@
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('categorias_new') }}">
+        <a href="{{ path('categoria_nueva') }}">
             Ingresar una nueva categoría
         </a>
     </li>
     <li>
-        <a href="{{ path('categorias') }}">
+        <a href="{{ path('categoria') }}">
             Volver a la lista de categorías
         </a>
     </li>
     <li>
-        <a href="{{ path('categorias_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('categoria_editar', { 'id': entity.id }) }}">
             Editar Categoría
         </a>
     </li>
     <li>
-        <form action="{{ path('categorias_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('categoria_borrar', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
             <button type="submit">Borrar Categoría</button>
         </form>
     </li>
 </ul>
+</center>
 {% endblock %}

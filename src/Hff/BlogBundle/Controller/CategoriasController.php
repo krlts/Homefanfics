@@ -13,14 +13,14 @@ use Hff\BlogBundle\Form\CategoriasType;
 /**
  * Categorias controller.
  *
- * @Route("/categorias")
+ * @Route("/categoria")
  */
 class CategoriasController extends Controller
 {
     /**
      * Lists all Categorias entities.
      *
-     * @Route("/", name="categorias")
+     * @Route("/", name="categoria")
      * @Method("GET")
      * @Template()
      */
@@ -38,11 +38,11 @@ class CategoriasController extends Controller
     /**
      * Creates a new Categorias entity.
      *
-     * @Route("/", name="categorias_create")
+     * @Route("/", name="categoria_crear")
      * @Method("POST")
-     * @Template("HffBlogBundle:Categorias:new.html.twig")
+     * @Template("HffBlogBundle:Categorias:nueva.html.twig")
      */
-    public function createAction(Request $request)
+    public function crearAction(Request $request)
     {
         $entity  = new Categorias();
         $form = $this->createForm(new CategoriasType(), $entity);
@@ -53,7 +53,7 @@ class CategoriasController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('categorias_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('categoria_ver', array('id' => $entity->getId())));
         }
 
         return array(
@@ -65,11 +65,11 @@ class CategoriasController extends Controller
     /**
      * Displays a form to create a new Categorias entity.
      *
-     * @Route("/new", name="categorias_new")
+     * @Route("/nueva", name="categoria_nueva")
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+    public function nuevaAction()
     {
         $entity = new Categorias();
         $form   = $this->createForm(new CategoriasType(), $entity);
@@ -83,11 +83,11 @@ class CategoriasController extends Controller
     /**
      * Finds and displays a Categorias entity.
      *
-     * @Route("/{id}", name="categorias_show")
+     * @Route("/{id}", name="categoria_ver")
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
+    public function verAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -108,18 +108,18 @@ class CategoriasController extends Controller
     /**
      * Displays a form to edit an existing Categorias entity.
      *
-     * @Route("/{id}/edit", name="categorias_edit")
+     * @Route("/{id}/editar", name="categoria_editar")
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id)
+    public function editarAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('HffBlogBundle:Categorias')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Categorias entity.');
+            throw $this->createNotFoundException('No se pudo encontrar la Categoria');
         }
 
         $editForm = $this->createForm(new CategoriasType(), $entity);
@@ -135,18 +135,18 @@ class CategoriasController extends Controller
     /**
      * Edits an existing Categorias entity.
      *
-     * @Route("/{id}", name="categorias_update")
+     * @Route("/{id}", name="categoria_actualizar")
      * @Method("PUT")
-     * @Template("HffBlogBundle:Categorias:edit.html.twig")
+     * @Template("HffBlogBundle:Categorias:editar.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function actualizarAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('HffBlogBundle:Categorias')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Categorias entity.');
+            throw $this->createNotFoundException('No se pudo encontrar la Categoria');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -157,7 +157,7 @@ class CategoriasController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('categorias_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('categoria_ver', array('id' => $id)));
         }
 
         return array(
@@ -170,10 +170,10 @@ class CategoriasController extends Controller
     /**
      * Deletes a Categorias entity.
      *
-     * @Route("/{id}", name="categorias_delete")
+     * @Route("/{id}", name="categoria_borrar")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
+    public function borrarAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
         $form->bind($request);
@@ -183,14 +183,14 @@ class CategoriasController extends Controller
             $entity = $em->getRepository('HffBlogBundle:Categorias')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Categorias entity.');
+                throw $this->createNotFoundException('No se pudo encontrar la Categoria');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('categorias'));
+        return $this->redirect($this->generateUrl('categoria'));
     }
 
     /**
@@ -207,11 +207,11 @@ class CategoriasController extends Controller
             ->getForm()
         ;
     }
-    public function getCategorias()
+    /*public function getCategorias()
     {
         $em = $this->getDoctrine()->getManager();
         $categorias = $em->getRepository('HffBlogBundle:Categorias')
             ->findAllOrderedByName();
         return $categorias;
-    }
+    }*/
 }

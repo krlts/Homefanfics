@@ -12,7 +12,8 @@ class CategoriasType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('descripcion')
+            ->add('descripcion', 'textarea', array('attr' => 
+            array('rows' => '3','cols' => '80', 'placeholder' => 'Ingresa la descripción de la Categoría', 'title' => 'Ingresa la descripción de la Categoría')))
             ->add('imagen')
         ;
     }
@@ -26,6 +27,6 @@ class CategoriasType extends AbstractType
 
     public function getName()
     {
-        return 'categorias';
+        return 'categoria';
     }
 }

@@ -28,7 +28,7 @@ class Categorias
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=45)
-     * @Assert\Range(
+     * Assert\Range(
      *      min = "1",
      *      max = "45",
      *      maxMessage = "El nombre de la Categoría puede tener un largo máximo de 45 carácteres")
@@ -39,7 +39,7 @@ class Categorias
      * @var string
      *
      * @ORM\Column(name="descripcion", type="string", length=255)
-     * @Assert\Range(max = "255")
+     * Assert\Range(max = "255")
      */
     private $descripcion;
 
@@ -47,7 +47,7 @@ class Categorias
      * @var string
      *
      * @ORM\Column(name="imagen", type="string", length=255)
-     * @Assert\Range(max = "255")
+     * Assert\Range(max = "255")
      */
     private $imagen;
 
