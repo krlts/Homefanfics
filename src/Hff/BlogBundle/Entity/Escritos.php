@@ -59,7 +59,7 @@ class Escritos
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="Tags", mappedBy="escrito")
+     * ORM\OneToMany(targetEntity="Tags", mappedBy="escrito")
      * @Assert\Length(
      *      min = "1",
      *      max = "30",
@@ -423,7 +423,7 @@ class Escritos
      * @param integer $usuario
      * @return Escritos
      */
-    public function setUsuario(\Hff\BlogBundle\Entity\Escritores $escritor)
+    public function setUsuario(\Hff\BlogBundle\Entity\Usuarios $usuario)
     {
         $this->usuario = $usuario;
 
@@ -491,13 +491,19 @@ class Escritos
         return $this->getTitulo();
     }
     public function __construct() {
-        $this->comentarios = new ArrayCollection();
-        $this->tags = new ArrayCollection();
+        $this->setComentarios(new ArrayCollection()); //new ArrayCollection();
+        $this->setTags('');//new ArrayCollection();
         $this->setComentariosHabilitados(true);
         $this->setFechaCreacion(new \DateTime());
         $this->setFechaModificacion(new \DateTime());
+        $this->setInicioPublicacion(new \DateTime());
         $this->setTotalComentarios(0);
         $this->setTotalVisitas(0);
         $this->setIntro('');
+        $this->setSlug('');
+        $this->setPublicado(true);
+        $this->setTitulo('');
+        $this->setContenido('');
+        
     }
 }

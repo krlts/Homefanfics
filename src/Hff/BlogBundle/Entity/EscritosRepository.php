@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class EscritosRepository extends EntityRepository
 {
+    public function findAllOrderedByTitulo()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT e FROM HffBlogBundle:Escritos c ORDER BY c.titulo ASC')
+            ->getResult();
+    }
+    
+    public function findAllOrderedByTituloDesc()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT e FROM HffBlogBundle:Escritos c ORDER BY c.titulo DESC')
+            ->getResult();
+    }
+  
 }

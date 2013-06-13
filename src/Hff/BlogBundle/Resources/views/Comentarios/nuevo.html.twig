@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+<h1>Ingresar nuevo Comentario</h1>
+
+<form action="{{ path('comentario_crear') }}" method="post" {{ form_enctype(form) }}>
+        {{ tinymce_init() }}
+        <center>
+            <table>
+                <tr>
+                    <td>{{ form_widget(form.mensaje)}} {{ form_errors(form.mensaje) }}</td>          
+                </tr>
+                {{ form_rest(form) }}
+                <tr>
+                    <td><button type="submit">Ingresar Comentario</button></td>
+                </tr>
+            </table>
+        </center>  
+    </form>
+{% endblock %}
+

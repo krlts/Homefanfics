@@ -194,5 +194,6 @@ class Comentarios
         $this->setFechaCreacion(new \DateTime());
         $this->setFechaModificacion(new \DateTime());
         $this->setEstado(1);
+        $this->setEscrito(new Escritos());
     }
 }

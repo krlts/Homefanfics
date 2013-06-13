@@ -92,13 +92,67 @@ categoria_borrar:
     
 categoria_actualizar:
     pattern:  /categoria/actualizar/{id}
-    defaults: { _controller: HffBlogBundle:Categorias:actualizar }  
+    defaults: { _controller: HffBlogBundle:Categorias:actualizar }
+
+# COMENTARIOS ***************************************************      
     
+comentario:
+    pattern:  /comentario
+    defaults: { _controller: HffBlogBundle:Comentarios:index }  
+
+comentario_crear:
+    pattern:  /comentario/crear
+    defaults: { _controller: HffBlogBundle:Comentarios:crear } 
     
+comentario_nuevo:
+    pattern:  /comentario/nuevo
+    defaults: { _controller: HffBlogBundle:Comentarios:nuevo }
     
-escritos:
-    pattern:  /escritos
+comentario_ver:
+    pattern:  /comentario/ver/{id}
+    defaults: { _controller: HffBlogBundle:Comentarios:ver }
+    
+comentario_editar:
+    pattern:  /comentario/editar/{id}
+    defaults: { _controller: HffBlogBundle:Comentarios:editar }  
+    
+comentario_borrar:
+    pattern:  /comentario/borrar/{id}
+    defaults: { _controller: HffBlogBundle:Comentarios:borrar } 
+    
+comentario_actualizar:
+    pattern:  /comentario/actualizar/{id}
+    defaults: { _controller: HffBlogBundle:Comentarios:actualizar }
+    
+# ESCRITOS ***************************************************      
+    
+escrito:
+    pattern:  /escrito
     defaults: { _controller: HffBlogBundle:Escritos:index }  
+
+escrito_crear:
+    pattern:  /escrito/crear
+    defaults: { _controller: HffBlogBundle:Escritos:crear } 
+    
+escrito_nuevo:
+    pattern:  /escrito/nuevo
+    defaults: { _controller: HffBlogBundle:Escritos:nuevo }
+    
+escrito_ver:
+    pattern:  /escrito/ver/{id}
+    defaults: { _controller: HffBlogBundle:Escritos:ver }
+    
+escrito_editar:
+    pattern:  /escrito/editar/{id}
+    defaults: { _controller: HffBlogBundle:Escritos:editar }  
+    
+escrito_borrar:
+    pattern:  /escrito/borrar/{id}
+    defaults: { _controller: HffBlogBundle:Escritos:borrar } 
+    
+escrito_actualizar:
+    pattern:  /escrito/actualizar/{id}
+    defaults: { _controller: HffBlogBundle:Escritos:actualizar }
     
 # USUARIOS ***************************************************   
     
@@ -135,7 +189,7 @@ usuario_actualizar:
     pattern:  /usuario/actualizar/{id}
     defaults: { _controller: HffBlogBundle:Usuarios:actualizar }
     
-usuario_login:
+usuarios_login:
     pattern:   /login
     defaults:  { _controller: HffBlogBundle:Usuarios:login }
 

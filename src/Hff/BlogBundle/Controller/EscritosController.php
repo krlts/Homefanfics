@@ -7,7 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Security\Core\SecurityContext;
 use Hff\BlogBundle\Entity\Escritos;
+use Hff\BlogBundle\Form\EscritosType;
 
 /**
  * Escritos controller.
@@ -18,7 +20,7 @@ class EscritosController extends Controller{
     /**
      * Lists all Escritos entities.
      *
-     * @Route("/", name="escritos")
+     * @Route("/", name="escrito")
      * @Method("GET")
      * @Template()
      */
@@ -35,22 +37,31 @@ class EscritosController extends Controller{
     /**
      * Crear una nueva Entidad Escritos.
      *
-     * @Route("/", name="escritos_crear")
+     * @Route("/", name="escrito_crear")
      * @Method("POST")
-     * @Template("HffBlogBundle:Escritos:new.html.twig")
+     * @Template("HffBlogBundle:Escritos:nuevo.html.twig")
      */
-    public function createAction(Request $request)
+    public function crearAction(Request $request)
     {
         $entity  = new Escritos();
+        $em = $this->getDoctrine()->getManager();
+        
+        $usuarioLogueado = $this->get('security.context')->getToken()->getUser();
+        $entity->setUsuario($usuarioLogueado);
+        
         $form = $this->createForm(new EscritosType(), $entity);
+        $entity->setUsuario($usuarioLogueado);
+        
         $form->bind($request);
+        
+        $entity->setCategoria($form["categoria"]->getData());
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('escritos_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('escrito_ver', array('id' => $entity->getId())));
         }
 
         return array(
@@ -60,16 +71,16 @@ class EscritosController extends Controller{
     }
 
     /**
-     * Displays a form to create a new Categorias entity.
+     * Displays a form to create a new Escritos entity.
      *
-     * @Route("/new", name="categorias_new")
+     * @Route("/nuevo", name="escrito_nuevo")
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+    public function nuevoAction()
     {
-        $entity = new Categorias();
-        $form   = $this->createForm(new CategoriasType(), $entity);
+        $entity = new Escritos();
+        $form   = $this->createForm(new EscritosType(), $entity);
 
         return array(
             'entity' => $entity,
@@ -78,20 +89,20 @@ class EscritosController extends Controller{
     }
 
     /**
-     * Finds and displays a Categorias entity.
+     * Finds and displays a Escritos entity.
      *
-     * @Route("/{id}", name="categorias_show")
+     * @Route("/{id}", name="escrito_ver")
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
+    public function verAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('HffBlogBundle:Categorias')->find($id);
+        $entity = $em->getRepository('HffBlogBundle:Escritos')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Categorias entity.');
+            throw $this->createNotFoundException('No se pudo encontrar el Escrito');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -103,23 +114,23 @@ class EscritosController extends Controller{
     }
 
     /**
-     * Displays a form to edit an existing Categorias entity.
+     * Displays a form to edit an existing Escritos entity.
      *
-     * @Route("/{id}/edit", name="categorias_edit")
+     * @Route("/{id}/editar", name="escrito_editar")
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id)
+    public function editarAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('HffBlogBundle:Categorias')->find($id);
+        $entity = $em->getRepository('HffBlogBundle:Escritos')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Categorias entity.');
+            throw $this->createNotFoundException('No se pudo encontrar el Escrito');
         }
 
-        $editForm = $this->createForm(new CategoriasType(), $entity);
+        $editForm = $this->createForm(new EscritosType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -132,29 +143,29 @@ class EscritosController extends Controller{
     /**
      * Edits an existing Categorias entity.
      *
-     * @Route("/{id}", name="categorias_update")
+     * @Route("/{id}", name="escrito_actualizar")
      * @Method("PUT")
-     * @Template("HffBlogBundle:Categorias:edit.html.twig")
+     * @Template("HffBlogBundle:Escritos:editar.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function actualizarAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('HffBlogBundle:Categorias')->find($id);
+        $entity = $em->getRepository('HffBlogBundle:Escritos')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Categorias entity.');
+            throw $this->createNotFoundException('No se pudo encontrar el Escrito');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new CategoriasType(), $entity);
+        $editForm = $this->createForm(new EscritosType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('categorias_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('escrito_editar', array('id' => $id)));
         }
 
         return array(
@@ -165,33 +176,33 @@ class EscritosController extends Controller{
     }
 
     /**
-     * Deletes a Categorias entity.
+     * Deletes a Escritos entity.
      *
-     * @Route("/{id}", name="categorias_delete")
+     * @Route("/{id}", name="escrito_borrar")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
+    public function borrarAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
         $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('HffBlogBundle:Categorias')->find($id);
+            $entity = $em->getRepository('HffBlogBundle:Escritos')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Categorias entity.');
+                throw $this->createNotFoundException('No se pudo encontrar el Escrito');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('categorias'));
+        return $this->redirect($this->generateUrl('escrito'));
     }
 
     /**
-     * Creates a form to delete a Categorias entity by id.
+     * Creates a form to delete a Escritos entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -203,13 +214,6 @@ class EscritosController extends Controller{
             ->add('id', 'hidden')
             ->getForm()
         ;
-    }
-    public function getCategorias()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $categorias = $em->getRepository('HffBlogBundle:Categorias')
-            ->findAllOrderedByName();
-        return $categorias;
     }
 }
 
