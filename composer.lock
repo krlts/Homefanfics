@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "38264a19b077b5106c577ecf7d159b28",
+    "hash": "d262eb4da6498ad9ff9a99265e367519",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -2738,16 +2738,16 @@
         },
         {
             "name": "twitter/bootstrap",
-            "version": "dev-master",
+            "version": "v2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twitter/bootstrap.git",
-                "reference": "60b202de3220fa95d4df5d4fa1b93361165ec3a6"
+                "reference": "v2.3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twitter/bootstrap/zipball/60b202de3220fa95d4df5d4fa1b93361165ec3a6",
-                "reference": "60b202de3220fa95d4df5d4fa1b93361165ec3a6",
+                "url": "https://api.github.com/repos/twitter/bootstrap/zipball/v2.3.2",
+                "reference": "v2.3.2",
                 "shasum": ""
             },
             "type": "library",
@@ -2761,7 +2761,7 @@
                 "bootstrap",
                 "css"
             ],
-            "time": "2013-06-06 16:14:52"
+            "time": "2013-05-17 17:26:09"
         }
     ],
     "packages-dev": [
@@ -2778,7 +2778,6 @@
         "sonata-project/doctrine-orm-admin-bundle": 20,
         "sonata-project/notification-bundle": 20,
         "stfalcon/tinymce-bundle": 20,
-        "twitter/bootstrap": 20,
         "knplabs/knp-paginator-bundle": 20,
         "craue/formflow-bundle": 20,
         "braincrafted/bootstrap-bundle": 20

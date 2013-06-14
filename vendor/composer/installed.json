@@ -2648,35 +2648,6 @@
         ]
     },
     {
-        "name": "twitter/bootstrap",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/twitter/bootstrap.git",
-            "reference": "60b202de3220fa95d4df5d4fa1b93361165ec3a6"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/twitter/bootstrap/zipball/60b202de3220fa95d4df5d4fa1b93361165ec3a6",
-            "reference": "60b202de3220fa95d4df5d4fa1b93361165ec3a6",
-            "shasum": ""
-        },
-        "time": "2013-06-06 16:14:52",
-        "type": "library",
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache-2.0"
-        ],
-        "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
-        "homepage": "http://twitter.github.com/bootstrap/",
-        "keywords": [
-            "bootstrap",
-            "css"
-        ]
-    },
-    {
         "name": "knplabs/knp-paginator-bundle",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -2851,6 +2822,35 @@
         "description": "Twitter Bootstrap for Symfony2",
         "keywords": [
             "bootstrap"
+        ]
+    },
+    {
+        "name": "twitter/bootstrap",
+        "version": "v2.3.2",
+        "version_normalized": "2.3.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/twitter/bootstrap.git",
+            "reference": "v2.3.2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/twitter/bootstrap/zipball/v2.3.2",
+            "reference": "v2.3.2",
+            "shasum": ""
+        },
+        "time": "2013-05-17 17:26:09",
+        "type": "library",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development.",
+        "homepage": "http://twitter.github.com/bootstrap/",
+        "keywords": [
+            "bootstrap",
+            "css"
         ]
     }
 ]
