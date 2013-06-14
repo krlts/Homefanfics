@@ -10,46 +10,91 @@
         <link href='http://fonts.googleapis.com/css?family=Irish+Grover' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
 	
-        <link href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
+
+        <link href="{{ asset('bootstrap/css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
+	<link href="{{ asset('css/bootswatch.css') }}" type="text/css" rel="stylesheet" />
+<link href="{{ asset('css/bootstrap.min..css') }}" type="text/css" rel="stylesheet" />
+<link href="{{ asset('css/bootstrap-responsive.min.css') }}" type="text/css" rel="stylesheet" />
         {% endblock %} 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-     <body>
+     <body class="preview" id="top" data-spy="scroll" data-target=".subnav" data-offset="80">
 
-        <section id="wrapper">
-            <header id="header">
-                <div class="top">
-                    {% block navigation %}
+                    {#% block navigation %#}
+                        <div class="navbar navbar-fixed-top">
                         <nav>
-                            <ul class="navigation">
-                                <li><a href="#" title="Lista de Escritores" >Autores</a></li>
-                                <li><a href="#" title="Lista de artículos escritos">Títulos</a></li>
-                                <li><a href="#">Ingresar</a></li>
-                            </ul>
+                            <div class="navbar-inner">
+      <div class="container" style="width: auto;">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href=""><img name="logoHFF" src="{{ asset('img/logo.png') }}" > Homefanfics</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="active"><a href="#">Escritos</a></li>
+            <li><a href="#">Autores</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+<form class="form-search navbar-search pull-left" action="#" method="post">
+  <div class="input-append">
+    <input type="text" class="span2 search-query"  placeholder="Buscar">
+    <button type="submit" class="btn"><i class=" icon-search"></i></button>
+  </div>
+</form>
+
+          <ul class="nav pull-right">
+            <li><a href="#">Link</a></li>
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div>
+    </div><!-- /navbar-inner -->
                         </nav>
-                    {% endblock %}
+                            </div>
+                    {#% endblock %#}
                 </div>
-
-                <hgroup>
-                    <h2>{% block blog_title %}<a href="#">Homefanfics</a>{% endblock %}</h2>
-                    <h3>{% block blog_tagline %}<a href="#">"Leer te hace libre"</a>{% endblock %}</h3>
-                </hgroup>
-            </header>
-
-            <section class="main-col">
+<div class="container">
                 {% block body %}{% endblock %}
-            </section>
-            <aside class="sidebar">
-                {% block sidebar %}{% endblock %}
-            </aside>
-
+   
             <div id="footer">
                 {% block footer %}
-                    Homefanfics - "Leer te hace libre" - {{'now'|date('Y')}} - Diseñado y creado por Carlos Matamala
+                    <small>Homefanfics - "Leer te hace libre" - {{'now'|date('Y')}} - Diseñado y creado por Carlos Matamala</small>
                 {% endblock %}
             </div>
-        </section>
+</div>
 
-        {% block javascripts %}{% endblock %}
+
+        {% block javascripts %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   <script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/bootswatch.js') }}"></script>
+<script src="{{ asset('js/jquery.smooth-scroll.min.js') }}"></script>
+   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
+{% endblock %}
+
     </body>
 </html>
