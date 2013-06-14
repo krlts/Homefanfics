@@ -49,6 +49,7 @@ return array(
     'Doctrine\\Bundle\\DoctrineBundle' => array($vendorDir . '/doctrine/doctrine-bundle'),
     'Craue\\FormFlowBundle' => array($vendorDir . '/craue/formflow-bundle'),
     'CG\\' => array($vendorDir . '/jms/cg/src'),
+    'Bc\\Bundle\\BootstrapBundle' => array($vendorDir . '/braincrafted/bootstrap-bundle'),
     'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
     '' => array($baseDir . '/src'),
 );
