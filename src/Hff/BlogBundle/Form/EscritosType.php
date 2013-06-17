@@ -26,8 +26,8 @@ class EscritosType extends AbstractType{
             //->add('usuario')//,'text',array('value'=>$username))           
             ->add('tags','text',array('label'=>'Etiquetas','attr'=>array('size' => '80', 'placeholder' => 'Etiquetas, Tags', 'title' => 'Etiquetas, Tags','maxlength' => '255')))
             ->add('intro','textarea',array('label'=>'Introducción','attr' => 
-            array('rows' => '3','cols' => '80','placeholder' => 'Escribe acá si deseas que tu escrito tenga una introducción', 'title' => 'Escribe acá si deseas que tu escrito tenga una introducción')))
-            ->add('contenido','textarea',array('attr' => array('rows' => '8','cols' => '80')))
+            array('rows' => '3','cols' => '160','placeholder' => 'Escribe acá si deseas que tu escrito tenga una introducción', 'title' => 'Escribe acá si deseas que tu escrito tenga una introducción')))
+            ->add('contenido','textarea',array('attr' => array('rows' => '8','cols' => '160')))
             ->add('publicado','checkbox',array('required'  => false, 'attr'=>array('checked'=>true)))
                         
                         

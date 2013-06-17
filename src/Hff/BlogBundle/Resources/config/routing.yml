@@ -1,4 +1,4 @@
-hff_blog_homepage:
+inicio:
     pattern:  /
     defaults: { _controller: HffBlogBundle:Paginas:index }
     requirements:

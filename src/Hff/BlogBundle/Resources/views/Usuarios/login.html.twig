@@ -1,10 +1,8 @@
 {% extends '::base.html.twig' %}
 {% block title %}Accede a tu cuenta {% endblock %}
 {% block id 'login' %}
-
-{% block sidebar %}
-<section id="entrar">
-    <h1>{{ "Accede a tu cuenta" | trans }}</h1>
+{% block body -%}
+    <h2>{{ "Accede a tu cuenta" | trans }}</h2>
 
     {% if error %}
         <div>{{ error.message }}</div>
@@ -12,22 +10,14 @@
 
     <form action="{{ path('usuarios_login_check') }}" method="post">
         <label for="usuario">{{ "Usuario" | trans }}</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Nombre de Usuario" title="Nombre de Usuario"/>
 
         <label for="password">{{ "Contraseña" | trans }}</label>
-        <input type="password" id="password" name="_password" />
+        <input type="password" id="password" name="_password" placeholder="Contraseña" title="Contraseña"/>
 
-        <input type="checkbox" id="remember_me" name="_remember_me" checked />
-        <label for="remember_me">{{ "No cerrar sesión" | trans }}</label>
+        <label for="remember_me"><input type="checkbox" id="remember_me" name="_remember_me" checked />  {{ "No cerrar sesión" | trans }}</label>
 
         <input class="boton" type="submit" name="login" value="{{ "Entrar" | trans }}" />
     </form>
-</section>
-
-<section id="registrar">
     <a class="boton" href="{{ path('usuario_registrar') }}">{{ "Regístrate gratis como usuario" | trans }}</a>
-</section>
-{% endblock %}
-
-{% block aside %}
 {% endblock %}

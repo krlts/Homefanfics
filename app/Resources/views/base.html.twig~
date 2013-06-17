@@ -2,7 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Bienvenido a{% endblock %} Homefanfics</title>
+        <title>{% block title %}Bienvenido a{% endblock %} - Homefanfics</title>
         <!--[if lt IE 9]> 
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -33,10 +33,9 @@
         <a class="brand" href=""><img name="logoHFF" src="{{ asset('img/logo.png') }}" > Homefanfics</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li class="active"><a href="#">Escritos</a></li>
-            <li><a href="#">Autores</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+            <li class="active"><a href="#"><img alt="Escritos" title="Escritos" src="{{ asset('img/escritos.png') }}" ></a></li>
+            <li><a href="#"><img alt="Autores" title="Autores" src="{{ asset('img/autores.png') }}" ></a></li>
+            <li><a href="{{path('escrito_nuevo')}}"><img alt="Nuevo Escrito" title="Nuevo Escrito" src="{{ asset('img/escritos2.png') }}" ></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -56,16 +55,16 @@
 </form>
 
           <ul class="nav pull-right">
-            <li><a href="#">Link</a></li>
+            <li><a href="{{path('usuarios_login')}}">Login</a></li>
             <li class="divider-vertical"></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Config" title="Configuración" src="{{ asset('img/config.png') }}" ><b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a href="{{path('usuarios_logout')}}">Salir</a></li>
               </ul>
             </li>
           </ul>
@@ -77,11 +76,13 @@
                     {#% endblock %#}
                 </div>
 <div class="container">
-                {% block body %}{% endblock %}
-   
+                {% block body %}<div></div>{% endblock %}
+      
             <div id="footer">
                 {% block footer %}
+				<section footer>
                     <small>Homefanfics - "Leer te hace libre" - {{'now'|date('Y')}} - Diseñado y creado por Carlos Matamala</small>
+                </section>
                 {% endblock %}
             </div>
 </div>

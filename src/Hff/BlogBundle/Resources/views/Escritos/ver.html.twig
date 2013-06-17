@@ -1,12 +1,32 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-<p>Publicado el {{ entity.fechaCreacion | date('l, d-M-Y', 'America/Santiago') }} a las {{ entity.fechaCreacion | date('G:i') }}</p>
-<h1>{{ entity.titulo }}</h1>
-<p>Escrito por <a href="/usuario/ver/{{entity.usuario.id}}">{{ entity.usuario }}</a><p>
+<div class="hero-unit">
+    
+<h2>{{ entity.titulo }}</h2>
+
+<p><small>Publicado por</small> <a href="/usuario/ver/{{entity.usuario.id}}">{{ entity.usuario }}</a>
+    
+    <small>el {{ entity.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ entity.fechaCreacion | date('G:i') }}</small></p>
+    
 <article>{{ entity.intro | raw }}</article>
+
 <article>{{ entity.contenido | raw }}</article>
-<p>Categoría: {{entity.categoria}} </p>
 
+<p><small>Categoría:</small> {{entity.categoria}} </p>
+</div>
 
+<div class="hero-unit">
+<form action="{{ path('comentario_crear') }}" method="post">
+        {{ tinymce_init() }}
+            <table>
+                <tr>
+                    <td><textarea></textarea></td>          
+                </tr>
+                <tr>
+                    <td><button type="submit">Ingresar Comentario</button></td>
+                </tr>
+            </table> 
+    </form>
+    </div>
 {% endblock %}

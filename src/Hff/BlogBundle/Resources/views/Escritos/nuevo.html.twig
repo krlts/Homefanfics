@@ -1,5 +1,5 @@
 {% extends '::base.html.twig' %}
-{% block title %}Nuevo Escrito - {% endblock %}
+{% block title %}Nuevo Escrito{% endblock %}
 {% block body -%}
 <form action="{{ path('escrito_crear') }}" method="post" {{ form_enctype(form) }} form="form1">
     {{ tinymce_init() }}
@@ -8,4 +8,6 @@
         <button type="submit">Ingresar Escrito</button>
     </p>
 </form>
+
+
 {% endblock %}
