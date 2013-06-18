@@ -9,93 +9,114 @@
         {% block stylesheets %}
         <link href='http://fonts.googleapis.com/css?family=Irish+Grover' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
-	
+
 
         <link href="{{ asset('bootstrap/css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
-	<link href="{{ asset('css/bootswatch.css') }}" type="text/css" rel="stylesheet" />
-<link href="{{ asset('css/bootstrap.min..css') }}" type="text/css" rel="stylesheet" />
-<link href="{{ asset('css/bootstrap-responsive.min.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('css/bootswatch.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('css/bootstrap.min..css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('css/bootstrap-responsive.min.css') }}" type="text/css" rel="stylesheet" />
         {% endblock %} 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-     <body class="preview" id="top" data-spy="scroll" data-target=".subnav" data-offset="80">
+    <body class="preview" id="top" data-spy="scroll" data-target=".subnav" data-offset="80">
 
                     {#% block navigation %#}
-                        <div class="navbar navbar-fixed-top">
-                        <nav>
-                            <div class="navbar-inner">
-      <div class="container" style="width: auto;">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <a class="brand" href="{{path('inicio')}}"><img name="logoHFF" src="{{ asset('img/logo.png') }}" > Homefanfics</a>
-        <div class="nav-collapse">
-          <ul class="nav">
-            <li class="active"><a href="#"><img alt="Escritos" title="Escritos" src="{{ asset('img/escritos.png') }}" ></a></li>
-            <li><a href="#"><img alt="Autores" title="Autores" src="{{ asset('img/autores.png') }}" ></a></li>
-            <li><a href="{{path('escrito_nuevo')}}"><img alt="Nuevo Escrito" title="Nuevo Escrito" src="{{ asset('img/escritos2.png') }}" ></a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-<form class="form-search navbar-search pull-left" action="#" method="post">
-  <div class="input-append">
-    <input type="text" class="span2 search-query"  placeholder="Buscar">
-    <button type="submit" class="btn"><i class=" icon-search"></i></button>
-  </div>
-</form>
+        <div class="navbar navbar-fixed-top">
+            <nav>
+                <div class="navbar-inner">
+                    <div class="container" style="width: auto;">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></a>
+                        <a class="brand" href="{{path('inicio')}}"><img name="logoHFF" src="{{ asset('img/logo.png') }}" > Homefanfics</a>
+                        <div class="nav-collapse">
+                            <ul class="nav">
+                                <li class="active"><a href="#"><img alt="Escritos" title="Escritos" src="{{ asset('img/escritos.png') }}" ></a></li>
+                                <li><a href="#"><img alt="Autores" title="Autores" src="{{ asset('img/autores.png') }}" ></a></li>
+            {#verificar si el usuario está logueado#}
+            {% if app.user != NULL %}
+                                        <li><a href="{{path('escrito_nuevo')}}"><img alt="Nuevo Escrito" title="Nuevo Escrito" src="{{ asset('img/escritos2.png') }}" ></a></li>
+            {% endif %}
 
-          <ul class="nav pull-right">
-            <li><a href="{{path('usuarios_login')}}">Login</a></li>
-            <li class="divider-vertical"></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Config" title="Configuración" src="{{ asset('img/config.png') }}" ><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="{{path('usuarios_logout')}}">Salir</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!-- /.nav-collapse -->
-      </div>
-    </div><!-- /navbar-inner -->
-                        </nav>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#">Action</a></li>
+                                                        <li><a href="#">Another action</a></li>
+                                                        <li><a href="#">Something else here</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="#">Separated link</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <form class="form-search navbar-search pull-left" action="#" method="post">
+                                                <div class="input-append">
+                                                    <input type="text" class="span2 search-query"  placeholder="Buscar">
+                                                    <button type="submit" class="btn"><i class=" icon-search"></i></button>
+                                                </div>
+                                            </form>
+
+                                            <ul class="nav pull-right">
+            {#si el usuario NO está logueado#}
+            {% if app.user == NULL %}
+                                                    <li>
+                                                        <form action="{{ path('usuarios_login_check') }}" method="post">
+                                                            <table>
+                                                                <tr>
+                                                                    <td><input class="span2 search-query" type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Nombre de Usuario" title="Nombre de Usuario"/></td>
+                                                                    <td><input class="span2 search-query"type="password" id="password" name="_password" placeholder="Contraseña" title="Contraseña"/></td>
+                                                                    <td><input class="btn-primary" type="submit" name="login" value="{{ "Entrar" | trans }}" /></td>                                                                                                                                          </tr>
+                                                                <tr>
+                                                                    <td><label for="remember_me"><input type="checkbox" id="remember_me" name="_remember_me" checked /> <small>{{ "No cerrar sesión" }}</small></label></td>
+                                                                    <td colspan="2"><a href="{{ path('usuario_registrar') }}"><small>{{ "Regístrarse" | trans }}</small></a>
+                                                                        <a href="{{ path('usuario') }}"><small><i class="icon-question-sign"></i>{{ " Recuperar Contraseña" }}</small></a></td>
+                                                                </tr>
+                                                            </table> 
+                                                        </form>
+                                                    </li>
+            {% endif %}
+            {#verificar si el usuario está logueado#}
+            {% if app.user != NULL %}
+                                                    <li><a href="{{path('usuario_ver', {'id': app.user.id })}}"><img class="avatar" title="{{app.user|capitalize}}" src="{{ asset('img/usuario.png') }}" >  {{app.user|capitalize}}</a></li>
+                                                    <li class="divider-vertical"></li>
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Config" title="Configuración" src="{{ asset('img/config.png') }}" ><b class="caret"></b></a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#">Action</a></li>
+                                                            <li><a href="#">Another action</a></li>
+                                                            <li><a href="#">Something else here</a></li>
+                                                            <li class="divider"></li>
+                                                            <li><a href="{{path('usuarios_logout')}}">Salir</a></li>
+                                                        </ul>
+                                                    </li>
+            {% endif %}
+                                                </ul>
+                                            </div><!-- /.nav-collapse -->
+                                        </div>
+                                    </div><!-- /navbar-inner -->
+                                </nav>
                             </div>
                     {#% endblock %#}
-                </div>
-<div class="container">
+                        </div>
+                        <div class="container">
                 {% block body %}<div></div>{% endblock %}
-      
-            <div id="footer">
+
+                                <div id="footer">
                 {% block footer %}
-				<section footer>
-                    <small>Homefanfics - "Leer te hace libre" - {{'now'|date('Y')}} - Diseñado y creado por Carlos Matamala</small>
-                </section>
+                                        <section footer>
+                                            <small>Homefanfics - "Leer te hace libre" - {{'now'|date('Y')}} - Diseñado y creado por Carlos Matamala</small>
+                                        </section>
                 {% endblock %}
-            </div>
-</div>
+                                    </div>
+                                </div>
 
 
-        {% block javascripts %}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-   <script src="{{ asset('js/jquery.js') }}"></script>
-<script src="{{ asset('js/bootswatch.js') }}"></script>
-<script src="{{ asset('js/jquery.smooth-scroll.min.js') }}"></script>
-   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
+{% block javascripts %}
+                                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                                <script src="{{ asset('js/jquery.js') }}"></script>
+                                <script src="{{ asset('js/bootswatch.js') }}"></script>
+                                <script src="{{ asset('js/jquery.smooth-scroll.min.js') }}"></script>
+                                <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+                                <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
 {% endblock %}
 
-    </body>
-</html>
+                            </body>
+                        </html>

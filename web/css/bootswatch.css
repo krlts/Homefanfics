@@ -16,6 +16,12 @@ section {
     padding: 15px;
 }
 
+.avatar {
+    height: 32px;
+    width: 32px;
+    border: 1px solid #ddd ;
+}
+
 
 .hero-unit small {
     
