@@ -28,6 +28,7 @@
         "twitter/bootstrap": "2.3.*",
         "knplabs/knp-paginator-bundle": "dev-master",
         "craue/formflow-bundle": "dev-master",
+        "egeloen/ckeditor-bundle": "2.*",
         "braincrafted/bootstrap-bundle": "dev-master"
     },
     "scripts": {

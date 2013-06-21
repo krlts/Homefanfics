@@ -25,9 +25,103 @@ class EscritosType extends AbstractType{
             ))
             //->add('usuario')//,'text',array('value'=>$username))           
             ->add('tags','text',array('label'=>'Etiquetas', 'required' => false,'attr'=>array('size' => '80',' placeholder' => 'Etiquetas, Tags', 'title' => 'Etiquetas, Tags','maxlength' => '255')))
-            ->add('intro','textarea',array('label'=>'Introducción','attr' => array()))
-            ->add('contenido','textarea',array('attr' => array()))
-            ->add('publicado','checkbox',array('required'  => false, 'attr'=>array('checked'=>true)))
+            //->add('intro','ckeditor',array('label'=>'Introducción','attr' => array('class' => 'ckeditor')))
+          //  ->add('contenido','ckeditor',array('attr' => array('class' => 'ckeditor')))
+                    ->add('intro', 'ckeditor', array(
+    'config' => array(
+        'toolbar' => array(
+            array(
+                'name'  => 'clipboard',
+                'items' => array('Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo'),
+            ),
+            array(
+                'name'  => 'editing',
+                'items' => array('Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt'),
+            ),
+            array(
+                'name'  => 'document',
+                'items' => array('Source'),
+            ),
+            '/',
+            array(
+                'name'  => 'basicstyles',
+                'items' => array('Bold', 'Italic', 'Underline', 'Strike', '-','Subscript', 'Superscript', '-', 'RemoveFormat'),
+            ),
+            array(
+                'name'  => 'paragraph',
+                'items' => array('JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv' ),
+            ),
+            array(
+                'name'  => 'insert',
+                'items' => array('Image','Table','HorizontalRule','Smiley','SpecialChar'),
+            ),
+            '/',
+            array(
+                'name'  => 'styles',
+                'items' => array('Font','FontSize','Styles','Format'),
+            ),
+            array(
+                'name'  => 'colors',
+                'items' => array('TextColor','BGColor'),
+            ),
+            array(
+                'name'  => 'links',
+                'items' => array('Link','Unlink','Anchor'),
+            ),
+            array(
+                'name'  => 'tools',
+                'items' => array('Maximize', 'ShowBlocks'),
+            ),
+        ),
+    )))
+            ->add('contenido', 'ckeditor', array(
+    'config' => array(
+        'toolbar' => array(
+            array(
+                'name'  => 'clipboard',
+                'items' => array('Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo'),
+            ),
+            array(
+                'name'  => 'editing',
+                'items' => array('Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt'),
+            ),
+            array(
+                'name'  => 'document',
+                'items' => array('Source'),
+            ),
+            '/',
+            array(
+                'name'  => 'basicstyles',
+                'items' => array('Bold', 'Italic', 'Underline', 'Strike', '-','Subscript', 'Superscript', '-', 'RemoveFormat'),
+            ),
+            array(
+                'name'  => 'paragraph',
+                'items' => array('JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv' ),
+            ),
+            array(
+                'name'  => 'insert',
+                'items' => array('Image','Table','HorizontalRule','Smiley','SpecialChar'),
+            ),
+            '/',
+            array(
+                'name'  => 'styles',
+                'items' => array('Font','FontSize','Styles','Format'),
+            ),
+            array(
+                'name'  => 'colors',
+                'items' => array('TextColor','BGColor'),
+            ),
+            array(
+                'name'  => 'links',
+                'items' => array('Link','Unlink','Anchor'),
+            ),
+            array(
+                'name'  => 'tools',
+                'items' => array('Maximize', 'ShowBlocks'),
+            ),
+        ),
+    )))
+     ->add('publicado','checkbox',array('required'  => false, 'attr'=>array('checked'=>true)))
                         
                         
      

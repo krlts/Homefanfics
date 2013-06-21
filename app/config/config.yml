@@ -23,6 +23,12 @@ framework:
     session:         ~
     fragments:       ~
 
+ivory_ck_editor:
+
+    enable:               true
+    base_path:            bundles/ivoryckeditor/
+    js_path:              bundles/ivoryckeditor/ckeditor.js
+
 bc_bootstrap:
     assets_dir:  %kernel.root_dir%/../vendor/twitter/bootstrap
     jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.9.1.js
