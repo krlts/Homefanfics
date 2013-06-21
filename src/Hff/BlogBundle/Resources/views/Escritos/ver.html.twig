@@ -1,11 +1,15 @@
 {% extends '::base.html.twig' %}
-
+{% block title %}{{ entity.titulo }}{% endblock %}
 {% block body -%}
 <div class="hero-unit">
     
-<h2>{{ entity.titulo }}</h2>
+    <h2>{{ entity.titulo }}
+        {% if entity.usuario.id == app.user.id %}
+            <button class="btn btn-success pull-right" type="submit"><a style="color: white" href="{{ path('escrito_editar', {'id': entity.id }) }}"><i class="icon-pencil icon-white"></i> Editar</a></button>
+        {% endif %}
+        </h2>
 
-<p><small>Publicado por</small> <a href="/usuario/ver/{{entity.usuario.id}}">{{ entity.usuario }}</a>
+<p><small>Publicado por</small> <a href="{{path('usuario_ver', {'id': app.user.id })}}">{{ entity.usuario }}</a>
     
     <small>el {{ entity.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ entity.fechaCreacion | date('G:i') }}</small></p>
     
@@ -13,18 +17,26 @@
 
 <article>{{ entity.contenido | raw }}</article>
 
-<p><small>Categoría:</small> {{entity.categoria}} </p>
+<p><small>Categoría:</small> {{entity.categoria}} <small class=" pull-right">Visto: {%if entity.totalVistas == 1%} 1 vez{% else %}{{entity.totalVistas}} veces {% endif %}</small></p>
 </div>
 
 <div class="hero-unit">
 <form action="{{ path('comentario_crear') }}" method="post">
-        {{ tinymce_init() }}
+        {% if entity.totalComentarios == 0 %} 
+        <small class="pull-right">Se el primero en comentar</small>
+        {% else %}
+        <small class="pull-right">{{entity.totalComentarios}} Comentarios</small>
+        {% endif %}
+	
             <table>
                 <tr>
-                    <td><textarea></textarea></td>          
+                    <td><textarea class="ckeditor" id="comentario" name="comentario"></textarea>
+               
+                </td>          
                 </tr>
+
                 <tr>
-                    <td><button type="submit">Ingresar Comentario</button></td>
+                    <td><button class="btn btn-success" type="submit">Ingresar Comentario</button></td>
                 </tr>
             </table> 
     </form>

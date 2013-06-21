@@ -232,14 +232,15 @@ body {
   background-color: #f6f6f6;
 }
 
+
 a {
-  color: #e78b24;
+  /*color: #e78b24;*/
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: #da7e18;
+  /*color: #da7e18;*/
   text-decoration: underline;
 }
 
@@ -714,7 +715,7 @@ a.text-info:focus {
 }
 
 .text-success {
-  color: #1c9b47;
+  /*color: #1c9b47;*/
 }
 
 a.text-success:hover,

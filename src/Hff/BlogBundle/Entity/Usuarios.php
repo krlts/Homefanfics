@@ -98,6 +98,7 @@ class Usuarios implements UserInterface {
      * @var \DateTime
      *
      * @ORM\Column(name="ultima_visita", type="datetime")
+     * 
      */
     private $ultimaVisita;
 
@@ -293,6 +294,7 @@ class Usuarios implements UserInterface {
      *
      * @param \DateTime $ultimaVisita
      * @return Usuarios
+     * @ORM\PreUpdate 
      */
     public function setUltimaVisita() {
         $this->ultimaVisita = new \DateTime();

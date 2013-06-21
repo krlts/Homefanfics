@@ -124,9 +124,9 @@ class Escritos
     /**
      * @var integer
      *
-     * @ORM\Column(name="totalVisitas", type="integer")
+     * @ORM\Column(name="totalVistas", type="integer")
      */
-    private $totalVisitas;
+    private $totalVistas;
 
     /**
      * @var \DateTime
@@ -441,26 +441,26 @@ class Escritos
     }
 
     /**
-     * Set totalVisitas
+     * Set totalVistas
      *
-     * @param integer $totalVisitas
+     * @param integer $totalVistas
      * @return Escritos
      */
-    public function setTotalVisitas($totalVisitas)
+    public function setTotalVistas($totalVistas)
     {
-        $this->totalVisitas = $totalVisitas;
+        $this->totalVistas = $totalVistas;
 
         return $this;
     }
 
     /**
-     * Get totalVisitas
+     * Get totalVistas
      *
      * @return integer 
      */
-    public function getTotalVisitas()
+    public function getTotalVistas()
     {
-        return $this->totalVisitas;
+        return $this->totalVistas;
     }
 
     /**
@@ -498,7 +498,7 @@ class Escritos
         $this->setFechaModificacion(new \DateTime());
         $this->setInicioPublicacion(new \DateTime());
         $this->setTotalComentarios(0);
-        $this->setTotalVisitas(0);
+        $this->setTotalVistas(0);
         $this->setIntro('');
         $this->setSlug('');
         $this->setPublicado(true);

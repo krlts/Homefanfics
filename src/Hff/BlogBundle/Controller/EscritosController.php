@@ -50,14 +50,12 @@ class EscritosController extends Controller{
         $entity->setUsuario($usuarioLogueado);
         
         $form = $this->createForm(new EscritosType(), $entity);
-        $entity->setUsuario($usuarioLogueado);
         
         $form->bind($request);
         
         $entity->setCategoria($form["categoria"]->getData());
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
@@ -104,7 +102,10 @@ class EscritosController extends Controller{
         if (!$entity) {
             throw $this->createNotFoundException('No se pudo encontrar el Escrito');
         }
-
+        $entity->setTotalVistas( $entity->getTotalVistas() +1 ) ;
+        $em->persist($entity);
+        $em->flush();
+        
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -125,6 +126,8 @@ class EscritosController extends Controller{
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('HffBlogBundle:Escritos')->find($id);
+        $categorias = $em->getRepository('HffBlogBundle:Categorias')
+            ->findAllOrderedByName();
 
         if (!$entity) {
             throw $this->createNotFoundException('No se pudo encontrar el Escrito');
@@ -137,6 +140,7 @@ class EscritosController extends Controller{
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'categorias' => $categorias,
         );
     }
 

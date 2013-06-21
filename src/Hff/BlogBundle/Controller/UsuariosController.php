@@ -78,7 +78,7 @@ class UsuariosController extends Controller
                 $token = new UsernamePasswordToken($entity, $entity->getPassword(), 'usuarios', $entity->getRoles());
                 $this->container->get('security.context')->setToken($token);
 
-            return $this->redirect($this->generateUrl('usuarios_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('inicio', array('id' => $entity->getId())));
         }
 
         return array(
@@ -262,6 +262,7 @@ class UsuariosController extends Controller
     
      public function loginAction()
     {
+         
         $peticion = $this->getRequest();
         $sesion = $peticion->getSession();
 
@@ -269,7 +270,19 @@ class UsuariosController extends Controller
             SecurityContext::AUTHENTICATION_ERROR,
             $sesion->get(SecurityContext::AUTHENTICATION_ERROR)
         );
+       /* $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('HffBlogBundle:Usuarios')->find($id);
+            ;*/
+            
+            
+/*
+            if (!$entity) {
+                throw $this->createNotFoundException('No se pudo encontrar el Usuario.');
+            }
 
+            $em->remove($entity);
+            $em->flush();*/
+            
         return $this->render('HffBlogBundle:Usuarios:login.html.twig', array(
             'last_username' => $sesion->get(SecurityContext::LAST_USERNAME),
             'error'         => $error

@@ -11,7 +11,7 @@ class ComentariosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('mensaje','textarea',array('label'=>'Comentario','attr' => array('rows' => '8','cols' => '80')))
+            ->add('mensaje','textarea',array('label'=>'Comentario','attr' => array('class' => 'ckeditor', 'rows' => '8','cols' => '80')))
         ;
        
     }
@@ -25,7 +25,7 @@ class ComentariosType extends AbstractType
 
     public function getName()
     {
-        return 'comentarios';
+        return 'frmComentarios';
     }
 }
 

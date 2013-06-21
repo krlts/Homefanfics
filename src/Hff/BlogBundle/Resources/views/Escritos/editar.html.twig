@@ -1,4 +1,17 @@
 {% extends '::base.html.twig' %}
-
+{% block title %}{{ entity.titulo }}{% endblock %}
 {% block body -%}
+
+<form action="{{ path('escrito_actualizar', {'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <div class="hero-unit">
+
+    {{ form_widget(edit_form)}}  
+    <p>
+        <button style="color: black" class="btn btn-warning" type="submit"><i class="icon-pencil"></i> Editar Escrito</button>
+    </p>
+        </div>
+</form>
+
+
+
 {% endblock %}
