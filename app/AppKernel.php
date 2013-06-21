@@ -27,14 +27,12 @@ class AppKernel extends Kernel
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             //new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
            
-            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
 
-            new Bc\Bundle\BootstrapBundle\BcBootstrapBundle(),
+            new Bc\Bundle\BootstrapBundle\BcBootstrapBundle()
             
-            new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle()
             
 
         );
