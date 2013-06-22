@@ -169,7 +169,7 @@ class EscritosController extends Controller{
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('escrito_editar', array('id' => $id)));
+            return $this->redirect($this->generateUrl('escrito_ver', array('id' => $id)));
         }
 
         return array(
