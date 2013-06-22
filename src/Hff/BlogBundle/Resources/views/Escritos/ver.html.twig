@@ -1,6 +1,8 @@
 {% extends '::base.html.twig' %}
 {% block title %}{{ entity.titulo }}{% endblock %}
 {% block body -%}
+{# Si el archivo está publicado#}
+{% if entity.publicado == true %}
 <div class="hero-unit">
     
     <h2>{{ entity.titulo }}
@@ -14,23 +16,36 @@
 <p><small>Publicado por</small> <a href="{{path('usuario_ver', {'id': app.user.id })}}">{{ entity.usuario }}</a>
     
     <small>el {{ entity.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ entity.fechaCreacion | date('G:i') }}</small></p>
-    
+{% if entity.intro|length > 0 %}    
 <article>{{ entity.intro | raw }}</article>
+<hr />
+{% endif%}
 
 <article>{{ entity.contenido | raw }}</article>
 
 <p><small>Categoría:</small> {{entity.categoria}} <small class=" pull-right">Visto: {%if entity.totalVistas == 1%} 1 vez{% else %}{{entity.totalVistas}} veces {% endif %}</small></p>
-</div>
 
-<div class="hero-unit">
-<form action="{{ path('comentario_crear') }}" method="post">
+
+</div>
+{% if entity.comentariosHabilitados == true %}
+
         {% if entity.totalComentarios == 0 %} 
         <small class="pull-right">Se el primero en comentar</small>
         {% else %}
         <small class="pull-right">{{entity.totalComentarios}} Comentarios</small>
         {% endif %}
+        {{ render(controller('HffBlogBundle:Comentarios:nuevo')) }}
+{% endif %}
+{# Si el archivo está publicado#}
+{% else %}
+<div class="hero-unit">
+    <h2>Despublicado</h2>
+    
+    <p>El escrito <b style="font-size:110%">{{ entity.titulo }}</b> ha sido despublicado y no se encuentra disponible</p>
+    
+    <a title="Ir a la página de Inicio" href="{{ path('inicio') }}"><button class="btn btn-success" ><i class="icon-hand-up icon-white"></i>  Ir a página de Inicio</button></a>
+    
+</div>
 
-          ><button class="btn btn-success" type="submit">Ingresar Comentario</button>
-    </form>
-    </div>
+{% endif %}
 {% endblock %}

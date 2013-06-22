@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
-
+{% block title %}Nuevo Comentario{% endblock %}
 {% block body -%}
-<h3>Ingresar nuevo Comentario</h3>
+<div class="hero-unit">
 
 <form action="{{ path('comentario_crear') }}" method="post" {{ form_enctype(form) }}>
 
@@ -15,5 +15,6 @@
         </tr>
     </table> 
 </form>
+</div>
 {% endblock %}
 

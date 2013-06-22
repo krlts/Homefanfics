@@ -14,7 +14,7 @@ class EscritosType extends AbstractType{
 
         $builder
            // ->add('usuario','text',array('value'=>$usuario))
-            ->add('titulo','text',array('label'=>'Título','attr'=>array('size' => '80', 'placeholder' => 'Ingresa el Título', 'title' => 'Ingresa el Título','maxlength' => '255')))
+            ->add('titulo','text',array('label'=>'Título','attr'=>array('class' => 'input-block-level','size' => '80', 'placeholder' => 'Ingresa el Título', 'title' => 'Ingresa el Título','maxlength' => '255')))
             ->add('categoria', 'entity', array(
                 'class' => 'Hff\\BlogBundle\\Entity\\Categorias',
                 'empty_value' => '-Seleccionar Categoría-',
@@ -24,7 +24,7 @@ class EscritosType extends AbstractType{
                 },
             ))
             //->add('usuario')//,'text',array('value'=>$username))           
-            ->add('tags','text',array('label'=>'Etiquetas', 'required' => false,'attr'=>array('size' => '80',' placeholder' => 'Etiquetas, Tags', 'title' => 'Etiquetas, Tags','maxlength' => '255')))
+            ->add('tags','text',array('label'=>'Etiquetas', 'required' => false,'attr'=>array('class' => 'input-block-level','size' => '80',' placeholder' => 'Etiquetas, Tags', 'title' => 'Etiquetas, Tags','maxlength' => '255')))
             //->add('intro','ckeditor',array('label'=>'Introducción','attr' => array('class' => 'ckeditor')))
           //  ->add('contenido','ckeditor',array('attr' => array('class' => 'ckeditor')))
                     ->add('intro', 'ckeditor', array(
