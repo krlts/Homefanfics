@@ -14,7 +14,7 @@
         <link href="{{ asset('css/bootswatch.css') }}" type="text/css" rel="stylesheet" />
         <link href="{{ asset('css/bootstrap.min..css') }}" type="text/css" rel="stylesheet" />
         <link href="{{ asset('css/bootstrap-responsive.min.css') }}" type="text/css" rel="stylesheet" />
-        
+
         {% endblock %} 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -35,94 +35,96 @@
             {% if app.user != NULL %}
                                         <li><a href="{{path('escrito_nuevo')}}"><img alt="Nuevo Escrito" title="Nuevo Escrito" src="{{ asset('img/escritos2.png') }}" ></a></li>
             {% endif %}
-
-                                                <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">Action</a></li>
-                                                        <li><a href="#">Another action</a></li>
-                                                        <li><a href="#">Something else here</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">Separated link</a></li>
-                                                    </ul>
+                                                <li>
+                                                    <select class="span2 navbar-search pull-left">
+                                                        <option>Más Recientes</option>
+                                                        <option>Más Vistos</option>
+                                                        <option>Más Comentados</option>
+                                                        <option>Mejor Votado</option>
+                                                        <option>Orden Alfabético</option>
+                                                    </select>
                                                 </li>
+
                                             </ul>
-                                            <form class="form-search navbar-search pull-left" action="#" method="post">
-                                                <div class="input-append">
-                                                    <input type="text" class="span2 search-query"  placeholder="Buscar">
-                                                    <button type="submit" class="btn"><i class=" icon-search"></i></button>
-                                                </div>
-                                            </form>
+
 
                                             <ul class="nav pull-right">
+                                                <li>
+                                                    <form class="form-search navbar-search pull-left" action="#" method="post">
+                                                        <div class="input-append">
+                                                            <input type="text" class="span2 search-query"  placeholder="Buscar">
+                                                            <button type="submit" class="btn"><i class=" icon-search"></i></button>
+                                                        </div>
+                                                    </form>
+                                                </li>
             {#si el usuario NO está logueado#}
             {% if app.user == NULL %}
-                                                    <li>
-                                                        <form action="{{ path('usuarios_login_check') }}" method="post">
-                                                            <table>
-                                                                <tr>
-                                                                    <td><input class="span2 search-query" type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Nombre de Usuario" title="Nombre de Usuario"/></td>
-                                                                    <td><input class="span2 search-query"type="password" id="password" name="_password" placeholder="Contraseña" title="Contraseña"/></td>
-                                                                    <td><input class="btn-primary" type="submit" name="login" value="{{ "Entrar" | trans }}" /></td>                                                                                                                                          </tr>
-                                                                <tr>
-                                                                    <td><label for="remember_me"><input type="checkbox" id="remember_me" name="_remember_me" checked /> <small>{{ "No cerrar sesión" }}</small></label></td>
-                                                                    <td colspan="2"><a href="{{ path('usuario_registrar') }}"><small>{{ "Regístrarse" | trans }}</small></a>
-                                                                        <a href="{{ path('usuario') }}"><small><i class="icon-question-sign"></i>{{ " Recuperar Contraseña" }}</small></a></td>
-                                                                </tr>
-                                                            </table> 
-                                                        </form>
-                                                    </li>
+                                                <li>
+                                                    <form action="{{ path('usuarios_login_check') }}" method="post">
+                                                        <table>
+                                                            <tr>
+                                                                <td><input class="span2 search-query" type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Nombre de Usuario" title="Nombre de Usuario"/></td>
+                                                                <td><input class="span2 search-query"type="password" id="password" name="_password" placeholder="Contraseña" title="Contraseña"/></td>
+                                                                <td><input class="btn-primary" type="submit" name="login" value="{{ "Entrar" | trans }}" /></td>                                                                                                                                          </tr>
+                                                            <tr>
+                                                                <td><label for="remember_me"><input type="checkbox" id="remember_me" name="_remember_me" checked /> <small>{{ "No cerrar sesión" }}</small></label></td>
+                                                                <td colspan="2"><a href="{{ path('usuario_registrar') }}"><small>{{ "Regístrarse" | trans }}</small></a>
+                                                                    <a href="{{ path('usuario') }}"><small><i class="icon-question-sign"></i>{{ " Recuperar Contraseña" }}</small></a></td>
+                                                            </tr>
+                                                        </table> 
+                                                    </form>
+                                                </li>
             {% endif %}
             {#verificar si el usuario está logueado#}
             {% if app.user != NULL %}
-                                                    <li><a href="{{path('usuario_ver', {'id': app.user.id })}}"><img class="avatar" title="{{app.user|capitalize}}" src="{{ asset('img/usuario.png') }}" >  {{app.user|capitalize}}</a></li>
-                                                    <li class="divider-vertical"></li>
-                                                    <li class="dropdown">
-                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Config" title="Configuración" src="{{ asset('img/config.png') }}" ><b class="caret"></b></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="#"><i class="icon-globe"></i> Notificaciones</a></li>
-                                                            <li><a href="#"><i class="icon-list-alt"></i> Comentarios</a></li>
-                                                            <li><a href="#"><i class="icon-envelope"></i> Mensajes</a></li>
-                                                            <li><a href="#"><i class="icon-calendar"></i> Noticias</a></li>
-                                                            <li><a href="#"><i class="icon-heart"></i> Favoritos</a></li>
-                                                            <li><a href="#"><i class="icon-book"></i> Tus Escritos</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#"><i class="icon-wrench"></i> Configuración</a></li>
-                                                            <li><a href="#"><i class="icon-info-sign"></i> Información</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="{{path('usuarios_logout')}}"><i class="icon-remove"></i> Salir</a></li>
-                                                        </ul>
-                                                    </li>
+                                                <li><a href="{{path('usuario_ver', {'id': app.user.id })}}"><img class="avatar" title="{{app.user|capitalize}}" src="{{ asset('img/usuario.png') }}" >  {{app.user|capitalize}}</a></li>
+                                                <li class="divider-vertical"></li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Config" title="Configuración" src="{{ asset('img/config.png') }}" ><b class="caret"></b></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#"><i class="icon-globe"></i> Notificaciones</a></li>
+                                                        <li><a href="#"><i class="icon-comment"></i> Comentarios</a></li>
+                                                        <li><a href="#"><i class="icon-envelope"></i> Mensajes</a></li>
+                                                        <li><a href="#"><i class="icon-calendar"></i> Noticias</a></li>
+                                                        <li><a href="#"><i class="icon-heart"></i> Favoritos</a></li>
+                                                        <li><a href="#"><i class="icon-book"></i> Mis Escritos</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="#"><i class="icon-wrench"></i> Configuración</a></li>
+                                                        <li><a href="#"><i class="icon-info-sign"></i> Información</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="{{path('usuarios_logout')}}"><i class="icon-remove"></i> Salir</a></li>
+                                                    </ul>
+                                                </li>
             {% endif %}
-                                                </ul>
-                                            </div><!-- /.nav-collapse -->
-                                        </div>
-                                    </div><!-- /navbar-inner -->
-                                </nav>
-                            </div>
-                    {#% endblock %#}
+                                            </ul>
+                                        </div><!-- /.nav-collapse -->
+                                    </div>
+                                </div><!-- /navbar-inner -->
+                            </nav>
                         </div>
-                        <div class="container">
+                    {#% endblock %#}
+                    </div>
+                    <div class="container">
                 {% block body %}<div></div>{% endblock %}
 
-                                <div id="footer">
+                            <div id="footer">
                 {% block footer %}
-                                        <section footer>
-                                            <small>Homefanfics - "Leer te hace libre" - {{'now'|date('Y')}} - Diseñado y creado por Carlos Matamala</small>
-                                        </section>
+                                    <section footer>
+                                        <small>Homefanfics - "Leer te hace libre" - {{'now'|date('Y')}} - Diseñado y creado por Carlos Matamala</small>
+                                    </section>
                 {% endblock %}
-                                    </div>
                                 </div>
+                            </div>
 
 
 {% block javascripts %}
-                                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-                                <script src="{{ asset('js/jquery.js') }}"></script>
-                                <script src="{{ asset('js/bootswatch.js') }}"></script>
-                                <script src="{{ asset('js/jquery.smooth-scroll.min.js') }}"></script>
-                                <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-                                <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
+                            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                            <script src="{{ asset('js/jquery.js') }}"></script>
+                            <script src="{{ asset('js/bootswatch.js') }}"></script>
+                            <script src="{{ asset('js/jquery.smooth-scroll.min.js') }}"></script>
+                            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+                            <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
 {% endblock %}
 
-                            </body>
-                        </html>
+                        </body>
+                    </html>
