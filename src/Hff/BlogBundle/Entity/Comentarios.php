@@ -165,10 +165,9 @@ class Comentarios
     /**
      * Set escrito
      *
-     * @param integer $escrito
      * @return Comentarios
      */
-    public function setEscrito($escrito)
+    public function setEscrito( $escrito)
     {
         $this->escrito = $escrito;
 
@@ -194,6 +193,7 @@ class Comentarios
         $this->setFechaCreacion(new \DateTime());
         $this->setFechaModificacion(new \DateTime());
         $this->setEstado(1);
-        $this->setEscrito(new Escritos());
+        $this->setMensaje('');
+        $this->setEscrito(0);
     }
 }

@@ -4,6 +4,7 @@ namespace Hff\BlogBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\DataTransformerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -59,15 +60,18 @@ class ComentariosController extends Controller{
     /**
      * Despliega el formulario para crear una nueva entity Comentarios.
      *
-     * @Route("/nuevo", name="comentario_nuevo")
+     * @Route("/{id}", name="comentario_nuevo")
      * @Method("GET")
      * @Template()
      */
-    public function nuevoAction()
-    {
+    public function nuevoAction($id)
+    {     
         $entity = new Comentarios();
-        $form   = $this->createForm(new ComentariosType(), $entity);
+        $entity->setEscrito($id);
 
+        $form   = $this->createForm(new ComentariosType(), $entity);
+        
+         
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),

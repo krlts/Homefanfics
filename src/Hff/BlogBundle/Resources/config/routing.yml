@@ -105,7 +105,7 @@ comentario_crear:
     defaults: { _controller: HffBlogBundle:Comentarios:crear } 
     
 comentario_nuevo:
-    pattern:  /comentario/nuevo
+    pattern:  /comentario/nuevo/{id}
     defaults: { _controller: HffBlogBundle:Comentarios:nuevo }
     
 comentario_ver:

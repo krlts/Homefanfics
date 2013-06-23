@@ -54,8 +54,10 @@
             <small class="pull-right">{{entity.totalComentarios}} Comentarios</small>
         {% endif %}
             <br>
-        {{ render(controller('HffBlogBundle:Comentarios:nuevo') ) }}
-            
+        {{ render(controller('HffBlogBundle:Comentarios:nuevo', {'id': entity.id } )  ) }}
+
+
+            {#<input type='text' id="frmComentarios_escrito" value='{{entity.id}}'>#}
         </div>       
 {% endif %}
 {# Si el archivo está publicado#}
