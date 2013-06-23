@@ -29,22 +29,21 @@
                         <a class="brand" href="{{path('inicio')}}"><img name="logoHFF" src="{{ asset('img/logo.png') }}" > Homefanfics</a>
                         <div class="nav-collapse">
                             <ul class="nav">
-                                <li class="active"><a href="#"><img alt="Escritos" title="Escritos" src="{{ asset('img/escritos.png') }}" ></a></li>
+                                <li>
+                                    <select class="span2 navbar-search pull-left">
+                                        <option>Más Recientes</option>
+                                        <option>Más Vistos</option>
+                                        <option>Más Comentados</option>
+                                        <option>Mejor Votado</option>
+                                        <option>Orden Alfabético</option>
+                                    </select>
+                                </li>
+                                <li><a href="#"><img alt="Escritos" title="Escritos" src="{{ asset('img/escritos.png') }}" ></a></li>
                                 <li><a href="#"><img alt="Autores" title="Autores" src="{{ asset('img/autores.png') }}" ></a></li>
             {#verificar si el usuario está logueado#}
             {% if app.user != NULL %}
                                         <li><a href="{{path('escrito_nuevo')}}"><img alt="Nuevo Escrito" title="Nuevo Escrito" src="{{ asset('img/escritos2.png') }}" ></a></li>
             {% endif %}
-                                                <li>
-                                                    <select class="span2 navbar-search pull-left">
-                                                        <option>Más Recientes</option>
-                                                        <option>Más Vistos</option>
-                                                        <option>Más Comentados</option>
-                                                        <option>Mejor Votado</option>
-                                                        <option>Orden Alfabético</option>
-                                                    </select>
-                                                </li>
-
                                             </ul>
 
 

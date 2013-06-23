@@ -4,7 +4,7 @@
 {# Si el archivo está publicado#}
 {% if entity.publicado == true %}
 <div class="hero-unit">
-    
+
     <h2>{{ entity.titulo }}
         {% if entity.usuario.id == app.user.id %}
             <button class="btn btn-success pull-right" type="submit"><a style="color: white" href="{{ path('escrito_editar', {'id': entity.id }) }}"><i class="icon-pencil icon-white"></i> Editar</a></button>
@@ -13,41 +13,61 @@
         {% endif %}
         </h2>
 
-<p><small>Publicado por</small> <a href="{{path('usuario_ver', {'id': app.user.id })}}"><b>{{ entity.usuario }}</b></a>
-    
-    <small>el {{ entity.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ entity.fechaCreacion | date('G:i') }}</small></p>
+        <p><small>Publicado por</small> <a href="{{path('usuario_ver', {'id': app.user.id })}}"><b>{{ entity.usuario|capitalize }}</b></a>
+
+            <small>el {{ entity.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ entity.fechaCreacion | date('G:i') }}</small></p>
 {% if entity.intro|length > 0 %}    
-<article>{{ entity.intro | raw }}</article>
-<hr />
+        <article>{{ entity.intro | raw }}</article>
+        <hr />
 {% endif%}
 
-<article>{{ entity.contenido | raw }}</article>
+        <article>{{ entity.contenido | raw }}</article>
 
-<p><small>Categoría:</small> {{entity.categoria}} <small class=" pull-right">Visto: {%if entity.totalVistas == 1%} 1 vez{% else %}{{entity.totalVistas}} veces {% endif %}</small></p>
+        <p><small>Categoría:</small> {{entity.categoria|capitalize}} <small class=" pull-right">Visto: {%if entity.totalVistas == 1%} 1 vez{% else %}{{entity.totalVistas}} veces {% endif %}</small></p>
+        <p>
+                <div class="btn-group pull-left">
+                    <a class="btn" href="#"><i class="icon-arrow-left"></i> Anterior</a>
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">de {{entity.usuario|capitalize}}</a></li>
+                            <li><a href="#">{{entity.categoria|capitalize}}</a></li>
+                        </ul>
+                </div>
+                <div class="btn-group pull-right">
+                        <a class="btn" href="{{path('escrito_ver', {'id': entity.id + 1 })}}">Siguiente <i class="icon-arrow-right"></i></a>
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">de {{entity.usuario|capitalize}}</a></li>
+                            <li><a href="#">{{entity.categoria|capitalize}}</a></li>
+                        </ul>
+                </div>
+        </p>
+        <br>
 
-
-</div>
+    </div>
 
 {% if entity.comentariosHabilitados == true %}
-<div class="hero-unit">
+    <div class="hero-unit">
         {% if entity.totalComentarios == 0 %} 
-        <small class="pull-right">Se el primero en comentar</small>
+            <small class="pull-right">Se el primero en comentar</small>
         {% else %}
-        <small class="pull-right">{{entity.totalComentarios}} Comentarios</small>
+            <small class="pull-right">{{entity.totalComentarios}} Comentarios</small>
         {% endif %}
+            <br>
         {{ render(controller('HffBlogBundle:Comentarios:nuevo') ) }}
-    </div>       
+            
+        </div>       
 {% endif %}
 {# Si el archivo está publicado#}
 {% else %}
-<div class="hero-unit">
-    <h2>Despublicado</h2>
-    
-    <p>El escrito <b style="font-size:110%">{{ entity.titulo }}</b> ha sido despublicado y no se encuentra disponible</p>
-    
-    <a title="Ir a la página de Inicio" href="{{ path('inicio') }}"><button class="btn btn-success" ><i class="icon-hand-up icon-white"></i>  Ir a página de Inicio</button></a>
-    
-</div>
+        <div class="hero-unit">
+            <h2>Despublicado</h2>
+
+            <p>El escrito <b style="font-size:110%">{{ entity.titulo }}</b> ha sido despublicado y no se encuentra disponible</p>
+
+            <a title="Ir a la página de Inicio" href="{{ path('inicio') }}"><button class="btn btn-success" ><i class="icon-hand-up icon-white"></i>  Ir a página de Inicio</button></a>
+
+        </div>
 
 {% endif %}
 {% endblock %}

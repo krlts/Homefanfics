@@ -27,7 +27,7 @@ class EscritosType extends AbstractType{
             ->add('tags','text',array('label'=>'Etiquetas', 'required' => false,'attr'=>array('class' => 'input-block-level','size' => '80',' placeholder' => 'Etiquetas, Tags', 'title' => 'Etiquetas, Tags','maxlength' => '255')))
             //->add('intro','ckeditor',array('label'=>'Introducción','attr' => array('class' => 'ckeditor')))
           //  ->add('contenido','ckeditor',array('attr' => array('class' => 'ckeditor')))
-                    ->add('intro', 'ckeditor', array(
+                    ->add('intro', 'ckeditor', array('label'=>'Introducción  (es Optativa)',
     'config' => array(
         'toolbar' => array(
             array(
