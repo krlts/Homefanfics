@@ -27,6 +27,6 @@ class CategoriasType extends AbstractType
 
     public function getName()
     {
-        return 'categoria';
+        return 'frmCategoria';
     }
 }

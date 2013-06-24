@@ -22,6 +22,7 @@
 {% endif%}
 
         <article>{{ entity.contenido | raw }}</article>
+        <article>{% set cont = entity.contenido| striptags | truncate(300) %} {{cont | raw}}</article>
 
         <p><small>Categoría:</small> {{entity.categoria|capitalize}} <small class=" pull-right">Visto: {%if entity.totalVistas == 1%} 1 vez{% else %}{{entity.totalVistas}} veces {% endif %}</small></p>
         <p>
@@ -49,11 +50,20 @@
 {% if entity.comentariosHabilitados == true %}
     <div class="hero-unit">
         {% if entity.totalComentarios == 0 %} 
-            <small class="pull-right">Se el primero en comentar</small>
+            <b><small class="pull-left">Se el primero en comentar</small></b>
         {% else %}
-            <small class="pull-right">{{entity.totalComentarios}} Comentarios</small>
+            {% if  entity.totalComentarios == 1 %}
+            <b><small class="pull-left">1 Comentario</small></b>
+            {% else %}
+            <b><small class="pull-left">{{entity.totalComentarios}} Comentarios</small></b>
+            {% endif %}
+            <br>
+            {% for comentario in comentarios %}
+            {{ render(controller('HffBlogBundle:Comentarios:ver', {'id': comentario.id } )  ) }}
+            {%endfor %}
         {% endif %}
             <br>
+            
         {{ render(controller('HffBlogBundle:Comentarios:nuevo', {'id': entity.id } )  ) }}
 
 

@@ -25,6 +25,6 @@ class AutoresType extends AbstractType
 
     public function getName()
     {
-        return 'autores';
+        return 'frmAutor';
     }
 }

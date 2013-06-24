@@ -21,7 +21,7 @@ class ContactosType extends AbstractType
 
     public function getName()
     {
-        return 'contacto';
+        return 'frmContacto';
     }
 }
 ?>

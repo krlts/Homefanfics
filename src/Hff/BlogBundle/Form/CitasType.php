@@ -25,6 +25,6 @@ class CitasType extends AbstractType
 
     public function getName()
     {
-        return 'citas';
+        return 'frmCita';
     }
 }

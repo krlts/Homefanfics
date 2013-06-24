@@ -58,6 +58,13 @@ class Comentarios
      * @ORM\Column(name="escrito", type="integer")
      */
     private $escrito;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="emisor", type="integer")
+     */
+    private $emisor;
 
 
     /**
@@ -184,6 +191,28 @@ class Comentarios
         return $this->escrito;
     }
     
+    /**
+     * Set emisor
+     *
+     * @return Comentarios
+     */
+    public function setEmisor( $emisor)
+    {
+        $this->emisor = $emisor;
+
+        return $this;
+    }
+
+    /**
+     * Get emisor
+     *
+     * @return integer 
+     */
+    public function getEmisor()
+    {
+        return $this->emisor;
+    }
+    
     public function __toString() {
         if($this->getMensaje()==NULL)
             return '';
@@ -195,5 +224,6 @@ class Comentarios
         $this->setEstado(1);
         $this->setMensaje('');
         $this->setEscrito(0);
+        $this->setEmisor(0);
     }
 }

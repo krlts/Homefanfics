@@ -39,7 +39,7 @@ class UsuariosType extends AbstractType{
      */
     public function getName()
     {
-        return 'usuario_form';
+        return 'frmUsuario';
     }
 }
 ?>

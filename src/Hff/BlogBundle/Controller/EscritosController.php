@@ -47,7 +47,7 @@ class EscritosController extends Controller{
         $em = $this->getDoctrine()->getManager();
         
         $usuarioLogueado = $this->get('security.context')->getToken()->getUser();
-        $entity->setUsuario($usuarioLogueado);
+        $entity->setUsuario($usuarioLogueado->getId());
         
         $form = $this->createForm(new EscritosType(), $entity);
         
@@ -103,6 +103,7 @@ class EscritosController extends Controller{
             throw $this->createNotFoundException('No se pudo encontrar el Escrito');
         }
         $entity->setTotalVistas( $entity->getTotalVistas() +1 ) ;
+        $comentarios = $this->mostrarComentarios($entity->getId());
         $em->persist($entity);
         $em->flush();
         
@@ -110,6 +111,7 @@ class EscritosController extends Controller{
 
         return array(
             'entity'      => $entity,
+            'comentarios' => $comentarios,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -205,6 +207,14 @@ class EscritosController extends Controller{
         return $this->redirect($this->generateUrl('escrito'));
     }
 
+    public function mostrarComentarios($escritoId)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $comentarios = $em->getRepository('HffBlogBundle:Comentarios')->findPublicados($escritoId);
+    
+        return $comentarios;
+    }
     /**
      * Creates a form to delete a Escritos entity by id.
      *
@@ -219,6 +229,7 @@ class EscritosController extends Controller{
             ->getForm()
         ;
     }
+    
 }
 
 ?>

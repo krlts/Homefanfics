@@ -4,7 +4,6 @@ namespace Hff\BlogBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\DataTransformerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -45,10 +44,12 @@ class ComentariosController extends Controller{
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $escrito = $em->getRepository('HffBlogBundle:Escritos')->findOneById($entity->getEscrito());
+            $escrito->setTotalComentarios($escrito->getTotalComentarios()+1);
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('comentario_ver', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('escrito_ver', array('id' => $entity->getEscrito())));
         }
 
         return array(
@@ -68,6 +69,11 @@ class ComentariosController extends Controller{
     {     
         $entity = new Comentarios();
         $entity->setEscrito($id);
+        
+        $usuarioLogueado = $this->get('security.context')->getToken()->getUser();
+        $entity->setEmisor($usuarioLogueado->getId());
+        $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
 
         $form   = $this->createForm(new ComentariosType(), $entity);
         
@@ -91,14 +97,18 @@ class ComentariosController extends Controller{
 
         $entity = $em->getRepository('HffBlogBundle:Comentarios')->find($id);
 
+       
+
         if (!$entity) {
             throw $this->createNotFoundException('No se pudo encontrar el Comentario');
         }
-
+        $emisor = $em->getRepository('HffBlogBundle:Usuarios')->findOneById($entity->getEmisor());
+        
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity'      => $entity,
+            'emisor'      => $emisor,
             'delete_form' => $deleteForm->createView(),
         );
     }

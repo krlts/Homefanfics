@@ -1,5 +1,11 @@
-{% extends '::base.html.twig' %}
+<table class="table-bordered table-hover input-block-level">
+    <tr>
+        <td><small>Comentado por </small><a href="{{ path('usuario_ver', {'id': entity.emisor }) }}">{{emisor.usuario}}</a>
+            <small> el {{ entity.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ entity.fechaCreacion | date('G:i') }} </small></td>
+    </tr>
+    <tr >
+        <td><p>{{ entity.mensaje|raw }}</p></td>
+    </tr>  
+</table>
 
-{% block body -%}
-{% endblock %}
 

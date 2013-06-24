@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class ComentariosRepository extends EntityRepository
 {
+    public function findPublicados($escrito)
+    {
+        $em = $this->getEntityManager();
+        $dql = 'SELECT c FROM HffBlogBundle:Comentarios c WHERE c.escrito = :escrito AND c.estado = :publicado';
+        $query = $em->createQuery($dql)
+                ->setParameter('escrito', $escrito)
+                ->setParameter('publicado', 1);
+        return $query->getResult();
+    }
 }

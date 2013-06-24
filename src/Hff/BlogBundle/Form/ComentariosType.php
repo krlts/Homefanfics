@@ -11,7 +11,8 @@ class ComentariosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('mensaje', 'textarea', array('label' => 'Comentario', 'attr'=>array('cols'=>'160', 'class'=>'input-block-level')))
-               ->add('escrito','hidden');
+               ->add('escrito','hidden')
+        ->add('emisor','hidden');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -23,7 +24,7 @@ class ComentariosType extends AbstractType
 
     public function getName()
     {
-        return 'frmComentarios';
+        return 'frmComentario';
     }
 }
 

@@ -137,7 +137,7 @@ class EscritosType extends AbstractType{
 
     public function getName()
     {
-        return 'frmEscritos';
+        return 'frmEscrito';
     }
 }
 
