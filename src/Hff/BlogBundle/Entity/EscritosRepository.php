@@ -15,14 +15,20 @@ class EscritosRepository extends EntityRepository
     public function findAllOrderedByTitulo()
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT e FROM HffBlogBundle:Escritos c ORDER BY c.titulo ASC')
+            ->createQuery('SELECT e FROM HffBlogBundle:Escritos e ORDER BY e.titulo ASC')
             ->getResult();
     }
     
     public function findAllOrderedByTituloDesc()
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT e FROM HffBlogBundle:Escritos c ORDER BY c.titulo DESC')
+            ->createQuery('SELECT e FROM HffBlogBundle:Escritos e ORDER BY e.titulo DESC')
+            ->getResult();
+    }
+    public function findAllEscritosRecientes()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT e FROM HffBlogBundle:Escritos e ORDER BY e.id DESC')
             ->getResult();
     }
   

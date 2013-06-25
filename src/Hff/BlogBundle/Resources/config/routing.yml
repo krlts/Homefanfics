@@ -142,6 +142,10 @@ escrito_ver:
     pattern:  /escrito/ver/{id}
     defaults: { _controller: HffBlogBundle:Escritos:ver }
     
+escrito_preview1:
+    pattern:  /escrito/preview1/{id}
+    defaults: { _controller: HffBlogBundle:Escritos:preview1 }    
+    
 escrito_editar:
     pattern:  /escrito/editar/{id}
     defaults: { _controller: HffBlogBundle:Escritos:editar }  

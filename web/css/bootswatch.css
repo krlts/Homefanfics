@@ -22,6 +22,12 @@ section {
     border: 1px solid #ddd ;
 }
 
+.avatar2 {
+    height: 64px;
+    width: 64px;
+    border: 1px solid #ddd ;
+}
+
 
 .hero-unit small {
     

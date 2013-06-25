@@ -28,11 +28,9 @@ class EscritosController extends Controller{
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('HffBlogBundle:Escritos')->findAll();
+        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllEscritosRecientes();
 
-        return array(
-            'entities' => $entities,
-        );
+        return array('escritos' => $escritos);
     }
     /**
      * Crear una nueva Entidad Escritos.
@@ -115,7 +113,26 @@ class EscritosController extends Controller{
             'delete_form' => $deleteForm->createView(),
         );
     }
+    
+    /**
+     * Finds and displays a preview of Escritos entity.
+     *
+     * @Route("/{id}", name="escrito_preview1")
+     * @Method("GET")
+     * @Template()
+     */
+    public function preview1Action($id)
+    {
+        $em = $this->getDoctrine()->getManager();
 
+        $entity = $em->getRepository('HffBlogBundle:Escritos')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('No se pudo encontrar el Escrito');
+        }   
+
+        return array('entity'  => $entity,);
+    }
     /**
      * Displays a form to edit an existing Escritos entity.
      *

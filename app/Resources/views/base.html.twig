@@ -38,7 +38,7 @@
                                         <option>Orden Alfabético</option>
                                     </select>
                                 </li>
-                                <li><a href="#"><img alt="Escritos" title="Escritos" src="{{ asset('img/escritos.png') }}" ></a></li>
+                                <li><a href="{{ path('escrito') }}"><img alt="Escritos" title="Escritos" src="{{ asset('img/escritos.png') }}" ></a></li>
                                 <li><a href="#"><img alt="Autores" title="Autores" src="{{ asset('img/autores.png') }}" ></a></li>
             {#verificar si el usuario está logueado#}
             {% if app.user != NULL %}

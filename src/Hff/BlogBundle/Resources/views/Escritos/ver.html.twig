@@ -22,7 +22,6 @@
 {% endif%}
 
         <article>{{ entity.contenido | raw }}</article>
-        <article>{% set cont = entity.contenido| striptags | truncate(300) %} {{cont | raw}}</article>
 
         <p><small>Categoría:</small> {{entity.categoria|capitalize}} <small class=" pull-right">Visto: {%if entity.totalVistas == 1%} 1 vez{% else %}{{entity.totalVistas}} veces {% endif %}</small></p>
         <p>

@@ -1,4 +1,24 @@
 {% extends '::base.html.twig' %}
 {% block title %}Escritos{% endblock %}
-{% block body -%}
+{% block body %}
+<div class="hero-unit">
+{% for i in 0..5 if (i < escritos|length) %}
+{{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escritos[i].id } )  ) }}
+{% endfor %}
+
+<table class="table-condensed">
+{% for i in 3..9 %}
+        <tr>
+            {% set n = 2*i %}
+            {% if n < escritos|length %}
+            <td>{{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escritos[n].id } )  ) }}</td>
+            {% endif %}
+            {% if n < (escritos|length - 1) %}
+            <td>{{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escritos[n+1].id } )  ) }}</td>
+            {% endif %}
+        </tr>
+    
+{% endfor %}       
+</table>
+ </div>
 {% endblock %}
