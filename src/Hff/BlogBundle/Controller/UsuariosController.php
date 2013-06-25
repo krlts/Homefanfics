@@ -149,11 +149,13 @@ class UsuariosController extends Controller
             throw $this->createNotFoundException('No se pudo encontrar el Usuario.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllEscritosByUsuario($id);
+        $comentarios = $em->getRepository('HffBlogBundle:Comentarios')->findPublicadosByEmisor($id);
 
         return array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+            'escritos' => $escritos,
+            'comentarios' => $comentarios,
         );
     }
 
@@ -182,6 +184,39 @@ class UsuariosController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
+    }
+    
+    /**
+     * Finds and displays a preview of Escritos entity.
+     *
+     */
+    public function mostrarMisEscritos($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllEscritosByUsuario($id);
+
+        if (!$escritos) {
+            throw $this->createNotFoundException('No se pudo encontrar algún Escrito');
+        }   
+
+        return array('escritos'  => $escritos,);
+    }
+    /**
+     * Finds and displays a preview of Escritos entity.
+     *
+     */
+    public function mostrarMisComentarios($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $comentarios = $em->getRepository('HffBlogBundle:Comentarios')->findAllByEmisor($id);
+
+        if (!$comentarios) {
+            throw $this->createNotFoundException('No se pudo encontrar algún Escrito');
+        }   
+
+        return array('comentarios'  => $comentarios,);
     }
 
     /**

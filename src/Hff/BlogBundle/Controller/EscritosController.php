@@ -133,6 +133,7 @@ class EscritosController extends Controller{
 
         return array('entity'  => $entity,);
     }
+ 
     /**
      * Displays a form to edit an existing Escritos entity.
      *

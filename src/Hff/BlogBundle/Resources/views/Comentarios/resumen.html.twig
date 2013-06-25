@@ -1,0 +1,10 @@
+{% for comentario in comentarios %} 
+<table class="table-bordered table-hover input-block-level">
+    <tr>
+        <td><small>En {{comentario.escrito}}{{ comentario.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ comentario.fechaCreacion | date('G:i') }} </small></td>
+    </tr>
+    <tr >
+        <td><p>{{ comentario.mensaje|raw }}</p></td>
+    </tr>  
+</table>
+{% endfor %}

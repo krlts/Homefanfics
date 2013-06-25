@@ -124,6 +124,10 @@ comentario_actualizar:
     pattern:  /comentario/actualizar/{id}
     defaults: { _controller: HffBlogBundle:Comentarios:actualizar }
     
+comentario_resumen:
+    pattern:  /comentario/resumen/{id}/
+    defaults: { _controller: HffBlogBundle:Comentarios:resumen }   
+    
 # ESCRITOS ***************************************************      
     
 escrito:
@@ -144,7 +148,7 @@ escrito_ver:
     
 escrito_preview1:
     pattern:  /escrito/preview1/{id}
-    defaults: { _controller: HffBlogBundle:Escritos:preview1 }    
+    defaults: { _controller: HffBlogBundle:Escritos:preview1 }   
     
 escrito_editar:
     pattern:  /escrito/editar/{id}
@@ -175,12 +179,11 @@ usuario_crear:
 usuario_nuevo:
     pattern:  /usuario/nuevo
     defaults: { _controller: HffBlogBundle:Usuarios:nuevo }
-
    
 usuario_ver:
     pattern:  /usuario/ver/{id}
-    defaults: { _controller: HffBlogBundle:Usuarios:ver }
-    
+    defaults: { _controller: HffBlogBundle:Usuarios:ver }   
+   
 usuario_editar:
     pattern:  /usuario/editar/{id}
     defaults: { _controller: HffBlogBundle:Usuarios:editar }  

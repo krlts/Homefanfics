@@ -12,14 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class EscritosRepository extends EntityRepository
 {
-    public function findAllOrderedByTitulo()
+    public function findAllTitulos()
     {
         return $this->getEntityManager()
             ->createQuery('SELECT e FROM HffBlogBundle:Escritos e ORDER BY e.titulo ASC')
             ->getResult();
     }
     
-    public function findAllOrderedByTituloDesc()
+    public function findAllTitulosDesc()
     {
         return $this->getEntityManager()
             ->createQuery('SELECT e FROM HffBlogBundle:Escritos e ORDER BY e.titulo DESC')
@@ -31,5 +31,25 @@ class EscritosRepository extends EntityRepository
             ->createQuery('SELECT e FROM HffBlogBundle:Escritos e ORDER BY e.id DESC')
             ->getResult();
     }
+    public function findAllEscritosByUsuario($usuario)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT e FROM HffBlogBundle:Escritos e WHERE e.usuario = :usuario ORDER BY e.id DESC')
+            ->setParameters(array('usuario' => $usuario))
+            ->getResult();
+    }
+    public function findAllMasComentados()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT e FROM HffBlogBundle:Escritos e ORDER BY e.totalComentarios DESC')
+            ->getResult();
+    }
+    public function findAllMasVistos()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT e FROM HffBlogBundle:Escritos e ORDER BY e.totalVistas DESC')
+            ->getResult();
+    }
+    
   
 }

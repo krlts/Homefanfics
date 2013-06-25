@@ -6,7 +6,7 @@
     </tr>
     <tr>
         <td>
-            <small>  Escrito por</small> <a href="{{path('usuario_ver', {'id': app.user.id })}}"><b>{{ entity.usuario|capitalize }}</b></a>
+            <small>  Escrito por</small> <a href="{{path('usuario_ver', {'id': entity.usuario.id })}}"><b>{{ entity.usuario|capitalize }}</b></a>
             <small>el {{ entity.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ entity.fechaCreacion | date('G:i') }}</small></td>
     </tr>
 </table>

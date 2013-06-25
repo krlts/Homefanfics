@@ -21,4 +21,13 @@ class ComentariosRepository extends EntityRepository
                 ->setParameter('publicado', 1);
         return $query->getResult();
     }
+    public function findPublicadosByEmisor($emisor)
+    {
+        $em = $this->getEntityManager();
+        $dql = 'SELECT c FROM HffBlogBundle:Comentarios c WHERE c.emisor = :emisor AND c.estado = :publicado';
+        $query = $em->createQuery($dql)
+                ->setParameter('emisor', $emisor)
+                ->setParameter('publicado', 1);
+        return $query->getResult();
+    }
 }
