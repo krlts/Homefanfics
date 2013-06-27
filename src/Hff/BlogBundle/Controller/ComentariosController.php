@@ -121,15 +121,15 @@ class ComentariosController extends Controller{
     {
         $em = $this->getDoctrine()->getManager();
         
-        $comentarios = $em->getRepository('HffBlogBundle:Comentarios')->findPublicadosByEmisor($id);
-
-        if (!$comentarios) {
+        $comentario = $em->getRepository('HffBlogBundle:Comentarios')->find($id);
+        if (!$comentario) {
             throw $this->createNotFoundException('El Usuario no ha hecho comentarios');
         }
-        $escrito = $em->getRepository('HffBlogBundle:Escritos')->find();
-
+        $escrito = $em->getRepository('HffBlogBundle:Escritos')->findOneById($comentario->getEscrito());
+        //$escrito = $comentario['escrito'];
         return array(
-            'comentarios' => $comentarios,
+            'comentario' => $comentario,
+            'escrito' => $escrito,
         );
     }
 

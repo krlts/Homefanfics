@@ -182,7 +182,11 @@ usuario_nuevo:
    
 usuario_ver:
     pattern:  /usuario/ver/{id}
-    defaults: { _controller: HffBlogBundle:Usuarios:ver }   
+    defaults: { _controller: HffBlogBundle:Usuarios:ver }  
+    
+usuario_miscomentarios:
+    pattern:  /usuario/miscomentarios
+    defaults: { _controller: HffBlogBundle:Usuarios:miscomentarios }  
    
 usuario_editar:
     pattern:  /usuario/editar/{id}

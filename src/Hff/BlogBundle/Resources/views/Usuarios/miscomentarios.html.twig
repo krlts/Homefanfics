@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+{% block title %}Comentarios{% endblock %}
+{% block body -%}
+<div class="hero-unit">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#Mios" data-toggle="tab"><b><i class="icon-pencil"></i> Mis Comentarios</b></a></li>
+        <li><a href="#enEscritos" data-toggle="tab"><b><i class="icon-comment"></i> En mis Escritos</b></a></li>
+    </ul>
+    <div class="tabbable">
+        <div class="tab-content border">
+            <div class="tab-pane active" id="Mios">
+                {% for comentario in comentarios %}
+                    {{ render(controller('HffBlogBundle:Comentarios:resumen', {'id': comentario.id } )  ) }}
+                {% endfor %}
+                </div>
+            {# Tab En Mis Escritos #}
+                <div class="tab-pane" id="enEscritos">
+                    <p>escritos</p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

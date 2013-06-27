@@ -187,6 +187,34 @@ class UsuariosController extends Controller
     }
     
     /**
+     * Displays a form to edit an existing Usuarios entity.
+     *
+     * @Route("/{id}/editar", name="usuario_editar")
+     * @Method("GET")
+     * @Template()
+     */
+    public function miscomentariosAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $usuarioLogueado = $this->get('security.context')->getToken()->getUser();
+        $idUsuario = $usuarioLogueado->getId();
+        
+        $usuario = $em->getRepository('HffBlogBundle:Usuarios')->find($idUsuario);
+
+        if (!$usuario) {
+            throw $this->createNotFoundException('No se pudo encontrar el Usuario.');
+            
+        }
+        $comentarios = $em->getRepository('HffBlogBundle:Comentarios')->findPublicadosByEmisor($idUsuario);
+
+        return array(
+            'usuario'      => $usuario,
+            'comentarios' => $comentarios,
+        );
+    }
+    
+    /**
      * Finds and displays a preview of Escritos entity.
      *
      */

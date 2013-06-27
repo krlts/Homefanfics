@@ -9,14 +9,14 @@
         </tr>
         <tr>
             <td style="font-size: 90%">Se de donde vengo, se donde voy 
-Por eso se donde estoy, no me avergüenza lo que soy 
-Se cual es mi lugar y adonde pertenezco 
-Lo que no me corresponde y lo que merezco 
-Soy sangre de mi sangre y soy mi costumbre 
-Mis hábitos y códigos y mis incertidumbres 
-Soy mis decisiones y mis elecciones 
-Soy mis acciones, solo y en la muchedumbre 
-</td>    
+                Por eso se donde estoy, no me avergüenza lo que soy 
+                Se cual es mi lugar y adonde pertenezco 
+                Lo que no me corresponde y lo que merezco 
+                Soy sangre de mi sangre y soy mi costumbre 
+                Mis hábitos y códigos y mis incertidumbres 
+                Soy mis decisiones y mis elecciones 
+                Soy mis acciones, solo y en la muchedumbre 
+            </td>    
         </tr>
     </table>
 
@@ -25,7 +25,7 @@ Soy mis acciones, solo y en la muchedumbre
         <li class="active"><a href="#A" data-toggle="tab"><b><i class="icon-user"></i> Información</b></a></li>
         <li class><a href="#Muro" data-toggle="tab"><b><i class="icon-list-alt"></i> Muro</b></a></li>
         <li><a href="#Escritos" data-toggle="tab"><b><i class="icon-book"></i> Escritos</b></a></li>
-        <li><a href="#D" data-toggle="tab"><b><i class="icon-comment"></i> Comentarios</b></a></li>
+        <li><a href="#Comentarios" data-toggle="tab"><b><i class="icon-comment"></i> Comentarios</b></a></li>
     </ul>
     <div class="tabbable">
         <div class="tab-content border">
@@ -50,22 +50,25 @@ Soy mis acciones, solo y en la muchedumbre
             {# Muro #}
             <div class="tab-pane" id="Muro">
                 <textarea class="ckeditor"></textarea>
-                
-                
+
+
             </div>
             <div class="tab-pane" id="Escritos">
                 {% for escrito in escritos if escrito.publicado %}
 {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id } )  ) }}
 {% endfor %}
-            </div>
-            <div class="tab-pane" id="D">
+                </div>
+                <div class="tab-pane" id="Comentarios">
+                {% for comentario in comentarios %} 
+                    {{ render(controller('HffBlogBundle:Comentarios:resumen', {'id': comentario.id } )  ) }}
+                {% endfor %}
 
-{{ render(controller('HffBlogBundle:Comentarios:resumen', {'id': entity.id } )  ) }}
 
+
+                    </div>
+                </div> <!-- /tabbable -->
             </div>
-        </div> <!-- /tabbable -->
-    </div>
-</div>
+        </div>
 
 
 
