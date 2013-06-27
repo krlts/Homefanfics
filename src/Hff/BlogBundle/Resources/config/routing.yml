@@ -199,6 +199,10 @@ usuario_editar:
 usuario_borrar:
     pattern:  /usuario/borrar/{id}
     defaults: { _controller: HffBlogBundle:Usuarios:borrar } 
+
+usuario_nombre:
+    pattern:  /usuario/nombre/{id}
+    defaults: { _controller: HffBlogBundle:Usuarios:nombre } 
     
 usuario_actualizar:
     pattern:  /usuario/actualizar/{id}

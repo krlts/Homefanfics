@@ -146,9 +146,9 @@ class ComentariosController extends Controller{
         
         //$escrito = $em->getRepository('HffBlogBundle:Escritos')->find($idEscrito);
         
-       /* if ($escrito) {
+        if ($escrito) {
             throw $this->createNotFoundException('No se encontró el escrito');
-        }*/
+        }
         $otrosComentarios = $em->getRepository('HffBlogBundle:Comentarios')->findPublicados($idEscrito);
         //$escrito = $comentario['escrito'];
         return array(

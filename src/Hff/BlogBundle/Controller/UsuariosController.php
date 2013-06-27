@@ -215,7 +215,21 @@ class UsuariosController extends Controller
             'escritos' => $escritos,
         );
     }
-    
+    /**
+     * Finds and displays a Usuarios entity.
+     *
+     * @Route("/{id}", name="usuario_nombre")
+     * @Method("GET")
+     * @Template()
+     */
+    public function nombreAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $autor = $em->getRepository('HffBlogBundle:Usuarios')->find($id);
+        return array('autor' => $autor);
+    }
+
+
     
     /**
      * Finds and displays a preview of Escritos entity.
