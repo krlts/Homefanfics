@@ -1,7 +1,12 @@
 
 <table class="table-bordered table-hover input-block-level">
     <tr>
-        <td><small>En</small> <a style="font-size: 85%" href="{{path('escrito_ver', {'id': escrito.id })}}"> {{escrito.titulo}} </a> <small>el {{ comentario.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ comentario.fechaCreacion | date('G:i') }} </small></td>
+        <td><small>En</small> <a style="font-size: 85%" href="{{path('escrito_ver', {'id': escrito.id })}}"> {{escrito.titulo}} </a> 
+            <small>el {{ comentario.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ comentario.fechaCreacion | date('G:i') }} 
+{% if comentario.emisor == app.user.id %}
+                    <button class="btn btn-success btn-mini" type="submit"><a style="color: white" href="{{ path('comentario_editar', {'id': comentario.id }) }}"><i class="icon-pencil icon-white"></i> Editar</a></button>
+{% endif %}</small>
+        </td>
     </tr>
     <tr >
         <td><p>{{ comentario.mensaje|raw }}</p></td>

@@ -189,7 +189,7 @@ class UsuariosController extends Controller
     /**
      * Displays a form to edit an existing Usuarios entity.
      *
-     * @Route("/{id}/editar", name="usuario_editar")
+     * @Route("/{id}", name="usuario_miscomentarios")
      * @Method("GET")
      * @Template()
      */
@@ -207,12 +207,15 @@ class UsuariosController extends Controller
             
         }
         $comentarios = $em->getRepository('HffBlogBundle:Comentarios')->findPublicadosByEmisor($idUsuario);
-
+        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findByUsuario($idUsuario);
+        
         return array(
             'usuario'      => $usuario,
             'comentarios' => $comentarios,
+            'escritos' => $escritos,
         );
     }
+    
     
     /**
      * Finds and displays a preview of Escritos entity.

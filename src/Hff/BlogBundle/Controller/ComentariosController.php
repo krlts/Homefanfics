@@ -132,6 +132,30 @@ class ComentariosController extends Controller{
             'escrito' => $escrito,
         );
     }
+    
+    /**
+     * Encontrar y desplegar una entity Comentarios.
+     *
+     * @Route("/{id}", name="comentario_resumen2")
+     * @Method("GET")
+     * @Template()
+     */
+     public function resumen2Action($idEscrito)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        //$escrito = $em->getRepository('HffBlogBundle:Escritos')->find($idEscrito);
+        
+       /* if ($escrito) {
+            throw $this->createNotFoundException('No se encontró el escrito');
+        }*/
+        $otrosComentarios = $em->getRepository('HffBlogBundle:Comentarios')->findPublicados($idEscrito);
+        //$escrito = $comentario['escrito'];
+        return array(
+            //'escrito' => $escrito,
+            'otrosComentarios' => $otrosComentarios,
+        );
+    }
 
     
     /**
@@ -152,12 +176,10 @@ class ComentariosController extends Controller{
         }
 
         $editForm = $this->createForm(new ComentariosType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'form'   => $editForm->createView(),
         );
     }
 

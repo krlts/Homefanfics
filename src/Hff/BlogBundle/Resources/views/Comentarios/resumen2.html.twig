@@ -1,0 +1,14 @@
+
+{% for otroComentario in otrosComentarios %}
+<table class="table-bordered table-hover input-block-level">
+    <tr>
+        <td><small>Comentado por <a  href="{{path('usuario_ver', {'id': otroComentario.emisor })}}">{{ otroComentario.emisor }}</a>
+            el {{ otroComentario.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ otroComentario.fechaCreacion | date('G:i') }} </small>
+        </td>
+    </tr>
+    <tr >
+        <td><p>{{ otroComentario.mensaje|raw }}</p></td>
+    </tr>  
+</table>
+{% endfor %}
+

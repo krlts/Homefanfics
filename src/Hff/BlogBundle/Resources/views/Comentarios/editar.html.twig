@@ -1,5 +1,16 @@
 {% extends '::base.html.twig' %}
-
 {% block body -%}
+<form action="{{ path('comentario_actualizar', {'id': entity.id } ) }}" method="post" {{ form_enctype(form) }}>
+    <table>
+        <tr>
+            <td>{{ form_widget(form.mensaje)}} {{ form_errors(form.mensaje) }}</td>          
+        </tr>
+                {{ form_rest(form) }}
+        <tr>
+            <td><button class="btn btn-success"type="submit"><i class="icon-comment icon-white"></i> Editar Comentario</button></td>
+        </tr>
+    </table>  
+</form>
+
 {% endblock %}
 

@@ -1,5 +1,5 @@
 {% extends '::base.html.twig' %}
-{% block title %}Comentarios{% endblock %}
+{% block title %}Mis Comentarios{% endblock %}
 {% block body -%}
 <div class="hero-unit">
     <ul class="nav nav-tabs">
@@ -15,8 +15,10 @@
                 </div>
             {# Tab En Mis Escritos #}
                 <div class="tab-pane" id="enEscritos">
-                    <p>escritos</p>
-
+                    {% for escrito in escritos %}
+                    <h4>En<a  href="{{path('escrito_ver', {'id': escrito.id })}}"> {{escrito.titulo}} </a></h4>
+                    {{ render(controller('HffBlogBundle:Comentarios:resumen2', {'idEscrito': escrito.id } )  ) }}
+                {% endfor %}
 
                 </div>
             </div>
