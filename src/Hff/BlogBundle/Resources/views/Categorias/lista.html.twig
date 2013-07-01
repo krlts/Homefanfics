@@ -1,10 +1,18 @@
 <select class="span2 navbar-search pull-left" id="categoriaSeleccionada" >
+<optgroup label="Categorias">
 
-    <option value="0" data-url="">- Categorias -</option>
     <option value="1" data-url="{{ url('inicio') }}">TODAS</option>
     {% for categoria in categorias %}   
     <option value="{{categoria.id}}" data-url="{{ url('categoria_ver', { 'id': categoria.id }) }}">{{categoria.nombre}}</option>
     {% endfor %}
+</optgroup>
+<optgroup label="Orden">
+    <option value="A" data-url="{{ url('inicio') }}">Más Recientes</option>
+    <option value="B" data-url="{{ url('escrito_masvistos') }}">Más Vistos</option>                                        
+    <option value="C" data-url="{{ url('escrito_mascomentados') }}">Más Comentados</option>                                        
+    <option value="D" data-url="{{ url('inicio') }}">Mejor Votado</option>                                        
+    <option value="E" data-url="{{ url('escrito_az') }}">Orden Alfabético</option>
+</optgroup>
 </select>
 
 <script type="text/javascript">

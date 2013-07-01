@@ -33,6 +33,50 @@ class EscritosController extends Controller{
         return array('escritos' => $escritos);
     }
     /**
+     * Lists all Escritos entities.
+     *
+     * @Route("/mascomentados", name="escrito_mascomentados")
+     * @Method("GET")
+     * @Template()
+     */
+    public function mascomentadosAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllMasComentados();
+        return array('escritos' => $escritos);
+    }
+    /**
+     * Lists all Escritos entities.
+     *
+     * @Route("/masvistos", name="escrito_masvistos")
+     * @Method("GET")
+     * @Template()
+     */
+    public function masvistosAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllMasVistos();
+        return array('escritos' => $escritos);
+    }
+    
+    /**
+     * Lists all Escritos entities.
+     *
+     * @Route("/az", name="escrito_az")
+     * @Method("GET")
+     * @Template()
+     */
+    public function azAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllTitulos();
+        return array('escritos' => $escritos);
+    }
+    
+    /**
      * Crear una nueva Entidad Escritos.
      *
      * @Route("/", name="escrito_crear")

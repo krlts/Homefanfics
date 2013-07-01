@@ -1,0 +1,270 @@
+{% extends '::base.html.twig' %}
+{% block title %}Escritos en Orden Alfabético{% endblock %}
+{% block body -%}
+{% set escritos_A = [] %}
+            {% set escritos_B = [] %}
+            {% set escritos_C = [] %}
+            {% set escritos_D = [] %}
+            {% set escritos_E = [] %}
+            {% set escritos_F = [] %}
+            {% set escritos_G = [] %}
+            {% set escritos_H = [] %}
+            {% set escritos_I = [] %}
+            {% set escritos_J = [] %}
+            {% set escritos_K = [] %}
+            {% set escritos_L = [] %}
+            {% set escritos_M = [] %}
+            {% set escritos_N = [] %}
+            {% set escritos_Ñ = [] %}
+            {% set escritos_O = [] %}
+            {% set escritos_P = [] %}
+            {% set escritos_Q = [] %}
+            {% set escritos_R = [] %}
+            {% set escritos_S = [] %}
+            {% set escritos_T = [] %}
+            {% set escritos_U = [] %}
+            {% set escritos_V = [] %}
+            {% set escritos_W = [] %}
+            {% set escritos_X = [] %}
+            {% set escritos_Y = [] %}
+            {% set escritos_Z = [] %}
+            {% set escritos_9 = [] %}
+                
+            {% for escrito in escritos %}
+                {% if escrito.titulo | truncate(1) | capitalize == 'A...' %}
+                {% set escritos_A = escritos_A |merge( [escrito ] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'B...' %}
+                {% set escritos_B = escritos_B |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'C...' %}
+                {% set escritos_C = escritos_C |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'D...' %}
+                {% set escritos_D = escritos_D |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'E...' %}
+                {% set escritos_E = escritos_E |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'F...' %}
+                {% set escritos_F = escritos_F |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'G...' %}
+                {% set escritos_G = escritos_G |merge( [escrito] )%}
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'H...' %}
+                {% set escritos_H = escritos_H |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'I...' %}
+                {% set escritos_I = escritos_I |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'J...' %}
+                {% set escritos_J = escritos_J |merge( [escrito] )%}
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'K...' %}
+                {% set escritos_K = escritos_K |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'L...' %}
+                {% set escritos_L = escritos_L |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'M...' %}
+                {% set escritos_M = escritos_M |merge( [escrito] )%}
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'N...' %}
+                {% set escritos_N = escritos_N |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'Ñ...' %}
+                {% set escritos_Ñ = escritos_Ñ |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'O...' %}
+                {% set escritos_O = escritos_O |merge( [escrito] )%}
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'P...' %}
+                {% set escritos_P = escritos_P |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'Q...' %}
+                {% set escritos_Q = escritos_Q |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'R...' %}
+                {% set escritos_R = escritos_R |merge( [escrito] )%}
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'S...' %}
+                {% set escritos_S = escritos_S |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'T...' %}
+                {% set escritos_T = escritos_T |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'U...' %}
+                {% set escritos_U = escritos_U |merge( [escrito] )%}
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'W...' %}
+                {% set escritos_W = escritos_W |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'X...' %}
+                {% set escritos_X = escritos_X |merge( [escrito] )%} 
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'Y...' %}
+                {% set escritos_Y = escritos_Y |merge( [escrito] )%}
+                {% elseif escrito.titulo | truncate(1) | capitalize == 'Z...' %}
+                {% set escritos_Z = escritos_Z |merge( [escrito] )%}
+                {% else %}
+                {% set escritos_9 = escritos_9 |merge( [escrito] )%}
+                {%endif%}
+            {% endfor %}
+ <ul class="nav nav-tabs">
+        <li class="active"><a href="#A" data-toggle="tab" title="{{ escritos_A | length}} Escritos"><b>A</b></a></li>
+        <li><a href="#B" data-toggle="tab" title="{{ escritos_B | length}} Escritos"><b>B</b></a></li>
+        <li><a href="#C" data-toggle="tab" title="{{ escritos_C | length}} Escritos"><b>C</b></a></li>
+        <li><a href="#D" data-toggle="tab" title="{{ escritos_D | length}} Escritos"><b>D</b></a></li>
+        <li><a href="#E" data-toggle="tab" title="{{ escritos_E | length}} Escritos"><b>E</b></a></li>
+        <li><a href="#F" data-toggle="tab" title="{{ escritos_F | length}} Escritos"><b>F</b></a></li>
+        <li><a href="#G" data-toggle="tab" title="{{ escritos_G | length}} Escritos"><b>G</b></a></li>
+        <li><a href="#H" data-toggle="tab" title="{{ escritos_H | length}} Escritos"><b>H</b></a></li>
+        <li><a href="#I" data-toggle="tab" title="{{ escritos_I | length}} Escritos"><b>I</b></a></li>
+        <li><a href="#J" data-toggle="tab" title="{{ escritos_J | length}} Escritos"><b>J</b></a></li>
+        <li><a href="#K" data-toggle="tab" title="{{ escritos_K | length}} Escritos"><b>K</b></a></li>
+        <li><a href="#L" data-toggle="tab" title="{{ escritos_L | length}} Escritos"><b>L</b></a></li>
+        <li><a href="#M" data-toggle="tab" title="{{ escritos_M | length}} Escritos"><b>M</b></a></li>
+        <li><a href="#N" data-toggle="tab" title="{{ escritos_N | length}} Escritos"><b>N</b></a></li>
+        <li><a href="#Ñ" data-toggle="tab" title="{{ escritos_Ñ | length}} Escritos"><b>Ñ</b></a></li>
+        <li><a href="#O" data-toggle="tab" title="{{ escritos_O | length}} Escritos"><b>O</b></a></li>
+        <li><a href="#P" data-toggle="tab" title="{{ escritos_P | length}} Escritos"><b>P</b></a></li>
+        <li><a href="#Q" data-toggle="tab" title="{{ escritos_Q | length}} Escritos"><b>Q</b></a></li>
+        <li><a href="#R" data-toggle="tab" title="{{ escritos_R | length}} Escritos"><b>R</b></a></li>
+        <li><a href="#S" data-toggle="tab" title="{{ escritos_S | length}} Escritos"><b>S</b></a></li>
+        <li><a href="#T" data-toggle="tab" title="{{ escritos_T | length}} Escritos"><b>T</b></a></li>
+        <li><a href="#U" data-toggle="tab" title="{{ escritos_U | length}} Escritos"><b>U</b></a></li>
+        <li><a href="#V" data-toggle="tab" title="{{ escritos_V | length}} Escritos"><b>V</b></a></li>
+        <li><a href="#W" data-toggle="tab" title="{{ escritos_W | length}} Escritos"><b>W</b></a></li>
+        <li><a href="#X" data-toggle="tab" title="{{ escritos_X | length}} Escritos"><b>X</b></a></li>
+        <li><a href="#Y" data-toggle="tab" title="{{ escritos_Y | length}} Escritos"><b>Y</b></a></li>
+        <li><a href="#Z" data-toggle="tab" title="{{ escritos_Z | length}} Escritos"><b>Z</b></a></li>
+        <li><a href="#9" data-toggle="tab" title="{{ escritos_9 | length}} Escritos"><b>0-9</b></a></li>
+    </ul>
+    <div class="tabbable">
+        <div class="tab-content border">
+            
+            
+                <div class="tab-pane active" id="A">
+               {% for escrito in escritos_A  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }}
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="B">
+                {% for escrito in escritos_B  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="C">
+                {% for escrito in escritos_C  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="D">
+                {% for escrito in escritos_D  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }}
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="E">
+                {% for escrito in escritos_E  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }}
+                {% endfor %}
+               
+            </div>
+            <div class="tab-pane" id="F">
+                {% for escrito in escritos_F  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }}  
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="G">
+                {% for escrito in escritos_G  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="H">
+                {% for escrito in escritos_H  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }}  
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="I">
+                {% for escrito in escritos_I  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="J">
+                {% for escrito in escritos_J  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="K">
+                {% for escrito in escritos_K  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="L">
+                {% for escrito in escritos_L  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="M">
+                {% for escrito in escritos_M  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="N">
+                {% for escrito in escritos_N  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }}
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="Ñ">
+                {% for escrito in escritos_Ñ  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="O">
+                {% for escrito in escritos_O  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="P">
+                {% for escrito in escritos_P  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }}
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="Q">
+                {% for escrito in escritos_Q  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="R">
+                {% for escrito in escritos_R  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }}  
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="S">
+                {% for escrito in escritos_S  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="T">
+                {% for escrito in escritos_T  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="U">
+                {% for escrito in escritos_U  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="V">
+                {% for escrito in escritos_V  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="W">
+                {% for escrito in escritos_W  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="X">
+                {% for escrito in escritos_X  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="Y">
+                {% for escrito in escritos_Y  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="Z">
+                {% for escrito in escritos_Z  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="9">
+                {% for escrito in escritos_9  %}
+                {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }} 
+                {% endfor %}
+                
+            </div>
+            
+       </div>
+  </div>
+{% endblock %}
+

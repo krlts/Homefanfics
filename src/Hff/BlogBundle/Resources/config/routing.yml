@@ -140,7 +140,19 @@ comentario_resumen2:
     
 escrito:
     pattern:  /escrito
-    defaults: { _controller: HffBlogBundle:Escritos:index }  
+    defaults: { _controller: HffBlogBundle:Escritos:index } 
+
+escrito_mascomentados:
+    pattern:  /escrito/mascomentados
+    defaults: { _controller: HffBlogBundle:Escritos:mascomentados } 
+
+escrito_masvistos:
+    pattern:  /escrito/masvistos
+    defaults: { _controller: HffBlogBundle:Escritos:masvistos} 
+
+escrito_az:
+    pattern:  /escrito/az
+    defaults: { _controller: HffBlogBundle:Escritos:az} 
 
 escrito_crear:
     pattern:  /escrito/crear

@@ -30,15 +30,6 @@
                         <div class="nav-collapse">
                             <ul class="nav">
                                 <li>{{ render(controller('HffBlogBundle:Categorias:lista'))}}</li>
-                                <li>
-                                    <select class="span2 navbar-search pull-left">
-                                        <option>Más Recientes</option>
-                                        <option>Más Vistos</option>
-                                        <option>Más Comentados</option>
-                                        <option>Mejor Votado</option>
-                                        <option>Orden Alfabético</option>
-                                    </select>
-                                </li>
 
                                 <li><a href="{{ path('escrito') }}"><img alt="Escritos" title="Escritos" src="{{ asset('img/escritos.png') }}" ></a></li>
                                 <li><a href="{{ path('usuario_lista') }}"><img alt="Autores" title="Autores" src="{{ asset('img/autores.png') }}" ></a></li>
