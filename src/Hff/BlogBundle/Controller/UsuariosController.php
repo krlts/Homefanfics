@@ -64,7 +64,7 @@ class UsuariosController extends Controller
                 $direccionIp = $this->get('request')->getClientIp();
                 $entity->setUltimaIp($direccionIp);
                 
-                $this->enviarEmailBienvenida($entity);
+                //$this->enviarEmailBienvenida($entity);
 
                 // Crear un mensaje flash para notificar al usuario que se ha registrado correctamente
                 $this->get('session')->setFlash('info',
@@ -149,7 +149,7 @@ class UsuariosController extends Controller
             throw $this->createNotFoundException('No se pudo encontrar el Usuario.');
         }
 
-        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllEscritosByUsuario($id);
+        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllByUsuario($id);
         $comentarios = $em->getRepository('HffBlogBundle:Comentarios')->findPublicadosByEmisor($id);
 
         return array(
@@ -229,6 +229,19 @@ class UsuariosController extends Controller
         return array('autor' => $autor);
     }
 
+     /**
+     * Finds and displays a Usuarios entity.
+     *
+     * @Route("/{id}", name="usuario_lista")
+     * @Method("GET")
+     * @Template()
+     */
+    public function listaAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $autores = $em->getRepository('HffBlogBundle:Usuarios')->findAllOrderByUsuario();
+        return array('autores' => $autores);
+    }
 
     
     /**
@@ -239,7 +252,7 @@ class UsuariosController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllEscritosByUsuario($id);
+        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllByUsuario($id);
 
         if (!$escritos) {
             throw $this->createNotFoundException('No se pudo encontrar algún Escrito');

@@ -29,6 +29,7 @@
                         <a class="brand" href="{{path('inicio')}}"><img name="logoHFF" src="{{ asset('img/logo.png') }}" > Homefanfics</a>
                         <div class="nav-collapse">
                             <ul class="nav">
+                                <li>{{ render(controller('HffBlogBundle:Categorias:lista'))}}</li>
                                 <li>
                                     <select class="span2 navbar-search pull-left">
                                         <option>Más Recientes</option>
@@ -38,8 +39,9 @@
                                         <option>Orden Alfabético</option>
                                     </select>
                                 </li>
+
                                 <li><a href="{{ path('escrito') }}"><img alt="Escritos" title="Escritos" src="{{ asset('img/escritos.png') }}" ></a></li>
-                                <li><a href="#"><img alt="Autores" title="Autores" src="{{ asset('img/autores.png') }}" ></a></li>
+                                <li><a href="{{ path('usuario_lista') }}"><img alt="Autores" title="Autores" src="{{ asset('img/autores.png') }}" ></a></li>
             {#verificar si el usuario está logueado#}
             {% if app.user != NULL %}
                                         <li><a href="{{path('escrito_nuevo')}}"><img alt="Nuevo Escrito" title="Nuevo Escrito" src="{{ asset('img/escritos2.png') }}" ></a></li>
@@ -96,11 +98,11 @@
                                                 </li>
             {% endif %}
                                             </ul>
-                                        </div><!-- /.nav-collapse -->
-                                    </div>
-                                </div><!-- /navbar-inner -->
+                                        </div>{# nav-collapse #}
+                                    </div>{# container #}
+                                </div>{# navbar-inner #}
                             </nav>
-                        </div>
+                        </div>{# navbar navbar-fixed-top #}
                     {#% endblock %#}
                     </div>
                     <div class="container">
@@ -108,22 +110,22 @@
 
                             <div id="footer">
                 {% block footer %}
-                                    <section footer>
-                                        <small>Homefanfics - "Leer te hace libre" - {{'now'|date('Y')}} - Diseñado y creado por Carlos Matamala</small>
-                                    </section>
+                                <section footer>
+                                    <small>Homefanfics - "Leer te hace libre" - {{'now'|date('Y')}} - Diseñado y creado por Carlos Matamala</small>
+                                </section>
                 {% endblock %}
-                                </div>
-                            </div>
+                            </div>{# footer #}
+                    </div>{# container #}
 
 
 {% block javascripts %}
-                            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-                            <script src="{{ asset('js/jquery.js') }}"></script>
-                            <script src="{{ asset('js/bootswatch.js') }}"></script>
-                            <script src="{{ asset('js/jquery.smooth-scroll.min.js') }}"></script>
-                            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-                            <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
-{% endblock %}
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            <script src="{{ asset('js/jquery.js') }}"></script>
+            <script src="{{ asset('js/bootswatch.js') }}"></script>
+            <script src="{{ asset('js/jquery.smooth-scroll.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>               
+{% endblock %}               
 
-                        </body>
-                    </html>
+    </body>
+</html>

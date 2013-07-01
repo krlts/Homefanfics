@@ -28,7 +28,7 @@ class EscritosController extends Controller{
     {
         $em = $this->getDoctrine()->getManager();
 
-        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllEscritosRecientes();
+        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllRecientes();
 
         return array('escritos' => $escritos);
     }

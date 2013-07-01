@@ -82,6 +82,10 @@ categoria_ver:
     pattern:  /categoria/ver/{id}
     defaults: { _controller: HffBlogBundle:Categorias:ver }
     
+categoria_lista:
+    pattern:  /categoria/lista
+    defaults: { _controller: HffBlogBundle:Categorias:lista }
+    
 categoria_editar:
     pattern:  /categoria/editar/{id}
     defaults: { _controller: HffBlogBundle:Categorias:editar }  
@@ -211,6 +215,10 @@ usuario_actualizar:
 usuarios_login:
     pattern:   /login
     defaults:  { _controller: HffBlogBundle:Usuarios:login }
+    
+usuario_lista:
+    pattern:   /usuario/lista
+    defaults:  { _controller: HffBlogBundle:Usuarios:lista }
 
 
 usuarios_login_check:

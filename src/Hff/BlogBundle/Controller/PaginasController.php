@@ -14,9 +14,11 @@ class PaginasController extends Controller
         $categorias = $em->getRepository('HffBlogBundle:Categorias')
             ->findAllOrderedByName();
         
+        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllRecientes();
+        
        //return $this->render('HffBlogBundle:Paginas:index.html.twig', array('name' => $name));
        //return $this->render('BloggerBlogBundle:Page:sidebar.html.twig', array(
-       return $this->render('HffBlogBundle:Paginas:index.html.twig',  array('categorias' => $categorias));
+       return $this->render('HffBlogBundle:Paginas:index.html.twig',  array('categorias' => $categorias, 'escritos' => $escritos));
         
     }
     

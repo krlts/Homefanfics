@@ -1,12 +1,28 @@
 {#% extends 'HffBlogBundle::base.html.twig' %#}
 {% extends '::base.html.twig' %}
 {% block body %}
-<select class="control-label">
-    <option value="0">- Seleccionar Categoría -</option>
-    <option value="1">TODAS</option>
 
-    {% for categoria in categorias %}
-    <option value="{{categoria.id}}">{{categoria.nombre}}</option>
-    {% endfor %}
-</select>
+
+<div class="hero-unit">
+{% for i in 0..5 if (i < escritos|length) %}
+{{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escritos[i].id } )  ) }}
+{% endfor %}
+
+<table class="table-condensed">
+{% for i in 3..9 %}
+        <tr>
+            {% set n = 2*i %}
+            {% if n < escritos|length %}
+            <td>{{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escritos[n].id } )  ) }}</td>
+            {% endif %}
+            {% if n < (escritos|length - 1) %}
+            <td>{{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escritos[n+1].id } )  ) }}</td>
+            {% endif %}
+        </tr>
+    
+{% endfor %}       
+</table>
+ </div>
+
 {% endblock %}
+

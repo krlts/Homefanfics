@@ -12,5 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class UsuariosRepository extends EntityRepository
 {
-    
+    public function findAllOrderByUsuario()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT u FROM HffBlogBundle:Usuarios u ORDER BY u.usuario')
+            ->getResult();
+    }
 }

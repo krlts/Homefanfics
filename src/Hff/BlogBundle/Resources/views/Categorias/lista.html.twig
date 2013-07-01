@@ -1,0 +1,18 @@
+<select class="span2 navbar-search pull-left" id="categoriaSeleccionada" >
+
+    <option value="0" data-url="">- Categorias -</option>
+    <option value="1" data-url="{{ url('inicio') }}">TODAS</option>
+    {% for categoria in categorias %}   
+    <option value="{{categoria.id}}" data-url="{{ url('categoria_ver', { 'id': categoria.id }) }}">{{categoria.nombre}}</option>
+    {% endfor %}
+</select>
+
+<script type="text/javascript">
+var lista = document.getElementById('categoriaSeleccionada');
+lista.onchange = function() {
+var url =  lista.options[lista.selectedIndex].getAttribute('data-url');
+window.location = url;
+};
+
+</script>
+

@@ -3,10 +3,9 @@
 {% block title %}Regístrate en{% endblock %}
 {% block body -%}
 
-<h2>Registrar nueva cuenta de Usuario</h2>
+<h3>Registrar nueva cuenta de Usuario</h3>
 <form action="{{ path('usuario_crear') }}" method="post" {{ form_enctype(form) }}>
 
-    <center>
         <table>
             <tr>
                 <td>{{ form_label(form.usuario)}}</td>
@@ -33,14 +32,12 @@
 
             </tr>
             <tr>
-                <td style="text-align: right">{{ form_widget(form.acepto)}}{{ form_errors(form.acepto) }}</td>
-                <td>{{ form_label(form.acepto, 'Acepto los ')}} 
-                    <a href="{{path('usuario')}}">términos y Condiciones de uso </a> </td>
+                <td colspan="2" >{{ form_widget(form.acepto)}}{{ form_errors(form.acepto) }} {{ form_label(form.acepto, 'Acepto los ')}} 
+                    <a href="{{path('usuario')}}">Términos y Condiciones de uso </a></td>
 
                     </tr>
                 </table>
-            {{ form_rest(form) }}
-            </center>  
-            <button type="submit">Regístrate</button>
+            {{ form_rest(form) }}  
+    <button type="submit" class="btn btn-success"><i class="icon-ok-sign icon-white"></i> Regístrate</button>
         </form>
 {% endblock %}

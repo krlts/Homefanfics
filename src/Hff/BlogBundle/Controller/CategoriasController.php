@@ -91,45 +91,40 @@ class CategoriasController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('HffBlogBundle:Categorias')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Categorias entity.');
+        $categoria = $em->getRepository('HffBlogBundle:Categorias')->find($id);
+        
+        if (!$categoria) {
+            throw $this->createNotFoundException('No se encontró la Categoría');
         }
+        
+        $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllByCategoria($id);
 
-        $deleteForm = $this->createDeleteForm($id);
+        /*if (!$escritos) {
+            throw $this->createNotFoundException('No se encontraron Escritos en la Categoría');
+        }*/
+
 
         return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+            'escritos'      => $escritos,
+            'categoria' => $categoria,
         );
     }
+    
 
     /**
-     * Displays a form to edit an existing Categorias entity.
+     * Rescata todas las Categorias de la base de datos
      *
-     * @Route("/{id}/editar", name="categoria_editar")
+     * @Route("/", name="categoria_lista")
      * @Method("GET")
      * @Template()
      */
-    public function editarAction($id)
+    public function listaAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('HffBlogBundle:Categorias')->find($id);
+        $categorias = $em->getRepository('HffBlogBundle:Categorias')->findAll();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('No se pudo encontrar la Categoria');
-        }
-
-        $editForm = $this->createForm(new CategoriasType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+        return $this->render('HffBlogBundle:Categorias:lista.html.twig', array('categorias' => $categorias));
     }
 
     /**
@@ -207,6 +202,8 @@ class CategoriasController extends Controller
             ->getForm()
         ;
     }
+    
+    
     /*public function getCategorias()
     {
         $em = $this->getDoctrine()->getManager();
