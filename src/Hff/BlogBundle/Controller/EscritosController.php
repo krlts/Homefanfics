@@ -89,7 +89,7 @@ class EscritosController extends Controller{
         $em = $this->getDoctrine()->getManager();
         
         $usuarioLogueado = $this->get('security.context')->getToken()->getUser();
-        $entity->setUsuario($usuarioLogueado->getId());
+        $entity->setUsuario($usuarioLogueado);
         
         $form = $this->createForm(new EscritosType(), $entity);
         
@@ -145,16 +145,51 @@ class EscritosController extends Controller{
             throw $this->createNotFoundException('No se pudo encontrar el Escrito');
         }
         $entity->setTotalVistas( $entity->getTotalVistas() +1 ) ;
-        $comentarios = $this->mostrarComentarios($entity->getId());
+        $comentarios = $this->mostrarComentarios($id);
+        $siguiente = $em->getRepository('HffBlogBundle:Escritos')->findSiguiente($id);
+        $anterior = $em->getRepository('HffBlogBundle:Escritos')->findAnterior($id);
+        $siguienteDelAutor = $em->getRepository('HffBlogBundle:Escritos')->findSiguienteDelAutor($id);
+        $anteriorDelAutor = $em->getRepository('HffBlogBundle:Escritos')->findAnteriorDelAutor($id);
+        $siguienteDeLaCategoria = $em->getRepository('HffBlogBundle:Escritos')->findSiguienteDeLaCategoria($id);
+        $anteriorDeLaCategoria = $em->getRepository('HffBlogBundle:Escritos')->findAnteriorDeLaCategoria($id);
+        if (!$siguiente)
+        {
+            $siguiente = array($entity);
+        }
+        if (!$siguienteDelAutor )
+        {
+            $siguienteDelAutor = array($entity);
+        }
+        if (!$anteriorDelAutor )
+        {
+            $anteriorDelAutor = array($entity);
+        }
+        if (!$siguienteDeLaCategoria )
+        {
+            $siguienteDeLaCategoria = array($entity);
+        }
+        if (!$anteriorDeLaCategoria )
+        {
+            $anteriorDeLaCategoria = array($entity);
+        }
+        if (!$anterior)
+        {
+            $anterior = array($entity);
+        }
+        
         $em->persist($entity);
         $em->flush();
         
-        $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity'      => $entity,
             'comentarios' => $comentarios,
-            'delete_form' => $deleteForm->createView(),
+            'siguiente'   => $siguiente,
+            'siguienteDelAutor' => $siguienteDelAutor,
+            'anteriorDelAutor' => $anteriorDelAutor,
+            'siguienteDeLaCategoria' => $siguienteDeLaCategoria,
+            'anteriorDeLaCategoria' => $anteriorDeLaCategoria,
+            'anterior'    => $anterior,
         );
     }
     

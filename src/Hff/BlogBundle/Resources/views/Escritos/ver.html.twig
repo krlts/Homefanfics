@@ -6,47 +6,59 @@
 <div class="hero-unit">
 
     <h2>{{ entity.titulo }}
-        {% if entity.usuario.id == app.user.id %}
+    {% if entity.usuario.id == app.user.id %}
             <button class="btn btn-success pull-right" type="submit"><a style="color: white" href="{{ path('escrito_editar', {'id': entity.id }) }}"><i class="icon-pencil icon-white"></i> Editar</a></button>
-        {% else %}
+    {% else %}
             <button class="btn btn-danger pull-right" type="submit"><a style="color: white" href="#"><i class="icon-heart icon-white"></i> Añadir a Favoritos</a></button>
-        {% endif %}
+    {% endif %}
         </h2>
 
         <p><small>Publicado por</small> <a href="{{path('usuario_ver', {'id': entity.usuario.id })}}"><b>{{ entity.usuario|capitalize }}</b></a>
 
             <small>el {{ entity.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ entity.fechaCreacion | date('G:i') }}</small></p>
-{% if entity.intro|length > 0 %}    
+    {% if entity.intro|length > 0 %}    
         <article>{{ entity.intro | raw }}</article>
         <hr />
-{% endif%}
+    {% endif%}
 
         <article>{{ entity.contenido | raw }}</article>
 
-        <p><small>Categoría:</small> {{entity.categoria|capitalize}} <small class=" pull-right">Visto: {%if entity.totalVistas == 1%} 1 vez{% else %}{{entity.totalVistas}} veces {% endif %}</small></p>
+        <p><small>Categoría:</small> <a href="{{path('categoria_ver', {'id': entity.categoria.id })}}">{{entity.categoria|capitalize}}</a> <small class=" pull-right">Visto: {%if entity.totalVistas == 1%} 1 vez{% else %}{{entity.totalVistas}} veces {% endif %}</small></p>
         <p>
+    {% if anterior[0].id != entity.id %}
                 <div class="btn-group pull-left">
-                    <a class="btn" href="#"><i class="icon-arrow-left"></i> Anterior</a>
+                    <a class="btn" href="{{path('escrito_ver', {'id': anterior[0].id})}}"><i class="icon-arrow-left"></i> Anterior</a>
                         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">de {{entity.usuario|capitalize}}</a></li>
+        {% if anteriorDelAutor[0].id != entity.id %}
+                            <li><a href="{{path('escrito_ver', {'id': anteriorDelAutor[0].id})}}">de {{entity.usuario|capitalize}}</a></li>
+        {% endif %}
+        {% if anteriorDeLaCategoria[0].id != entity.id %}
                             <li><a href="#">{{entity.categoria|capitalize}}</a></li>
+        {% endif %}
                         </ul>
                 </div>
+    {% endif %}
+        {% if siguiente[0].id != entity.id %}
                 <div class="btn-group pull-right">
-                        <a class="btn" href="{{path('escrito_ver', {'id': entity.id + 1 })}}">Siguiente <i class="icon-arrow-right"></i></a>
+                        <a class="btn" href="{{path('escrito_ver', {'id': siguiente[0].id})}}">Siguiente <i class="icon-arrow-right"></i></a>
                         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">de {{entity.usuario|capitalize}}</a></li>
-                            <li><a href="#">{{entity.categoria|capitalize}}</a></li>
+        {% if siguienteDelAutor[0].id != entity.id %}
+                            <li><a href="{{path('escrito_ver', {'id': siguienteDelAutor[0].id})}}">de {{entity.usuario|capitalize}}</a></li>
+        {% endif %}
+        {% if siguienteDeLaCategoria[0].id != entity.id %}
+                            <li><a href="{{path('escrito_ver', {'id': siguienteDeLaCategoria[0].id})}}">{{entity.categoria|capitalize}}</a></li>
+        {% endif %}
                         </ul>
                 </div>
+        {% endif %}
         </p>
         <br>
 
     </div>
 
-{% if entity.comentariosHabilitados == true %}
+    {% if entity.comentariosHabilitados == true %}
     <div class="hero-unit">
         {% if entity.totalComentarios == 0 %} 
             <b><small class="pull-left">Se el primero en comentar</small></b>
@@ -68,7 +80,7 @@
 
             {#<input type='text' id="frmComentarios_escrito" value='{{entity.id}}'>#}
         </div>       
-{% endif %}
+    {% endif %}
 {# Si el archivo está publicado#}
 {% else %}
         <div class="hero-unit">

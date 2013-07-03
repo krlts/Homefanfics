@@ -2,27 +2,42 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#Escritos" data-toggle="tab"><b><i class="icon-pencil"></i> Escritos</b></a></li>
+    <li><a href="#Comentarios" data-toggle="tab"><b><i class="icon-comment"></i> Comentarios</b></a></li>
+    <li><a href="#Libros" data-toggle="tab"><b><i class="icon-book"></i> Libros</b></a></li>
+</ul>
+<div class="tabbable">
+    <div class="tab-content border">
+        <div class="tab-pane active" id="Escritos">
 
-<div class="hero-unit">
+
 {% for i in 0..5 if (i < escritos|length) %}
-{{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escritos[i].id } )  ) }}
+    {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escritos[i].id } )  ) }}
 {% endfor %}
 
-<table class="table-condensed">
+                    <table class="table-condensed">
 {% for i in 3..9 %}
-        <tr>
-            {% set n = 2*i %}
-            {% if n < escritos|length %}
-            <td>{{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escritos[n].id } )  ) }}</td>
-            {% endif %}
-            {% if n < (escritos|length - 1) %}
-            <td>{{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escritos[n+1].id } )  ) }}</td>
-            {% endif %}
-        </tr>
-    
+                            <tr>
+    {% set n = 2*i %}
+    {% if n < escritos|length %}
+                                    <td>{{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escritos[n].id } )  ) }}</td>
+    {% endif %}
+    {% if n < (escritos|length - 1) %}
+                                    <td>{{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escritos[n+1].id } )  ) }}</td>
+    {% endif %}
+                                </tr>
+
 {% endfor %}       
-</table>
- </div>
+                            </table>
+                        </div>
+                    <div class="tab-pane" id="Comentarios">
+{% for comentario in comentarios %}
+    {{ render(controller('HffBlogBundle:Comentarios:resumen', {'id': comentario.id })) }}   
+{% endfor %} 
+                    </div>
+                    <div class="tab-pane" id="Libros">
+                    </div>
 
 {% endblock %}
 

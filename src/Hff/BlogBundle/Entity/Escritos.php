@@ -44,7 +44,7 @@ class Escritos
     /**
      * @var string
      *
-     * @ORM\Column(name="intro", type="text")
+     * @ORM\Column(name="intro", type="text", nullable=true)
      */
     private $intro;
 
@@ -420,7 +420,7 @@ class Escritos
     /**
      * Set usuario
      *
-     * @param integer $usuario
+     *
      * @return Escritos
      */
     public function setUsuario(\Hff\BlogBundle\Entity\Usuarios $usuario)

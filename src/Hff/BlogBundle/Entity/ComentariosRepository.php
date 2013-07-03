@@ -21,6 +21,17 @@ class ComentariosRepository extends EntityRepository
                 ->setParameter('publicado', 1);
         return $query->getResult();
     }
+    public function findUltimos($max)
+    {
+        $em = $this->getEntityManager();
+        $dql = 'SELECT c FROM HffBlogBundle:Comentarios c WHERE c.estado = :publicado ORDER BY c.id DESC ';
+        $query = $em->createQuery($dql)
+                ->setParameter('publicado', 1)
+                ->setMaxResults($max);
+        return $query->getResult();
+    }
+    
+
     public function findPublicadosByEmisor($emisor)
     {
         $em = $this->getEntityManager();

@@ -31,6 +31,82 @@ class EscritosRepository extends EntityRepository
             ->createQuery('SELECT e FROM HffBlogBundle:Escritos e ORDER BY e.id DESC')
             ->getResult();
     }
+    public function findSiguiente($id)
+    {
+        $em = $this->getEntityManager();
+        $dql = 'SELECT e FROM HffBlogBundle:Escritos e WHERE e.id > :id AND e.publicado = :verdad';
+        $query = $em->createQuery($dql)
+                ->setParameter('verdad', 1)
+                ->setParameter('id', $id )
+                ->setMaxResults(1);
+        return $query->getResult();
+    }
+    public function findSiguienteDelAutor($id)
+    {
+        $em = $this->getEntityManager();
+        $escrito = $em->getRepository('HffBlogBundle:Escritos')->findOneById($id);
+        $autor = $em->getRepository('HffBlogBundle:Usuarios')->findOneById($escrito->getUsuario());
+        
+        $dql = 'SELECT e FROM HffBlogBundle:Escritos e WHERE e.id > :id AND e.publicado = :verdad AND e.usuario = :autor';
+        $query = $em->createQuery($dql)
+                ->setParameter('verdad', 1)
+                ->setParameter('id', $id )
+                ->setParameter('autor', $autor )
+                ->setMaxResults(1);
+        return $query->getResult();
+    }
+    public function findSiguienteDeLaCategoria($id)
+    {
+        $em = $this->getEntityManager();
+        $escrito = $em->getRepository('HffBlogBundle:Escritos')->findOneById($id);
+        $categoria = $em->getRepository('HffBlogBundle:Usuarios')->findOneById($escrito->getCategoria());
+        
+        $dql = 'SELECT e FROM HffBlogBundle:Escritos e WHERE e.id > :id AND e.publicado = :verdad AND e.categoria = :categoria';
+        $query = $em->createQuery($dql)
+                ->setParameter('verdad', 1)
+                ->setParameter('id', $id )
+                ->setParameter('categoria', $categoria )
+                ->setMaxResults(1);
+        return $query->getResult();
+    }
+    public function findAnteriorDeLaCategoria($id)
+    {
+        $em = $this->getEntityManager();
+        $escrito = $em->getRepository('HffBlogBundle:Escritos')->findOneById($id);
+        $categoria = $em->getRepository('HffBlogBundle:Usuarios')->findOneById($escrito->getCategoria());
+        
+        $dql = 'SELECT e FROM HffBlogBundle:Escritos e WHERE e.id < :id AND e.publicado = :verdad AND e.categoria = :categoria ORDER BY e.id DESC';
+        $query = $em->createQuery($dql)
+                ->setParameter('verdad', 1)
+                ->setParameter('id', $id )
+                ->setParameter('categoria', $categoria )
+                ->setMaxResults(1);
+        return $query->getResult();
+    }
+    public function findAnterior($id)
+    {
+        $em = $this->getEntityManager(); 
+        $dql = 'SELECT e FROM HffBlogBundle:Escritos e WHERE e.id < :id AND e.publicado = :verdad ORDER BY e.id DESC';
+        $query = $em->createQuery($dql)
+                ->setParameter('verdad', 1)
+                ->setParameter('id', $id )
+                ->setMaxResults(1);
+        return $query->getResult();
+    }
+    public function findAnteriorDelAutor($id)
+    {
+        $em = $this->getEntityManager();
+        $escrito = $em->getRepository('HffBlogBundle:Escritos')->findOneById($id);
+        $autor = $em->getRepository('HffBlogBundle:Usuarios')->findOneById($escrito->getUsuario());
+        
+        $dql = 'SELECT e FROM HffBlogBundle:Escritos e WHERE e.id < :id AND e.publicado = :verdad AND e.usuario = :autor ORDER BY e.id DESC';
+        $query = $em->createQuery($dql)
+                ->setParameter('verdad', 1)
+                ->setParameter('id', $id )
+                ->setParameter('autor', $autor )
+                ->setMaxResults(1);
+        return $query->getResult();
+    }
     public function findAllByUsuario($usuario)
     {
         return $this->getEntityManager()

@@ -4,18 +4,12 @@
 
 {% block body %}
 <header>
-    <h1>Contacto Homefanfics</h1>
+    <h3>Contacto Homefanfics</h3>
 </header>
 
 <p>¿Quiere contactárnos?</p>
 
-    {% if app.session.FlashBag ('blogger-notice') %}
-<div class="blogger-notice">
-        {{ app.session.flash('blogger-notice') }}
-    </div>
-    {% endif %}
-    <center>
-        <form action="{{ path('HffBlogBundle_contacto') }}" method="post" {{ form_enctype(form) }} class="blogger">
+        <form action="{{ path('contacto') }}" method="post" {{ form_enctype(form) }} class="blogger">
 
             {{ form_errors(form) }}
             <table>
@@ -23,11 +17,11 @@
                 <tr><td>{{form_label(form.email)}}</td><td>{{ form_widget(form.email) }}</td></tr>
                 <tr><td>{{form_label(form.asunto)}}</td><td>{{ form_widget(form.asunto) }}</td></tr>
                 <tr><td>{{form_label(form.mensaje)}}</td><td>{{ form_widget(form.mensaje) }}</td></tr>
+                <tr><td></td><td> <button type="submit" class="btn btn-success"><i class="icon-envelope icon-white"></i> Enviar Mensaje</button> 
+</td></tr>
             </table>
         {{ form_rest(form) }}
 
-            <input type="submit" value="Enviar Mensaje" />
-
+           
         </form>
-    </center>
 {% endblock %}

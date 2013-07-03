@@ -11,14 +11,13 @@ class PaginasController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $categorias = $em->getRepository('HffBlogBundle:Categorias')
-            ->findAllOrderedByName();
-        
+              
         $escritos = $em->getRepository('HffBlogBundle:Escritos')->findAllRecientes();
         
+        $comentarios = $em->getRepository('HffBlogBundle:Comentarios')->findUltimos(20);
+        
        //return $this->render('HffBlogBundle:Paginas:index.html.twig', array('name' => $name));
-       //return $this->render('BloggerBlogBundle:Page:sidebar.html.twig', array(
-       return $this->render('HffBlogBundle:Paginas:index.html.twig',  array('categorias' => $categorias, 'escritos' => $escritos));
+       return $this->render('HffBlogBundle:Paginas:index.html.twig',  array( 'escritos' => $escritos, 'comentarios' => $comentarios ));
         
     }
     
@@ -44,7 +43,7 @@ class PaginasController extends Controller
         $this->get('session')->setFlash('blogger-notice', 'Su mensaje fue enviado. Gracias por contactar a Homefanfics');
             // Redirige - Esto es importante para prevenir que el usuario
             // reenvíe el formulario si actualiza la página
-            return $this->redirect($this->generateUrl('HffBlogBundle_contacto'));
+            return $this->redirect($this->generateUrl('contacto'));
         }
     }
 
