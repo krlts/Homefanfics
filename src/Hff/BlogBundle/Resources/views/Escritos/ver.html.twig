@@ -34,7 +34,7 @@
                             <li><a href="{{path('escrito_ver', {'id': anteriorDelAutor[0].id})}}">de {{entity.usuario|capitalize}}</a></li>
         {% endif %}
         {% if anteriorDeLaCategoria[0].id != entity.id %}
-                            <li><a href="#">{{entity.categoria|capitalize}}</a></li>
+                            <li><a href="{{path('escrito_ver', {'id': anteriorDeLaCategoria[0].id})}}">{{entity.categoria|capitalize}}</a></li>
         {% endif %}
                         </ul>
                 </div>

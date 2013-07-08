@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+{% block title %}Mis Escritos{% endblock %}
+{% block body -%}
+<div class="hero-unit">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#Escritos" data-toggle="tab"><b><i class="icon-pencil"></i> Mis Escritos</b></a></li>
+        <li><a href="#Libros" data-toggle="tab"><b><i class="icon-book"></i> Mis Libros</b></a></li>
+    </ul>
+    <div class="tabbable">
+        <div class="tab-content border">
+            <div class="tab-pane active" id="Escritos">
+                {% for escrito in escritos %}
+                    {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id } )  ) }}
+                {% endfor %}
+                </div>
+            {# Tab En Mis Libros #}
+                <div class="tab-pane" id="Libros">
+                    <p>Mis Libros</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

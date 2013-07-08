@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Búsqueda{% endblock%}
+
+{% block body -%}
+<h3>Búsqueda</h3>
+{% for titulo in titulos %}
+    {{titulo.titulo}}
+{% endfor %}
+{% endblock %}
+

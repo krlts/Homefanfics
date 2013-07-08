@@ -59,7 +59,7 @@ class EscritosRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
         $escrito = $em->getRepository('HffBlogBundle:Escritos')->findOneById($id);
-        $categoria = $em->getRepository('HffBlogBundle:Usuarios')->findOneById($escrito->getCategoria());
+        $categoria = $em->getRepository('HffBlogBundle:Categorias')->findOneById($escrito->getCategoria());
         
         $dql = 'SELECT e FROM HffBlogBundle:Escritos e WHERE e.id > :id AND e.publicado = :verdad AND e.categoria = :categoria';
         $query = $em->createQuery($dql)
@@ -73,7 +73,7 @@ class EscritosRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
         $escrito = $em->getRepository('HffBlogBundle:Escritos')->findOneById($id);
-        $categoria = $em->getRepository('HffBlogBundle:Usuarios')->findOneById($escrito->getCategoria());
+        $categoria = $em->getRepository('HffBlogBundle:Categorias')->findOneById($escrito->getCategoria());
         
         $dql = 'SELECT e FROM HffBlogBundle:Escritos e WHERE e.id < :id AND e.publicado = :verdad AND e.categoria = :categoria ORDER BY e.id DESC';
         $query = $em->createQuery($dql)
