@@ -168,7 +168,19 @@ escrito_ver:
     
 escrito_preview1:
     pattern:  /escrito/preview1/{id}
-    defaults: { _controller: HffBlogBundle:Escritos:preview1 }   
+    defaults: { _controller: HffBlogBundle:Escritos:preview1 }
+    
+escrito_previewComentarios:
+    pattern:  /escrito/previewComentarios/{id}
+    defaults: { _controller: HffBlogBundle:Escritos:previewComentarios }
+    
+escrito_previewVistos:
+    pattern:  /escrito/previewVistos/{id}
+    defaults: { _controller: HffBlogBundle:Escritos:previewVistos }
+
+escrito_previewCategorias:
+    pattern:  /escrito/previewCategorias/{id}
+    defaults: { _controller: HffBlogBundle:Escritos:previewCategorias }
     
 escrito_editar:
     pattern:  /escrito/editar/{id}
@@ -207,6 +219,10 @@ usuario_ver:
 usuario_miscomentarios:
     pattern:  /usuario/miscomentarios
     defaults: { _controller: HffBlogBundle:Usuarios:miscomentarios }  
+    
+usuario_misescritos:
+    pattern:  /usuario/misescritos
+    defaults: { _controller: HffBlogBundle:Usuarios:misescritos } 
    
 usuario_editar:
     pattern:  /usuario/editar/{id}

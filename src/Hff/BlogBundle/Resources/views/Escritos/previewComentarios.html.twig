@@ -1,0 +1,29 @@
+<div class="hero-unit">
+<table>
+    <tr>
+        <td rowspan="2"><img class="avatar2" title="" src="{{ asset('img/usuario.png') }}" ></td>
+        <td><h4><a href="{{path('escrito_ver', {'id': entity.id })}}">  {{ entity.titulo }}</a> <small> ({{entity.totalComentarios}} comentarios)</small></h4></td>
+    </tr>
+    <tr>
+        <td>
+            <small>  Escrito por</small> <a href="{{path('usuario_ver', {'id': entity.usuario.id })}}"><b>{{ entity.usuario|capitalize }}</b></a>
+            <small>el {{ entity.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ entity.fechaCreacion | date('G:i') }}</small></td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td colspan="2">
+{% if entity.intro|length > 0 %}    
+        {% set cont = entity.intro| striptags | truncate(300) %} {{cont | raw}}
+{% else %}
+        {% set cont = entity.contenido| striptags | truncate(300) %} {{cont | raw}}
+{% endif%}
+                <button class="btn btn-info btn-mini" type="submit"><a style="color: white" href="{{ path('escrito_ver', {'id': entity.id }) }}"><i class="icon-hand-right icon-white"></i> Leer</a></button></td>
+        </tr>
+        <tr>
+            <td colspan="2"><small>Categoría: <a href="{{path('categoria_ver', {'id': entity.categoria.id })}}">{{entity.categoria|capitalize}}</a></small></td>
+    </tr>
+
+</table>
+</div>
+

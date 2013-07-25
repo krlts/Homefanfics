@@ -188,7 +188,7 @@ class ComentariosController extends Controller{
      *
      * @Route("/{id}", name="comentario_actualizar")
      * @Method("PUT")
-     * @Template("HffBlogBundle:Autores:editar.html.twig")
+     * @Template("HffBlogBundle:Comentarios:editar.html.twig")
      */
     public function actualizarAction(Request $request, $id)
     {
@@ -200,7 +200,6 @@ class ComentariosController extends Controller{
             throw $this->createNotFoundException('No se pudo encontrar el Comentario');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new ComentariosType(), $entity);
         $editForm->bind($request);
 
@@ -208,13 +207,12 @@ class ComentariosController extends Controller{
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('comentario_ver', array('id' => $id)));
+            return $this->redirect($this->generateUrl('escrito_ver', array('id' => $entity->getEscrito())));
         }
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         );
     }
 
@@ -242,21 +240,6 @@ class ComentariosController extends Controller{
         }
 
         return $this->redirect($this->generateUrl('comentario'));
-    }
-
-    /**
-     * Crear un formulario para borrar una entidad Comentarios por id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm()
-        ;
     }
 }
 

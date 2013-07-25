@@ -212,6 +212,66 @@ class EscritosController extends Controller{
 
         return array('entity'  => $entity,);
     }
+    
+    /**
+     * Finds and displays a preview of Escritos entity.
+     *
+     * @Route("/{id}", name="escrito_previewVistos")
+     * @Method("GET")
+     * @Template()
+     */
+    public function previewVistosAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('HffBlogBundle:Escritos')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('No se pudo encontrar el Escrito');
+        }   
+
+        return array('entity'  => $entity,);
+    }
+    
+    /**
+     * Finds and displays a preview of Escritos entity.
+     *
+     * @Route("/{id}", name="escrito_previewCategorias")
+     * @Method("GET")
+     * @Template()
+     */
+    public function previewCategoriasAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('HffBlogBundle:Escritos')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('No se pudo encontrar el Escrito');
+        }   
+
+        return array('entity'  => $entity,);
+    }
+    
+    /**
+     * Finds and displays a preview of Escritos entity.
+     *
+     * @Route("/{id}", name="escrito_previewComentarios")
+     * @Method("GET")
+     * @Template()
+     */
+    public function previewComentariosAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('HffBlogBundle:Escritos')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('No se pudo encontrar el Escrito');
+        }   
+
+        return array('entity'  => $entity,);
+    }
  
     /**
      * Displays a form to edit an existing Escritos entity.

@@ -14,7 +14,7 @@
         </table>     
     </div>
     {% for escrito in escritos %}
-        {{ render(controller('HffBlogBundle:Escritos:preview1', {'id': escrito.id })) }}
+        {{ render(controller('HffBlogBundle:Escritos:previewCategorias', {'id': escrito.id })) }}
     {% endfor %}
 </div>
 {% endblock %}
