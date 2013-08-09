@@ -69,7 +69,7 @@
             {% endif %}
             {#verificar si el usuario está logueado#}
             {% if app.user != NULL %}
-                                                <li><a href="{{path('usuario_ver', {'id': app.user.id })}}"><img class="avatar" title="{{app.user|capitalize}}" src="{{ asset('img/usuario.png') }}" >  {{app.user|capitalize}}</a></li>
+                                                <li><a href="{{path('usuario_ver', {'id': app.user.id })}}"><img class="avatar" title="{{app.user|capitalize}}" src="{{ asset('img/usuarios/'~ app.user.imagen) }}" >  {{app.user|capitalize}}</a></li>
                                                 <li class="divider-vertical"></li>
                                                 <li class="dropdown">
                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Config" title="Configuración" src="{{ asset('img/config.png') }}" ><b class="caret"></b></a>

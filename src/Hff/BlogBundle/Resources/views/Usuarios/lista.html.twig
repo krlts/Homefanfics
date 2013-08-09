@@ -5,14 +5,14 @@
 <table>
 {% for autor in autores if i < autores | length %} 
         <tr>
-            <td><div class="hero-unit"><a href="{{path('usuario_ver', {'id': autores[i].id })}}"><img class="avatar2" title="{{autores[i]|capitalize}}" src="{{ asset('img/usuario.png') }}" >  {{autores[i]|capitalize}}</a></div></td>
+            <td><div class="hero-unit"><a href="{{path('usuario_ver', {'id': autores[i].id })}}"><img class="avatar2" title="{{autores[i]|capitalize}}" src="{{ asset('img/usuarios/'~ autores[i].imagen) }}" >  {{autores[i]|capitalize}}</a></div></td>
             {% set i = i + 1 %} 
             {% if i < autores | length %}           
-             <td><div class="hero-unit"><a href="{{path('usuario_ver', {'id': autores[i].id })}}"><img class="avatar2" title="{{autores[i]|capitalize}}" src="{{ asset('img/usuario.png') }}" >  {{autores[i]|capitalize}}</a></div></td>
+             <td><div class="hero-unit"><a href="{{path('usuario_ver', {'id': autores[i].id })}}"><img class="avatar2" title="{{autores[i]|capitalize}}" src="{{ asset('img/usuarios/'~ autores[i].imagen) }}" >  {{autores[i]|capitalize}}</a></div></td>
             {% endif %}
             {% set i = i + 1 %} 
             {% if i < autores | length %} 
-             <td><div class="hero-unit"><a href="{{path('usuario_ver', {'id': autores[i].id })}}"><img class="avatar2" title="{{autores[i]|capitalize}}" src="{{ asset('img/usuario.png') }}" >  {{autores[i]|capitalize}}</a></div></td>
+             <td><div class="hero-unit"><a href="{{path('usuario_ver', {'id': autores[i].id })}}"><img class="avatar2" title="{{autores[i]|capitalize}}" src="{{ asset('img/usuarios/'~ autores[i].imagen) }}" >  {{autores[i]|capitalize}}</a></div></td>
             {% endif %}
         </tr>
 {% set i = i + 1 %} 

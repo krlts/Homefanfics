@@ -66,6 +66,10 @@ class Comentarios
      */
     private $emisor;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="\Hff\BlogBundle\Entity\Usuarios")
+     */
+    private $usuario;
 
     /**
      * Get id
@@ -209,8 +213,22 @@ class Comentarios
      * @return integer 
      */
     public function getEmisor()
-    {
+    {                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
         return $this->emisor;
+    }
+    
+    
+    /**
+     * ORM\ManyToOne(targetEntity="Usuarios", inversedBy="comentarios")
+     */
+    public function setUsuario(\Hff\BlogBundle\Entity\Usuarios $usuario)
+    {
+        $this->usuario = $usuario;
+    }
+
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
     
     public function __toString() {

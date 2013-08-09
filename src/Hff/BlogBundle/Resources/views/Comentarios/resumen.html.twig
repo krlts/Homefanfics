@@ -1,7 +1,11 @@
 
 <table class="table-bordered table-hover input-block-level">
     <tr>
-        <td><small>En</small> <a style="font-size: 85%" href="{{path('escrito_ver', {'id': escrito.id })}}"> {{escrito.titulo}} </a> 
+        <td>
+            <a style="font-size: 85%" href="{{path('usuario_ver', {'id': comentario.usuario.id })}}">
+            <img class="avatar" title="{{comentario.usuario.usuario}}" src="{{ asset('img/usuarios/'~ comentario.usuario.imagen) }}" >
+             {{comentario.usuario.usuario | capitalize}} </a>
+            <small>en</small> <a style="font-size: 85%" href="{{path('escrito_ver', {'id': escrito.id })}}"> {{escrito.titulo}} </a> 
             <small>el {{ comentario.fechaCreacion | date('d-m-Y', 'America/Santiago') }} a las {{ comentario.fechaCreacion | date('G:i') }} 
 {% if comentario.emisor == app.user.id %}
                     <button class="btn btn-success btn-mini" type="submit"><a style="color: white" href="{{ path('comentario_editar', {'id': comentario.id }) }}"><i class="icon-pencil icon-white"></i> Editar</a></button>
@@ -9,7 +13,7 @@
         </td>
     </tr>
     <tr >
-        <td><p>{{ comentario.mensaje|raw }}</p></td>
+        <td><p>{{ comentario.mensaje|raw }}</p><p></p></td>
     </tr>  
 </table>
 

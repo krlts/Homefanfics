@@ -1,7 +1,7 @@
 <div class="hero-unit">
 <table>
     <tr>
-        <td rowspan="2"><img class="avatar2" title="" src="{{ asset('img/usuario.png') }}" ></td>
+        <td rowspan="2"><img class="avatar2" title="" src="{{ asset('img/usuarios/'~ entity.usuario.imagen) }}" ></td>
         <td><h4><a href="{{path('escrito_ver', {'id': entity.id })}}">  {{ entity.titulo }}</a> <small> ({{entity.totalComentarios}} comentarios)</small></h4></td>
     </tr>
     <tr>

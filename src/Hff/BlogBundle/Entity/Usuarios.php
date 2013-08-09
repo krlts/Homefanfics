@@ -138,6 +138,15 @@ class Usuarios implements UserInterface {
      *
      * @return integer 
      */
+    
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imagen", type="string", length=255)
+     */
+    private $imagen;
+    
     public function getId() {
         return $this->id;
     }
@@ -380,6 +389,27 @@ class Usuarios implements UserInterface {
     {
         return $this->salt;
     }
+    
+    /**
+     * Set imagen
+     *
+     * @param string $imagen
+     */
+    public function setImagen($imagen)
+    {
+        $this->imagen = $imagen;
+    }
+
+    /**
+     * Get imagen
+     *
+     * @return string
+     */
+    
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
 
     public function __construct() {
         $this->setBloqueado(false);
@@ -389,6 +419,7 @@ class Usuarios implements UserInterface {
         //$direccionIp = $this->get('request')->getClientIp();
         //$this->setUltimaIp($direccionIp);
         $this->setSalt('saltfdsfsdf');
+        $this->setImagen("usuario.png");
     }
 
     public function __toString() {
